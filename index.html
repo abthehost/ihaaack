@@ -1916,6 +1916,364 @@ if(load()&&S.user){
 } else {
   $('page-auth').classList.remove('hidden');
 }
+```javascript
+/* ═══════════════════════════════════════════
+   CLIENT-SIDE SECURITY LOCK
+   FIRST-TIME VERIFICATION + CUSTOM LOCK CODE
+   ═══════════════════════════════════════════ */
+
+/*
+   FIRST-TIME VERIFICATION CODE:
+   The user must enter "open" once.
+
+   After successful verification, the user creates
+   a new personal security code.
+
+   The new code is stored in localStorage and used
+   for all future locks.
+
+   IMPORTANT:
+   This is client-side protection only. A static HTML
+   file cannot provide real authentication/security.
+*/
+
+const SECURITY_FIRST_CODE = 'open';
+
+const SECURITY_CODE_KEY = 'ihack-security-code';
+const SECURITY_VERIFIED_KEY = 'ihack-security-verified';
+
+const SECURITY_AUTO_LOCK_MS = 10 * 60 * 1000;
+
+let securityLocked = false;
+let securityAttempts = 0;
+let securityTimer;
+let securityUnlocking = false;
+
+
+/* ─── GET CURRENT SECURITY CODE ─── */
+function getSecurityCode(){
+  try{
+    return localStorage.getItem(SECURITY_CODE_KEY) || null;
+  }catch(e){
+    return null;
+  }
+}
+
+
+/* ─── CHECK FIRST-TIME VERIFICATION ─── */
+function isSecurityVerified(){
+  try{
+    return localStorage.getItem(SECURITY_VERIFIED_KEY) === '1';
+  }catch(e){
+    return false;
+  }
+}
+
+
+/* ─── SAVE SECURITY CODE ─── */
+function saveSecurityCode(code){
+  try{
+    localStorage.setItem(SECURITY_CODE_KEY, code);
+  }catch(e){}
+}
+
+
+/* ─── MARK FIRST-TIME VERIFICATION COMPLETE ─── */
+function markSecurityVerified(){
+  try{
+    localStorage.setItem(SECURITY_VERIFIED_KEY, '1');
+  }catch(e){}
+}
+
+
+/* ─── GET EXPECTED CODE ─── */
+function getExpectedSecurityCode(){
+  const savedCode = getSecurityCode();
+
+  // First time → use "open"
+  if(!savedCode && !isSecurityVerified()){
+    return SECURITY_FIRST_CODE;
+  }
+
+  // After first verification → use custom code
+  return savedCode || SECURITY_FIRST_CODE;
+}
+
+
+/* ─── LOCK ACADEMY ─── */
+function lockAcademy(reason='manual'){
+
+  if(!S.user) return;
+
+  securityLocked = true;
+  securityUnlocking = false;
+
+  clearTimeout(securityTimer);
+
+  $('security-code').value='';
+
+  const status = $('security-status');
+
+  status.textContent =
+    reason === 'timeout'
+      ? 'Locked after inactivity. Enter your security code to continue.'
+      : 'Academy locked. Enter your security code to continue.';
+
+  status.className = 'security-status';
+
+  $('security-lock').classList.remove('hidden');
+
+  setTimeout(()=>{
+    $('security-code').focus();
+  },50);
+}
+
+
+/* ─── UNLOCK ACADEMY ─── */
+function unlockAcademy(){
+
+  securityLocked = false;
+
+  $('security-lock').classList.add('hidden');
+
+  $('security-code').value='';
+
+  $('security-status').textContent='Unlocked';
+  $('security-status').className='security-status good';
+
+  resetSecurityTimer();
+}
+
+
+/* ─── RESET AUTO-LOCK TIMER ─── */
+function resetSecurityTimer(){
+
+  clearTimeout(securityTimer);
+
+  if(!S.user || securityLocked) return;
+
+  securityTimer = setTimeout(()=>{
+    lockAcademy('timeout');
+  }, SECURITY_AUTO_LOCK_MS);
+}
+
+
+/* ─── FIRST-TIME CODE SETUP ─── */
+function createNewSecurityCode(){
+
+  let newCode = '';
+
+  while(true){
+
+    newCode = prompt(
+      '✅ First-time verification complete.\n\n' +
+      'Create a new security code for future locks:\n\n' +
+      'Minimum 4 characters.'
+    );
+
+    if(newCode === null){
+      // User cancelled.
+      // Keep "open" as fallback.
+      return false;
+    }
+
+    newCode = newCode.trim();
+
+    if(newCode.length < 4){
+      alert('Security code must contain at least 4 characters.');
+      continue;
+    }
+
+    if(newCode.toLowerCase() === SECURITY_FIRST_CODE){
+      alert('Please choose a different code. Do not keep "open".');
+      continue;
+    }
+
+    saveSecurityCode(newCode);
+    markSecurityVerified();
+
+    alert('🔐 New security code saved successfully.');
+
+    return true;
+  }
+}
+
+
+/* ─── SECURITY SETUP ─── */
+function setupSecurityLock(){
+
+  $('security-lock-form').addEventListener('submit', async e => {
+
+    e.preventDefault();
+
+    if(securityUnlocking) return;
+
+    securityUnlocking = true;
+
+    const entered = $('security-code').value.trim();
+    const status = $('security-status');
+
+    const expectedCode = getExpectedSecurityCode();
+
+    /* ─────────────────────────────
+       FIRST-TIME VERIFICATION
+       ───────────────────────────── */
+    if(!isSecurityVerified()){
+
+      if(entered === SECURITY_FIRST_CODE){
+
+        securityAttempts = 0;
+
+        /*
+           First verification succeeded.
+           Now ask user to create a new code.
+        */
+        const created = createNewSecurityCode();
+
+        if(created){
+
+          unlockAcademy();
+
+          toast('🔓 Verification complete. New security code created.');
+
+        }else{
+
+          unlockAcademy();
+
+          toast('🔓 First verification complete. "open" remains active.');
+        }
+
+        securityUnlocking = false;
+        return;
+      }
+
+      /* Wrong first-time code */
+      securityAttempts++;
+
+      $('security-code').value='';
+
+      const delay =
+        Math.min(
+          8000,
+          500 * Math.pow(
+            2,
+            Math.min(securityAttempts - 1, 4)
+          )
+        );
+
+      status.textContent =
+        `Incorrect verification code. Try again in ${Math.ceil(delay/1000)}s.`;
+
+      status.className='security-status bad';
+
+      const input = $('security-code');
+
+      input.disabled = true;
+
+      setTimeout(()=>{
+        input.disabled = false;
+        input.focus();
+        securityUnlocking = false;
+      }, delay);
+
+      return;
+    }
+
+
+    /* ─────────────────────────────
+       NORMAL FUTURE UNLOCK
+       ───────────────────────────── */
+    if(entered === expectedCode){
+
+      securityAttempts = 0;
+
+      unlockAcademy();
+
+      toast('🔓 Academy unlocked successfully.');
+
+      securityUnlocking = false;
+
+      return;
+    }
+
+
+    /* ─────────────────────────────
+       WRONG CODE
+       ───────────────────────────── */
+    securityAttempts++;
+
+    $('security-code').value='';
+
+    const delay =
+      Math.min(
+        8000,
+        500 * Math.pow(
+          2,
+          Math.min(securityAttempts - 1, 4)
+        )
+      );
+
+    status.textContent =
+      `Incorrect code. Try again in ${Math.ceil(delay/1000)}s.`;
+
+    status.className='security-status bad';
+
+    const input = $('security-code');
+
+    input.disabled = true;
+
+    setTimeout(()=>{
+      input.disabled = false;
+      input.focus();
+      securityUnlocking = false;
+    }, delay);
+
+  });
+
+
+  /* ─── MANUAL LOCK BUTTON ─── */
+  $('btn-lock').addEventListener('click', ()=>{
+    lockAcademy('manual');
+  });
+
+
+  /* ─── ACTIVITY TIMER ─── */
+  [
+    'click',
+    'keydown',
+    'pointermove',
+    'touchstart'
+  ].forEach(evt => {
+
+    document.addEventListener(evt, ()=>{
+
+      if(S.user && !securityLocked){
+        resetSecurityTimer();
+      }
+
+    }, {passive:true});
+
+  });
+
+}
+
+
+/* ─── OPTIONAL: RESET SECURITY CODE ─── */
+function resetSecurityVerification(){
+
+  try{
+    localStorage.removeItem(SECURITY_CODE_KEY);
+    localStorage.removeItem(SECURITY_VERIFIED_KEY);
+  }catch(e){}
+
+  alert(
+    '🔄 Security verification has been reset.\n\n' +
+    'The next verification will require the first-time code: open'
+  );
+
+  location.reload();
+}
+```
 
 </script>
 </body>
