@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>iHack.com — Ethical Hacking Academy</title>
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=fZ4pHghxUvBlku_BFJuoJ0ujcaGgkQ-2vi7xb2Rkp71LxJ8YBMqi4RfT-1f28nz_u5XvAd9b1pnm7UJee3C3jezVsDMr2iZj2hnBU5LdfKQHlccqJauFvXpJTMwZB3lpNI6vZYOU3udt4Hh2u0d3Dd70Xgzzd9EzbgtWgckC3nh6Ejr_1xh9SdYE1IcMRUaCPfmKlZKkchnxuFjiw9Wc8ic0vX61IJdHvj0tVaBRyo1VyL3_n_KB7TLLz1zzFkVgzTPkrCWMBt-8tSkiVAd9fTe-qBTlRTt1_lPV875NltdyXL53tRF1h1ka9DvbKz3p" charset="UTF-8"></script><style>
+<style>
 /*──────────────────────────────────────────────
   CSS VARIABLES & RESET
 ──────────────────────────────────────────────*/
@@ -325,6 +325,9 @@ footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
   .auth-card{padding:24px 18px}
   .hero{padding:50px 0 30px}
 }
+
+.auth-choice-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}.auth-mode-btn{justify-content:center;font-size:.78rem;padding:10px 8px;opacity:.72}.auth-mode-btn.active{opacity:1;border-color:var(--green)}.field-hint{display:block;color:var(--muted);font-size:.7rem;margin-top:5px}.two-step-card{border:1px solid rgba(34,211,238,.22);background:linear-gradient(135deg,rgba(34,211,238,.06),rgba(0,255,136,.04));padding:12px;border-radius:12px;margin:12px 0}.level-card{min-height:170px;transform-style:preserve-3d}.level-image-cards{perspective:1000px}.level-art{height:86px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden;margin-bottom:8px;box-shadow:inset 0 0 30px rgba(255,255,255,.08)}.level-art:before{content:'';position:absolute;inset:-30%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.18),transparent 30%);animation:artSpin 6s linear infinite}.level-art span{position:absolute;right:12px;bottom:8px;font-size:1rem;opacity:.5;animation:orbFloat 2.5s ease-in-out infinite}.beginner-art{background:linear-gradient(135deg,#12352c,#0b1520)}.intermediate-art{background:linear-gradient(135deg,#122b40,#151126)}.professional-art{background:linear-gradient(135deg,#35170b,#170d17)}@keyframes artSpin{to{transform:rotate(360deg)}}@keyframes orbFloat{50%{transform:translateY(-7px) scale(1.2)}}.profile-actions-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.avatar-picker{margin-top:14px;padding:14px;background:var(--bg);border:1px solid var(--border);border-radius:14px}.avatar-icon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.avatar-option{height:52px;border-radius:12px;background:var(--panel2);border:1px solid var(--border);font-size:1.55rem}.profile-avatar.has-image{overflow:hidden;background-size:cover;background-position:center;color:transparent}.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}.podium-card{padding:20px;border:1px solid var(--border);border-radius:18px;background:var(--panel);text-align:center}.podium-card.top{transform:translateY(-8px);border-color:var(--yellow)}.podium-avatar{width:64px;height:64px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;background:linear-gradient(135deg,var(--green),var(--cyan));color:#000;font-weight:900;overflow:hidden;background-size:cover;background-position:center}.rank-you{outline:2px solid rgba(0,255,136,.25)}.chat-layout{display:grid;grid-template-columns:260px 1fr;gap:16px}.chat-users{min-height:560px}.chat-panel-title{font-weight:800;margin-bottom:12px}.chat-user{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;cursor:pointer;border:1px solid transparent}.chat-user:hover,.chat-user.active{background:var(--panel2);border-color:rgba(0,255,136,.18)}.chat-user-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--green),var(--cyan));color:#000;font-weight:900;overflow:hidden;background-size:cover;background-position:center;flex-shrink:0}.chat-room{min-height:560px;display:flex;flex-direction:column;padding:0;overflow:hidden}.chat-room-head{padding:16px 18px;background:var(--panel2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}.chat-messages{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:9px;min-height:390px}.live-msg{max-width:80%;padding:10px 13px;border-radius:14px;background:var(--panel2);border:1px solid var(--border);align-self:flex-start}.live-msg.me{align-self:flex-end;background:rgba(0,255,136,.08)}.live-msg .meta{font-size:.68rem;color:var(--muted);margin-bottom:4px}.chat-toolbar{display:flex;gap:6px;align-items:center;padding:10px 12px;border-top:1px solid var(--border);overflow-x:auto}.emoji-btn{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:7px 9px;font-size:1rem}.live-chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}.live-chat-input input{flex:1;padding:11px 14px;background:var(--bg);border:1px solid var(--border);border-radius:11px;color:var(--text)}
+@media(max-width:900px){.chat-layout{grid-template-columns:1fr}.chat-users{min-height:auto}.podium{grid-template-columns:1fr}.podium-card.top{transform:none}}@media(max-width:600px){.auth-choice-row{grid-template-columns:1fr}.profile-actions-grid{grid-template-columns:1fr}.avatar-icon-grid{grid-template-columns:repeat(5,1fr)}}
 </style>
 </head>
 <body>
@@ -348,6 +351,8 @@ footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
         <button data-page="learn">📚 Learn</button>
         <button data-page="lab">🖥️ Lab</button>
         <button data-page="news">📰 News</button>
+        <button data-page="leaderboard">🏆 Leaderboard</button>
+        <button data-page="chat">💬 Chat</button>
         <button data-page="profile">👤 Profile</button>
       </div>
       <div class="user-bar" id="nav-user">
@@ -373,39 +378,39 @@ footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
       <p class="auth-subtitle">Join the Ethical Hacking Academy — Learn to defend, not destroy.</p>
 
       <form id="auth-form" autocomplete="off">
+        <div class="auth-choice-row">
+          <button type="button" class="btn btn-secondary auth-mode-btn active" id="mode-register">✨ Register</button>
+          <button type="button" class="btn btn-secondary auth-mode-btn" id="mode-login">↩️ Log In</button>
+        </div>
+        <div id="auth-server-message" class="hidden" style="background:rgba(255,77,106,.1);border:1px solid rgba(255,77,106,.35);color:var(--red);border-radius:10px;padding:10px 14px;font-size:.82rem;margin-bottom:14px"></div>
         <div class="input-group">
-          <label for="auth-name">Your Name (Codename)</label>
-          <input id="auth-name" type="text" placeholder="e.g., CyberWolf" required maxlength="30" minlength="2">
+          <label for="auth-name">Username (unique identity)</label>
+          <input id="auth-name" type="text" placeholder="e.g., CyberWolf_27" required maxlength="30" minlength="2" pattern="[A-Za-z0-9_-]+">
+          <small class="field-hint" id="auth-name-hint">Your account lives on the iHack server — the same username works on every device. Duplicates are rejected centrally.</small>
         </div>
         <div class="input-group">
+          <label for="auth-password">Password</label>
+          <input id="auth-password" type="password" placeholder="Minimum 6 characters" minlength="6" autocomplete="current-password">
+          <small class="field-hint">Passwords are salted and hashed with PBKDF2 inside your browser — they never leave this device.</small>
+        </div>
+        <div class="input-group" id="age-group">
           <label for="auth-age">Age</label>
-          <input id="auth-age" type="number" min="10" max="99" placeholder="e.g., 18" required>
+          <input id="auth-age" type="number" min="10" max="99" placeholder="e.g., 18">
         </div>
 
         <label style="display:block;margin-bottom:10px;font-weight:700;font-size:.9rem;color:var(--muted)">Select Your Level</label>
-        <div class="level-cards" id="level-cards">
-          <div class="level-card" data-level="beginner">
-            <div class="lc-icon">🌱</div>
-            <div class="lc-title">Beginner</div>
-            <div class="lc-desc">I'm just starting out</div>
-          </div>
-          <div class="level-card" data-level="intermediate">
-            <div class="lc-icon">⚡</div>
-            <div class="lc-title">Intermediate</div>
-            <div class="lc-desc">I know some basics</div>
-          </div>
-          <div class="level-card" data-level="professional">
-            <div class="lc-icon">🔥</div>
-            <div class="lc-title">Professional</div>
-            <div class="lc-desc">Experienced learner</div>
-          </div>
+        <div class="level-cards level-image-cards" id="level-cards">
+          <div class="level-card" data-level="beginner"><div class="level-art beginner-art">🌱<span>●</span></div><div class="lc-title">Beginner</div><div class="lc-desc">Start from the foundations</div></div>
+          <div class="level-card" data-level="intermediate"><div class="level-art intermediate-art">⚡<span>✦</span></div><div class="lc-title">Intermediate</div><div class="lc-desc">Build practical skills</div></div>
+          <div class="level-card" data-level="professional"><div class="level-art professional-art">🔥<span>◆</span></div><div class="lc-title">Professional</div><div class="lc-desc">Master advanced topics</div></div>
         </div>
+        <div class="two-step-card"><label class="checkbox-row" style="margin:0"><input type="checkbox" id="enable-2fa"><span><strong>Enable optional 2-step verification</strong><br><span class="text-muted" style="font-size:.78rem">Off by default. Turn it on only when you want the extra lock.</span></span></label></div>
 
         <div class="terms-box">
           <strong style="color:var(--green)">📜 Authorization & Terms:</strong><br><br>
           1. All exercises are simulated — no real systems are targeted.<br>
           2. You agree to use knowledge ethically and only on authorized systems.<br>
-          3. Your data is stored locally in this browser only — never transmitted.<br>
+          3. Accounts, XP and progress are stored locally in this browser; passwords are salted and hashed with PBKDF2 and never leave your device.<br>
           4. The content adapts to your selected level.<br>
           5. You earn XP through learning, quizzes, and lab exercises.<br>
           6. <strong>Rule Zero:</strong> Always get permission before testing any system.<br>
@@ -557,6 +562,28 @@ footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
 </div>
 
 <!-- ═══════════════════════════════════════════
+     LEADERBOARD PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-leaderboard" class="hidden"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">COMPETE & GROW</div><h2>🏆 Academy Leaderboard</h2></div><span class="text-muted" id="leaderboard-subtitle">Local accounts in this browser</span></div>
+  <div class="podium" id="leaderboard-podium"></div>
+  <div class="card leaderboard-table-wrap"><div class="table-wrap"><table><thead><tr><th>#</th><th>Avatar</th><th>Username</th><th>Level</th><th>Rank</th><th>XP</th><th>Missions</th></tr></thead><tbody id="leaderboard-body"></tbody></table></div></div>
+</div></div>
+<!-- ═══════════════════════════════════════════
+     LIVE CHAT PAGE
+     ═══════════════════════════════════════════ -->
+<div id="page-chat" class="hidden"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">COMMUNITY CHANNEL</div><h2>💬 Live Chat</h2></div><span class="text-muted" id="chat-connection-status">Starting local channel…</span></div>
+  <div class="chat-layout"><aside class="card chat-users"><div class="chat-panel-title">👥 Users</div><div id="chat-user-list"></div></aside>
+  <section class="card chat-room"><div class="chat-room-head"><div><strong id="chat-room-name">Academy Lounge</strong><div class="text-muted" style="font-size:.75rem">Select a user for a private thread.</div></div><span class="chip chip-green" id="chat-online-chip">● LIVE</span></div>
+  <div class="chat-messages" id="live-chat-messages"></div>
+  <div class="chat-toolbar"><button type="button" class="emoji-btn" data-emoji="😀">😀</button><button type="button" class="emoji-btn" data-emoji="😂">😂</button><button type="button" class="emoji-btn" data-emoji="🔥">🔥</button><button type="button" class="emoji-btn" data-emoji="👍">👍</button><button type="button" class="emoji-btn" data-emoji="🎯">🎯</button><button type="button" class="btn btn-sm btn-secondary" id="chat-voice">🎙️ Voice</button><button type="button" class="btn btn-sm btn-secondary" id="chat-attach">📎</button></div>
+  <form class="live-chat-input" id="live-chat-form"><input id="live-chat-input" autocomplete="off" maxlength="500" placeholder="Write a message…"><button class="btn btn-primary" type="submit">Send</button></form><input type="file" id="chat-file" class="hidden" accept="image/*,.txt">
+  </section></div>
+  <div class="info-box mt-lg" id="chat-server-info">💬 Messages are shared live between tabs and windows in this browser and stored locally — no internet or server required.</div>
+</div></div>
+
+<!-- ═══════════════════════════════════════════
      PROFILE PAGE
      ═══════════════════════════════════════════ -->
 <div id="page-profile" class="hidden">
@@ -582,8 +609,12 @@ footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
 
     <div class="panel mt-xl">
       <h3 class="mb-md">⚙️ Settings</h3>
-      <button class="btn btn-danger" id="btn-reset">🗑️ Reset All Progress</button>
-      <p class="text-muted mt-sm" style="font-size:.8rem">This clears all saved data from this browser.</p>
+      <div class="profile-actions-grid"><button class="btn btn-secondary" id="btn-avatar">🖼️ Change Profile Picture</button><button class="btn btn-secondary" id="btn-export-account">💾 Download Backup</button><button class="btn btn-secondary" id="btn-sessions">🖥️ Sessions &amp; Security</button><button class="btn btn-secondary" id="btn-2fa-settings">🔐 App Lock (This Device)</button></div>
+      <input type="file" id="avatar-file" class="hidden" accept="image/*">
+      <div id="avatar-picker" class="avatar-picker hidden"><div class="text-muted mb-md" style="font-size:.82rem">Choose a preset icon or use an image from your gallery.</div><div class="avatar-icon-grid" id="avatar-icon-grid"></div></div>
+      <div class="panel mt-md hidden" id="sessions-panel" style="background:var(--bg)"></div>
+      <button class="btn btn-danger mt-md" id="btn-reset">🗑️ Reset All Progress</button>
+      <p class="text-muted mt-sm" style="font-size:.8rem">Progress is stored locally in this browser. The backup button downloads a personal JSON copy you can keep or move manually.</p>
     </div>
   </div>
 </div>
@@ -593,7 +624,7 @@ footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
   <div class="security-lock-card">
     <div class="security-lock-icon">🔐</div>
     <h2 id="security-lock-title">Academy Locked</h2>
-    <p>Enter your security code to continue. The learning app remains locked until verification succeeds.</p>
+    <p id="security-lock-description">Enter your security code to continue. The learning app remains locked until verification succeeds.</p>
     <form id="security-lock-form" autocomplete="off">
       <input id="security-code" class="security-code" type="password" inputmode="text" autocomplete="off" spellcheck="false" maxlength="64" placeholder="Enter security code" aria-label="Security code" required>
       <div id="security-status" class="security-status">Protected local session</div>
@@ -634,21 +665,426 @@ footer p{color:var(--muted);font-size:.82rem;max-width:600px;margin:0 auto}
      JAVASCRIPT — ALL DATA, LOGIC & INTERACTIVITY
      ═══════════════════════════════════════════════════════════════ -->
 <script>
-"use strict";
+/* ════════════════════════════════════════════════════════════════
+   LOCAL BACKEND — zero server, zero network.
+   Implements the exact surface the app client uses:
+     • window.LocalBackend.handle(path, opts)  -> Promise (like fetch /api)
+     • window.EventSource                       -> local live-event shim
+   Accounts + hashed passwords + progress + chat live in localStorage;
+   live chat, presence and single-login kick-outs travel over
+   BroadcastChannel (with a 'storage' event fallback) between tabs.
+   ════════════════════════════════════════════════════════════════ */
+(function () {
+  "use strict";
 
-/* ─── UTILITY ─── */
-const $=id=>document.getElementById(id);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let toastT;
-function toast(msg,err){const t=$('toast');t.textContent=msg;t.className=err?'error':'';t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3500)}
+  const ACCOUNTS_KEY = 'ihack-local-accounts-v1';
+  const SESSION_KEY = 'ihack-local-session-v1';
+  const PRESENCE_KEY = 'ihack-local-presence-v1';
+  const LOUNGE_KEY = 'ihack-chat-lounge';
+  const DM_PREFIX = 'ihack-chat-dm-';
+  const BUS_NAME = 'ihack-local-bus-v1';
+  const ALLOWED_BADGES = ['welcome', 'quiz5', 'quiz15', 'quiz30', 'lab', 'binary', 'm3', 'm6', 'allbeg', 'all'];
+  const LEVELS = ['beginner', 'intermediate', 'professional'];
+  const NAME_RE = /^[A-Za-z0-9_-]{2,30}$/;
+  const SOLVED_KEY_RE = /^[a-z0-9-]+-\d+-\d+$/;
+  const TAB_ID = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
 
-/* ─── PARTICLES ─── */
-(function(){const c=$('bg-canvas');const colors=['#00ff8840','#00b4ff30','#a855f720','#22d3ee25'];for(let i=0;i<40;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*6+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${colors[i%4]};animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*20}s`;c.appendChild(p)}})();
+  /* ── storage helpers ── */
+  function readJSON(k, fallback) {
+    try { const v = JSON.parse(localStorage.getItem(k)); return v === null || v === undefined ? fallback : v; }
+    catch (e) { return fallback; }
+  }
+  function writeJSON(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+  function accounts() { const a = readJSON(ACCOUNTS_KEY, {}); return (a && typeof a === 'object') ? a : {}; }
+  function saveAccounts(a) { writeJSON(ACCOUNTS_KEY, a); }
+  function norm(n) { return String(n || '').trim().toLowerCase(); }
+  function dmKey(a, b) { return [norm(a), norm(b)].sort().join('--'); }
+  function fail(status, error) { const e = new Error(error); e.status = status; throw e; }
 
-/* ═══════════════════════════════════════════
-   CONTENT DATABASE
-   ═══════════════════════════════════════════ */
+  /* ── PBKDF2 password hashing (Web Crypto, stays on device) ── */
+  function newSalt() {
+    const a = new Uint8Array(16); crypto.getRandomValues(a);
+    return Array.from(a, b => b.toString(16).padStart(2, '0')).join('');
+  }
+  function saltBytes(hex) {
+    return new Uint8Array(hex.match(/.{2}/g).map(h => parseInt(h, 16)));
+  }
+  async function hashPassword(password, saltHex) {
+    const enc = new TextEncoder();
+    const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(String(password)),
+      { name: 'PBKDF2' }, false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits(
+      { name: 'PBKDF2', salt: saltBytes(saltHex), iterations: 150000, hash: 'SHA-256' },
+      keyMaterial, 256);
+    return Array.from(new Uint8Array(bits), b => b.toString(16).padStart(2, '0')).join('');
+  }
 
+  /* ── sessions (one per browser) ── */
+  function getSession() { return readJSON(SESSION_KEY, null); }
+  function setSession(name) {
+    const s = { user: name, nonce: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())), started: Date.now() };
+    writeJSON(SESSION_KEY, s); return s;
+  }
+  function currentUser() {
+    const s = getSession(); if (!s) return null;
+    const u = accounts()[norm(s.user)];
+    return u || null;
+  }
+  function requireUser() {
+    const s = getSession();
+    if (!s) fail(401, 'not_authenticated');
+    const A = accounts();
+    const u = A[norm(s.user)];
+    if (!u) fail(401, 'not_authenticated');
+    return { A, u, s };
+  }
+
+  /* ── views (same shapes the Node server returned) ── */
+  function publicView(u) {
+    return { name: u.name, age: u.age, level: u.level, avatar: u.avatar || null,
+      joined: u.joined, twoFADevice: !!u.twoFADevice };
+  }
+  function progressView(u) {
+    return { xp: u.xp || 0, solved: u.solved || {}, badges: u.badges || [],
+      termUsed: !!u.termUsed, binaryUsed: !!u.binaryUsed,
+      diffBoost: u.diffBoost || 0, missionsDone: u.missionsDone || 0 };
+  }
+  function meView(u) {
+    const s = getSession();
+    return { user: publicView(u), progress: progressView(u),
+      settings: u.settings || { ipBound: true },
+      session: s ? { ip: 'This browser', ua: navigator.userAgent, started: s.started, lastSeen: Date.now() } : null };
+  }
+  function rankFor(missions) {
+    return missions >= 12 ? 'Cyber Guardian' : missions >= 9 ? 'Sentinel' :
+      missions >= 6 ? 'Defender' : missions >= 3 ? 'Explorer' : 'Recruit';
+  }
+  function leaderboardRows() {
+    return Object.values(accounts()).map(u => ({
+      name: u.name, avatar: u.avatar || null, xp: u.xp || 0,
+      level: 1 + Math.floor((u.xp || 0) / 100),
+      missions: u.missionsDone || 0, rank: rankFor(u.missionsDone || 0)
+    })).sort((a, b) => b.xp - a.xp || b.missions - a.missions || a.name.localeCompare(b.name));
+  }
+  function validAvatar(a) {
+    return a === null || (typeof a === 'string' && a.length <= 120 * 1024 &&
+      (/^\p{Emoji}/u.test(a) || /^data:image\/(png|jpe?g|webp|gif);base64,/i.test(a)));
+  }
+
+  /* ── chat storage ── */
+  function chatHistory(to, currentName) {
+    if (!to) return readJSON(LOUNGE_KEY, []).slice(-200);
+    return readJSON(DM_PREFIX + dmKey(currentName, to), []).slice(-300);
+  }
+  function saveChat(to, list, currentName) {
+    writeJSON(to ? DM_PREFIX + dmKey(currentName, to) : LOUNGE_KEY, list);
+  }
+
+  /* ── brute-force throttling (in-memory, per username) ── */
+  const attempts = new Map();
+  function gate(name) {
+    const a = attempts.get(name) || { fails: 0, until: 0 };
+    attempts.set(name, a);
+    return a.until > Date.now() ? a.until - Date.now() : 0;
+  }
+  function bumpFail(name) {
+    const a = attempts.get(name) || { fails: 0, until: 0 };
+    a.fails += 1;
+    if (a.fails >= 5) { const mins = Math.min(15, Math.pow(2, a.fails - 5)); a.until = Date.now() + mins * 60000; }
+    attempts.set(name, a);
+  }
+
+  /* ═══════════ API router ═══════════ */
+  async function handle(path, opts) {
+    opts = opts || {};
+    const method = opts.method || 'GET';
+    const body = opts.body || {};
+    const [route, query] = path.split('?');
+    const params = new URLSearchParams(query || '');
+
+    switch (route) {
+      case '/api/register': {
+        const name = String(body.name || '').trim();
+        const password = String(body.password || '');
+        const age = parseInt(body.age, 10);
+        const level = LEVELS.includes(body.level) ? body.level : 'beginner';
+        if (!NAME_RE.test(name)) fail(400, 'Username must be 2–30 chars: letters, numbers, _ or -');
+        if (password.length < 6) fail(400, 'Password must be at least 6 characters.');
+        if (!age || age < 10 || age > 99) fail(400, 'Please enter a valid age (10–99).');
+        const A = accounts(), key = norm(name);
+        if (A[key]) fail(409, 'That username is already taken. Choose another or log in.');
+        const salt = newSalt(), hash = await hashPassword(password, salt), now = Date.now();
+        A[key] = {
+          name, salt, hash, age, level, avatar: null, joined: now, twoFADevice: false,
+          xp: 10, solved: {}, badges: ['welcome'], termUsed: false, binaryUsed: false,
+          diffBoost: 0, missionsDone: 0, settings: { ipBound: true }, loginHistory: []
+        };
+        A[key].loginHistory = [{ t: now, ip: 'This browser', kind: 'register' }];
+        saveAccounts(A);
+        setSession(name);
+        LocalBackend.presenceNow();
+        return meView(A[key]);
+      }
+
+      case '/api/login': {
+        const name = String(body.name || '').trim();
+        const password = String(body.password || '');
+        const key = norm(name);
+        const wait = gate(key);
+        if (wait) fail(429, `Too many attempts. Try again in ${Math.ceil(wait / 1000)}s.`);
+        const A = accounts();
+        const u = A[key];
+        if (!u || !NAME_RE.test(name)) { bumpFail(key); fail(401, 'Invalid username or password.'); }
+        const hash = await hashPassword(password, u.salt);
+        if (hash !== u.hash) {
+          bumpFail(key);
+          u.loginHistory = [{ t: Date.now(), ip: 'This browser', kind: 'failed' }, ...(u.loginHistory || [])].slice(0, 10);
+          saveAccounts(A);
+          fail(401, 'Invalid username or password.');
+        }
+        attempts.delete(key);
+        /* single-login protection: sign other tabs out */
+        if (u.settings.ipBound !== false) {
+          bus.post({ type: 'kicked', reason: 'new_login', forUser: key,
+            message: 'Your account was logged in from another tab or window, so this session ended.', at: Date.now() });
+        }
+        const now = Date.now();
+        u.loginHistory = [{ t: now, ip: 'This browser', kind: 'login' }, ...(u.loginHistory || [])].slice(0, 10);
+        saveAccounts(A);
+        setSession(u.name);
+        LocalBackend.presenceNow();
+        return meView(u);
+      }
+
+      case '/api/logout': {
+        const u = currentUser();
+        if (u) bus.post({ type: 'kicked', reason: 'logout', forUser: norm(u.name),
+          message: 'You logged out in another tab or window.', at: Date.now() });
+        localStorage.removeItem(SESSION_KEY);
+        LocalBackend.presenceNow();
+        return { ok: true };
+      }
+
+      case '/api/me': {
+        if (method === 'GET') return meView(requireUser().u);
+        if (method === 'PATCH') {
+          const { A, u } = requireUser();
+          if (body.avatar !== undefined) {
+            if (!validAvatar(body.avatar)) fail(400, 'Invalid avatar.');
+            u.avatar = body.avatar;
+          }
+          if (body.age !== undefined) { const age = parseInt(body.age, 10); if (age >= 10 && age <= 99) u.age = age; }
+          if (body.level !== undefined && LEVELS.includes(body.level)) u.level = body.level;
+          saveAccounts(A);
+          bus.post({ type: 'profile', name: u.name, avatar: u.avatar });
+          LocalBackend.presenceNow();
+          return meView(u);
+        }
+        fail(404, 'unknown endpoint');
+      }
+
+      case '/api/me/settings': {
+        const { A, u } = requireUser();
+        u.settings = u.settings || { ipBound: true };
+        if (typeof body.ipBound === 'boolean') u.settings.ipBound = body.ipBound;
+        saveAccounts(A);
+        return { settings: u.settings };
+      }
+
+      case '/api/me/sessions': {
+        const { u, s } = requireUser();
+        return {
+          current: s ? { ip: 'This browser', ua: navigator.userAgent, started: s.started, lastSeen: Date.now() } : null,
+          settings: u.settings || { ipBound: true },
+          loginHistory: u.loginHistory || [],
+          rule: 'Local mode: accounts live in this browser. With single-login protection on, signing in elsewhere instantly signs the old tab out.'
+        };
+      }
+
+      case '/api/me/progress': {
+        if (method !== 'POST') fail(404, 'unknown endpoint');
+        const { A, u } = requireUser();
+        let changed = false;
+        if (Number.isInteger(body.xp) && body.xp >= 0 && body.xp <= 1000000 && body.xp >= (u.xp || 0)) {
+          if (body.xp !== u.xp) { u.xp = body.xp; changed = true; }
+        }
+        if (body.solved && typeof body.solved === 'object') {
+          u.solved = u.solved || {};
+          for (const [k, v] of Object.entries(body.solved)) {
+            if (SOLVED_KEY_RE.test(k) && Number.isInteger(v) && v >= 0 && v <= 6 &&
+                u.solved[k] === undefined && Object.keys(u.solved).length < 60) {
+              u.solved[k] = v; changed = true;
+            }
+          }
+        }
+        if (Array.isArray(body.badges)) {
+          u.badges = u.badges || [];
+          for (const id of body.badges) if (ALLOWED_BADGES.includes(id) && !u.badges.includes(id)) { u.badges.push(id); changed = true; }
+        }
+        if (body.termUsed === true) u.termUsed = true;
+        if (body.binaryUsed === true) u.binaryUsed = true;
+        if (Number.isInteger(body.diffBoost)) u.diffBoost = Math.max(0, Math.min(3, body.diffBoost));
+        if (Number.isInteger(body.missionsDone)) u.missionsDone = Math.max(u.missionsDone || 0, Math.min(12, body.missionsDone));
+        saveAccounts(A);
+        if (changed) bus.post({ type: 'score', user: { name: u.name, avatar: u.avatar || null }, xp: u.xp, missions: u.missionsDone || 0 });
+        return { progress: progressView(u) };
+      }
+
+      case '/api/me/progress/reset': {
+        const { A, u } = requireUser();
+        u.xp = 0; u.solved = {}; u.badges = []; u.termUsed = false;
+        u.binaryUsed = false; u.diffBoost = 0; u.missionsDone = 0;
+        saveAccounts(A);
+        bus.post({ type: 'score', user: { name: u.name, avatar: u.avatar || null }, xp: 0, missions: 0 });
+        return { progress: progressView(u) };
+      }
+
+      case '/api/leaderboard':
+        return { rows: leaderboardRows(), serverTime: Date.now() };
+
+      case '/api/users':
+        return { users: onlineUsers() };
+
+      case '/api/chat/history': {
+        const { u } = requireUser();
+        const to = params.get('to');
+        if (to) {
+          if (norm(to) === norm(u.name)) fail(400, 'No DM with yourself.');
+          if (!accounts()[norm(to)]) fail(404, 'Unknown user.');
+        }
+        return { messages: chatHistory(to || null, u.name) };
+      }
+
+      case '/api/chat': {
+        if (method !== 'POST') fail(404, 'unknown endpoint');
+        const { A, u } = requireUser();
+        const text = String(body.text || '').trim().slice(0, 500);
+        if (!text) fail(400, 'Empty message.');
+        const msg = {
+          id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random())),
+          cid: typeof body.cid === 'string' ? body.cid.slice(0, 60) : null,
+          from: u.name, to: null, text, t: Date.now()
+        };
+        if (body.to) {
+          const target = A[norm(body.to)];
+          if (!target) fail(404, 'Unknown user.');
+          if (norm(target.name) === norm(u.name)) fail(400, 'No DM with yourself.');
+          msg.to = target.name;
+          const list = chatHistory(target.name, u.name).concat([msg]).slice(-300);
+          saveChat(target.name, list, u.name);
+        } else {
+          const list = chatHistory(null, u.name).concat([msg]).slice(-500);
+          saveChat(null, list, u.name);
+        }
+        bus.post({ type: 'chat', message: msg });
+        return { ok: true, message: msg };
+      }
+
+      case '/api/events':
+        fail(400, 'events use LocalEventSource');
+
+      default:
+        fail(404, 'unknown endpoint');
+    }
+  }
+
+  function backup() {
+    const { u } = requireUser();
+    return { exportedAt: new Date().toISOString(), mode: 'local-browser',
+      account: publicView(u), progress: progressView(u) };
+  }
+
+  /* ═══════════ live events between tabs ═══════════ */
+  const listeners = new Set();
+  let busChannel = null;
+  try { busChannel = new BroadcastChannel(BUS_NAME); } catch (e) { busChannel = null; }
+  const bus = {
+    post(d) {
+      try { if (busChannel) busChannel.postMessage(d); } catch (e) {}
+      // storage fallback also lets very old browsers sync
+      try { localStorage.setItem('ihack-local-bus-fallback', JSON.stringify(d)); } catch (e) {}
+    }
+  };
+  if (busChannel) busChannel.onmessage = e => dispatch(e.data);
+
+  function dispatch(d) {
+    if (!d) return;
+    if (d.type === 'kicked' && d.forUser) {
+      const s = getSession();
+      if (!s || norm(s.user) !== d.forUser) return;
+    }
+    listeners.forEach(l => { try { l._emit(d); } catch (e) {} });
+  }
+
+  /* presence (heartbeats in localStorage) */
+  function presenceMap() { return readJSON(PRESENCE_KEY, {}); }
+  function onlineUsers() {
+    const now = Date.now(), map = presenceMap(), names = new Set();
+    for (const v of Object.values(map)) if (v.user && now - v.t <= 12000) names.add(norm(v.user));
+    return Object.values(accounts()).map(u => ({
+      name: u.name, avatar: u.avatar || null, online: names.has(norm(u.name))
+    })).sort((a, b) => Number(b.online) - Number(a.online) || a.name.localeCompare(b.name));
+  }
+  function heartbeat() {
+    const s = getSession();
+    const map = presenceMap(), now = Date.now();
+    for (const [k, v] of Object.entries(map)) if (now - v.t > 12000) delete map[k];
+    if (s) map[TAB_ID] = { user: s.user, t: now };
+    else delete map[TAB_ID];
+    writeJSON(PRESENCE_KEY, map);
+    emitPresence();
+  }
+  function emitPresence() { dispatch({ type: 'presence', users: onlineUsers() }); }
+  setInterval(heartbeat, 4000);
+  window.addEventListener('unload', () => {
+    const map = presenceMap(); delete map[TAB_ID];
+    try { writeJSON(PRESENCE_KEY, map); } catch (e) {}
+  });
+
+  window.addEventListener('storage', e => {
+    if (!e || !e.key) return;
+    if (e.key === ACCOUNTS_KEY) { emitPresence(); return; }
+    if (e.key === PRESENCE_KEY) { emitPresence(); return; }
+    if (e.key === LOUNGE_KEY || e.key.indexOf(DM_PREFIX) === 0) {
+      try { const list = JSON.parse(e.newValue || '[]'); const m = list[list.length - 1]; if (m) dispatch({ type: 'chat', message: m }); } catch (err) {}
+    }
+    if (e.key === 'ihack-local-bus-fallback') {
+      try { dispatch(JSON.parse(e.newValue)); } catch (err) {}
+    }
+  });
+
+  /* EventSource shim — same onmessage/onopen/onerror/close API */
+  class LocalEventSource {
+    constructor() {
+      this.readyState = 0;
+      const s = getSession();
+      queueMicrotask(() => {
+        this.readyState = 1;
+        if (this.onopen) this.onopen({ type: 'open' });
+        this._emit({ type: 'hello', at: Date.now(), me: s ? s.user : null, ip: 'This browser' });
+        listeners.add(this);
+        heartbeat();
+        this._emit({ type: 'presence', users: onlineUsers() });
+      });
+    }
+    close() { this.readyState = 2; listeners.delete(this); }
+    _emit(d) { if (this.onmessage) this.onmessage({ data: JSON.stringify(d) }); }
+    addEventListener() { /* client uses on* handlers */ }
+  }
+  window.EventSource = LocalEventSource;
+
+  window.LocalBackend = {
+    handle, backup,
+    _attach(l) { listeners.add(l); },
+    _detach(l) { listeners.delete(l); },
+    _sessionUser() { const s = getSession(); return s ? { name: s.user } : null; },
+    presenceNow() { try { heartbeat(); } catch (e) {} }
+  };
+})();
+
+</script>
+<script>
+/* Extracted lesson/news/badge database — shared with the original app. */
 const MISSIONS=[
 /* 0 */ {id:"intro",icon:"🛡️",title:"Introduction to Cybersecurity",sub:"What is cybersecurity and why it matters",diff:"beginner",xp:50,
 topics:[
@@ -1251,358 +1687,370 @@ const BADGE_DEFS=[
 {id:"m6",name:"🐉 Kali Commander",desc:"Complete Kali Linux Basics",check:s=>missionDone(6,s)},
 {id:"allbeg",name:"🏅 Beginner Champion",desc:"Complete all beginner missions",check:s=>MISSIONS.filter(m=>m.diff==='beginner').every((_,i)=>missionDone(MISSIONS.indexOf(_),s))},
 {id:"all",name:"🏆 Cyber Guardian",desc:"Complete all missions",check:s=>MISSIONS.every((_,i)=>missionDone(i,s))}
-];
+];;
+
+</script>
+<script>
+/* ════════════════════════════════════════════════════════════════
+   iHack Academy — networked client
+   Same UI/lessons as the standalone HTML, but:
+     • accounts & progress  → server API (hashed passwords, sessions)
+     • leaderboard          → centralized, live-pushed
+     • chat                 → cross-device, delivered over SSE
+     • sessions             → single active session + IP enforcement
+   content.js (loaded first) provides MISSIONS, NEWS_POOL, BADGE_DEFS.
+   ════════════════════════════════════════════════════════════════ */
+"use strict";
+
+/* ─── UTILITY ─── */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+let toastT;
+function toast(msg, err) {
+  const t = $('toast'); t.textContent = msg; t.className = err ? 'error' : '';
+  t.classList.add('show'); clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+/* ─── PARTICLES ─── */
+(function () {
+  const c = $('bg-canvas');
+  const colors = ['#00ff8840', '#00b4ff30', '#a855f720', '#22d3ee25'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div'); p.className = 'particle';
+    const s = Math.random() * 6 + 2;
+    p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random() * 100}%;background:${colors[i % 4]};animation-duration:${Math.random() * 20 + 15}s;animation-delay:${Math.random() * 20}s`;
+    c.appendChild(p);
+  }
+})();
 
 /* ═══════════════════════════════════════════
-   STATE MANAGEMENT
+   NETWORK LAYER
    ═══════════════════════════════════════════ */
-const STORAGE_KEY='ihack-academy-v2';
-
-/* ─── CLIENT-SIDE SECURITY LOCK ───
-   FIRST-TIME VERIFICATION + CUSTOM LOCK CODE
-   First time: enter "open"
-   After verification: create a new lock code
-   Future unlocks: use the saved custom code
-   This is browser/UI protection only. */
-const SECURITY_FIRST_CODE='open';
-const SECURITY_CODE_KEY='ihack-security-code';
-const SECURITY_VERIFIED_KEY='ihack-security-verified';
-const SECURITY_AUTO_LOCK_MS=10*60*1000;
-
-let securityLocked=false;
-let securityAttempts=0;
-let securityTimer;
-let securityUnlocking=false;
-
-function getSecurityCode(){
-  try{
-    return localStorage.getItem(SECURITY_CODE_KEY)||null;
-  }catch(e){
-    return null;
-  }
+async function api(path, opts = {}) {
+  /* Server-free build: every call is handled inside the browser (LocalBackend). */
+  return window.LocalBackend.handle(path, opts);
 }
 
-function isSecurityVerified(){
-  try{
-    return localStorage.getItem(SECURITY_VERIFIED_KEY)==='1';
-  }catch(e){
-    return false;
-  }
+/* ═══════════════════════════════════════════
+   STATE  (server fields + small device prefs)
+   ═══════════════════════════════════════════ */
+let S = null;                 // active session state
+let serverSettings = { ipBound: true };
+let evtSource = null;
+let connected = false;
+let allUsers = [];            // last presence list from server
+let chatTarget = 'lounge';
+const chatCache = {};         // channel key -> messages
+let leaderboardDirty = false;
+
+const AVATARS = ['🧑‍💻','👩‍💻','🕵️','🦊','🐺','🐉','🦅','🐙','🤖','👽','🥷','🧑‍🚀','🧠','⚡','🔥','🛡️','🎯','🌐'];
+const TWO_FA_SESSION_KEY = 'ihack-2fa-session';
+
+function normalizeUsername(n) { return String(n || '').trim().toLowerCase(); }
+function prefsKey(name) { return 'ihack-prefs-v1:' + normalizeUsername(name); }
+function lockCodeKey(name) { return 'ihack-lock-code:' + normalizeUsername(name); }
+function loadPrefs(name) {
+  try { return JSON.parse(localStorage.getItem(prefsKey(name))) || {}; } catch (e) { return {}; }
+}
+function savePrefs() {
+  if (!S || !S.user) return;
+  try {
+    localStorage.setItem(prefsKey(S.user.name), JSON.stringify({
+      twoFA: !!S.user.twoFA,
+      currentMission: S.currentMission || 0,
+      currentTopic: S.currentTopic || 0,
+      actions: S.actions || [],
+      diffBoost: S.diffBoost || 0
+    }));
+  } catch (e) {}
 }
 
-function saveSecurityCode(code){
-  try{
-    localStorage.setItem(SECURITY_CODE_KEY,code);
-    localStorage.setItem(SECURITY_VERIFIED_KEY,'1');
-    return true;
-  }catch(e){
-    return false;
-  }
+/* Build state object out of a server /api/me payload */
+function adoptServerState(me) {
+  const p = me.progress, u = me.user;
+  const prefs = loadPrefs(u.name);
+  serverSettings = me.settings || { ipBound: true };
+  S = {
+    user: { name: u.name, age: u.age, level: u.level, avatar: u.avatar, joined: u.joined, twoFA: !!prefs.twoFA, accountId: u.name },
+    xp: p.xp || 0,
+    solved: p.solved || {},
+    badges: p.badges || [],
+    termUsed: !!p.termUsed,
+    binaryUsed: !!p.binaryUsed,
+    diffBoost: p.diffBoost || 0,
+    missionsDone: p.missionsDone || 0,
+    currentMission: prefs.currentMission || 0,
+    currentTopic: prefs.currentTopic || 0,
+    actions: Array.isArray(prefs.actions) ? prefs.actions : []
+  };
 }
 
-function lockAcademy(reason='manual'){
-  if(!S.user)return;
+/* ── progress sync (debounced; retried while offline) ── */
+let syncTimer = null, syncQueued = false, syncInFlight = false;
+function progressPayload() {
+  return {
+    xp: S.xp, solved: S.solved, badges: S.badges,
+    termUsed: S.termUsed, binaryUsed: S.binaryUsed,
+    diffBoost: S.diffBoost, missionsDone: completedCount()
+  };
+}
+function scheduleSync(delay = 600) {
+  if (!S) return;
+  clearTimeout(syncTimer);
+  syncQueued = true;
+  syncTimer = setTimeout(syncNow, delay);
+}
+async function syncNow() {
+  if (!S || syncInFlight) { if (S) scheduleSync(1500); return; }
+  syncInFlight = true; syncQueued = false;
+  try {
+    const r = await api('/api/me/progress', { method: 'POST', body: progressPayload() });
+    if (r.progress) { S.missionsDone = r.progress.missionsDone; }
+  } catch (e) {
+    if (e.status === 401) { handleSessionEnded(e.data && e.data.error === 'session_security' ? 'ip_changed' : 'expired'); return; }
+    syncQueued = true; setTimeout(() => scheduleSync(2500), 0); // retry when the network/SSE is back
+  } finally { syncInFlight = false; }
+}
+function flushBeacon() {
+  /* Local mode writes straight to localStorage — nothing to flush. */
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushBeacon(); });
+window.addEventListener('pagehide', flushBeacon);
 
-  securityLocked=true;
-  securityUnlocking=false;
-  clearTimeout(securityTimer);
-
-  $('security-code').value='';
-
-  $('security-status').textContent=
-    reason==='timeout'
-      ? 'Locked after inactivity. Enter your code to continue.'
-      : 'Academy locked. Enter your code to continue.';
-
-  $('security-status').className='security-status';
-  $('security-lock').classList.remove('hidden');
-
-  setTimeout(()=>$('security-code').focus(),50);
+function save() { savePrefs(); scheduleSync(); }
+function addXP(n, reason) {
+  S.xp += n;
+  logAction(`+${n} XP: ${reason}`);
+  checkBadges(); save(); updateAllUI();
+  toast(`+${n} XP — ${reason}`);
+}
+function logAction(msg) {
+  S.actions.unshift({ t: Date.now(), msg });
+  if (S.actions.length > 50) S.actions.length = 50;
+  savePrefs();
 }
 
-function unlockAcademy(){
-  securityLocked=false;
-
-  $('security-lock').classList.add('hidden');
-  $('security-code').value='';
-  $('security-status').textContent='Unlocked';
-  $('security-status').className='security-status good';
-
-  resetSecurityTimer();
+/* ─── derived stats ─── */
+function missionDone(idx, state) {
+  const m = MISSIONS[idx]; if (!m) return false;
+  const st = state || S;
+  return m.topics.every((t, ti) => t.quiz.every((q, qi) => st.solved[`${m.id}-${ti}-${qi}`] !== undefined));
 }
-
-function resetSecurityTimer(){
-  clearTimeout(securityTimer);
-
-  if(!S.user||securityLocked)return;
-
-  securityTimer=setTimeout(()=>lockAcademy('timeout'),SECURITY_AUTO_LOCK_MS);
+function completedCount() { return MISSIONS.filter((_, i) => missionDone(i)).length; }
+function getRank() { const c = completedCount(); return c >= 12 ? 'Cyber Guardian' : c >= 9 ? 'Sentinel' : c >= 6 ? 'Defender' : c >= 3 ? 'Explorer' : 'Recruit'; }
+function getLevel() { return 1 + Math.floor(S.xp / 100); }
+function xpProgress() { return S.xp % 100; }
+function checkBadges() {
+  BADGE_DEFS.forEach(b => { if (!S.badges.includes(b.id) && b.check(S)) { S.badges.push(b.id); toast(`🏆 Badge Unlocked: ${b.name}`); } });
 }
-
-/* First-time setup:
-   enter "open", then create a NEW personal code. */
-function createNewSecurityCode(){
-  while(true){
-    const newCode=prompt(
-      '✅ Verification successful.\n\n' +
-      'Create your new security lock code.\n' +
-      'Minimum 4 characters.\n\n' +
-      'This new code will replace "open" for future locks.'
-    );
-
-    if(newCode===null){
-      return false;
-    }
-
-    const code=newCode.trim();
-
-    if(code.length<4){
-      alert('Security code must be at least 4 characters.');
-      continue;
-    }
-
-    if(code.toLowerCase()===SECURITY_FIRST_CODE){
-      alert('Do not use "open". Choose a new security code.');
-      continue;
-    }
-
-    if(!saveSecurityCode(code)){
-      alert('Could not save the new security code in this browser.');
-      return false;
-    }
-
-    alert('🔐 New security code saved successfully.');
-    return true;
-  }
-}
-
-function setupSecurityLock(){
-
-  $('security-lock-form').addEventListener('submit',async e=>{
-    e.preventDefault();
-
-    if(securityUnlocking)return;
-    securityUnlocking=true;
-
-    const entered=$('security-code').value.trim();
-    const status=$('security-status');
-
-    /* ─────────────────────────────
-       FIRST-TIME VERIFICATION
-       ───────────────────────────── */
-    if(!isSecurityVerified()){
-
-      if(entered===SECURITY_FIRST_CODE){
-
-        securityAttempts=0;
-
-        const created=createNewSecurityCode();
-
-        if(created){
-          unlockAcademy();
-          toast('🔓 Verification complete. Your new lock code is active.');
-        }else{
-          securityLocked=true;
-          status.textContent='Setup cancelled. Enter "open" to try again.';
-          status.className='security-status bad';
-        }
-
-        securityUnlocking=false;
-        return;
-      }
-
-      securityAttempts++;
-      $('security-code').value='';
-
-      const delay=Math.min(
-        8000,
-        500*Math.pow(2,Math.min(securityAttempts-1,4))
-      );
-
-      status.textContent=
-        `Incorrect first-time code. Try again in ${Math.ceil(delay/1000)}s.`;
-
-      status.className='security-status bad';
-
-      const input=$('security-code');
-      input.disabled=true;
-
-      setTimeout(()=>{
-        input.disabled=false;
-        input.focus();
-        securityUnlocking=false;
-      },delay);
-
-      return;
-    }
-
-    /* ─────────────────────────────
-       FUTURE UNLOCKS
-       ───────────────────────────── */
-    const savedCode=getSecurityCode();
-
-    if(savedCode && entered===savedCode){
-
-      securityAttempts=0;
-      unlockAcademy();
-      toast('🔓 Academy unlocked securely.');
-
-      securityUnlocking=false;
-      return;
-    }
-
-    securityAttempts++;
-    $('security-code').value='';
-
-    const delay=Math.min(
-      8000,
-      500*Math.pow(2,Math.min(securityAttempts-1,4))
-    );
-
-    status.textContent=
-      `Incorrect code. Try again in ${Math.ceil(delay/1000)}s.`;
-
-    status.className='security-status bad';
-
-    const input=$('security-code');
-    input.disabled=true;
-
-    setTimeout(()=>{
-      input.disabled=false;
-      input.focus();
-      securityUnlocking=false;
-    },delay);
-  });
-
-  $('btn-lock').addEventListener('click',()=>lockAcademy());
-
-  ['click','keydown','pointermove','touchstart'].forEach(evt=>{
-    document.addEventListener(evt,()=>{
-      if(S.user&&!securityLocked)resetSecurityTimer();
-    },{passive:true});
-  });
-}
-
-/* Optional: reset the custom code and return to first-time setup. */
-function resetSecurityVerification(){
-  try{
-    localStorage.removeItem(SECURITY_CODE_KEY);
-    localStorage.removeItem(SECURITY_VERIFIED_KEY);
-  }catch(e){}
-
-  alert(
-    '🔄 Security setup has been reset.\n\n' +
-    'The next verification will require: open'
-  );
-
-  location.reload();
-}
-
-function freshState(){return{user:null,xp:0,solved:{},badges:['welcome'],actions:[],termUsed:false,binaryUsed:false,currentMission:0,currentTopic:0,diffBoost:0,newsDay:0}}
-let S=freshState();
-
-function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(S))}catch(e){}}
-function load(){try{const d=JSON.parse(localStorage.getItem(STORAGE_KEY));if(d&&d.user){S={...freshState(),...d};return true}}catch(e){}return false}
-
-function addXP(n,reason){S.xp+=n;logAction(`+${n} XP: ${reason}`);checkBadges();save();updateAllUI();toast(`+${n} XP — ${reason}`)}
-function logAction(msg){S.actions.unshift({t:Date.now(),msg});if(S.actions.length>50)S.actions.length=50;save()}
-
-function missionDone(idx,state){
-  const m=MISSIONS[idx];if(!m)return false;
-  const st=state||S;
-  return m.topics.every((t,ti)=>t.quiz.every((q,qi)=>st.solved[`${m.id}-${ti}-${qi}`]));
-}
-function completedCount(){return MISSIONS.filter((_,i)=>missionDone(i)).length}
-function getRank(){const c=completedCount();if(c>=12)return'Cyber Guardian';if(c>=9)return'Sentinel';if(c>=6)return'Defender';if(c>=3)return'Explorer';return'Recruit'}
-function getLevel(){return 1+Math.floor(S.xp/100)}
-function xpProgress(){return(S.xp%100)}
-
-function checkBadges(){
-  let earned=false;
-  BADGE_DEFS.forEach(b=>{if(!S.badges.includes(b.id)&&b.check(S)){S.badges.push(b.id);earned=true;toast(`🏆 Badge Unlocked: ${b.name}`)}});
-  if(earned)save();
-}
-
-function isMissionAccessible(idx){
-  const m=MISSIONS[idx];
-  if(!S.user)return false;
-  const lvl=S.user.level;
-  if(m.diff==='beginner')return true;
-  if(m.diff==='intermediate')return lvl==='intermediate'||lvl==='professional'||completedCount()>=3;
-  if(m.diff==='professional')return lvl==='professional'||completedCount()>=6;
+function isMissionAccessible(idx) {
+  const m = MISSIONS[idx];
+  if (!S.user) return false;
+  const lvl = S.user.level;
+  if (m.diff === 'beginner') return true;
+  if (m.diff === 'intermediate') return lvl === 'intermediate' || lvl === 'professional' || completedCount() >= 3;
+  if (m.diff === 'professional') return lvl === 'professional' || completedCount() >= 6;
   return true;
+}
+function applyAvatarToElement(el, u) {
+  el.classList.remove('has-image'); el.style.backgroundImage = '';
+  if (u.avatar && u.avatar.startsWith && u.avatar.startsWith('data:image/')) {
+    el.classList.add('has-image');
+    el.style.backgroundImage = `url("${u.avatar}")`;
+    el.textContent = '';
+  } else el.textContent = u.avatar || u.name.charAt(0).toUpperCase();
+}
+
+/* ═══════════════════════════════════════════
+   REAL-TIME EVENTS (SSE)
+   ═══════════════════════════════════════════ */
+function connectEvents() {
+  disconnectEvents(false);
+  try { evtSource = new EventSource('/api/events'); } catch (e) { return; }
+  evtSource.onopen = () => { connected = true; updateConnectionStatus(); if (syncQueued) syncNow(); };
+  evtSource.onerror = () => { connected = false; updateConnectionStatus(); /* EventSource auto-reconnects */ };
+  evtSource.onmessage = e => {
+    let d; try { d = JSON.parse(e.data); } catch (err) { return; }
+    switch (d.type) {
+      case 'hello':
+        connected = true; updateConnectionStatus(); syncNow(); break;
+      case 'presence':
+        allUsers = d.users || [];
+        renderChatUsers();
+        break;
+      case 'profile':
+        if (S && d.name && normalizeUsername(d.name) !== normalizeUsername(S.user.name)) { /* list refreshes via presence */ }
+        break;
+      case 'score':
+        if (S && d.user && normalizeUsername(d.user.name) === normalizeUsername(S.user.name)) break;
+        clearTimeout(leaderboardDirty);
+        leaderboardDirty = setTimeout(() => { if (!$('page-leaderboard').classList.contains('hidden')) renderLeaderboard(); }, 800);
+        break;
+      case 'chat':
+        incomingChat(d.message);
+        break;
+      case 'kicked':
+        handleSessionEnded(d.reason || 'ended', d.message, d.ip);
+        break;
+    }
+  };
+}
+function disconnectEvents(close = true) {
+  if (evtSource && close) { try { evtSource.close(); } catch (e) {} }
+  evtSource = null; connected = false; updateConnectionStatus();
+}
+function updateConnectionStatus() {
+  const el = $('chat-connection-status'), chip = $('chat-online-chip');
+  if (!el) return;
+  if (connected) {
+    el.textContent = 'Local channel ready — live across tabs & windows';
+    chip.textContent = '● LIVE'; chip.className = 'chip chip-green';
+  } else {
+    el.textContent = 'Reconnecting local channel…';
+    chip.textContent = '● OFFLINE'; chip.className = 'chip chip-yellow';
+  }
 }
 
 /* ═══════════════════════════════════════════
    NAVIGATION
    ═══════════════════════════════════════════ */
-const PAGES=['home','learn','lab','news','profile'];
-function showPage(p){
-  if(!PAGES.includes(p))return;
-  ['auth',...PAGES].forEach(id=>{const el=$(`page-${id}`);if(el)el.classList.toggle('hidden',id!==p)});
-  document.querySelectorAll('#nav-links button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));
-  window.scrollTo(0,0);
-  if(p==='home')renderHome();
-  if(p==='learn')renderLesson();
-  if(p==='news')renderNews();
-  if(p==='profile')renderProfile();
+const PAGES = ['home', 'learn', 'lab', 'news', 'leaderboard', 'chat', 'profile'];
+function showPage(p) {
+  if (!PAGES.includes(p)) return;
+  ['auth', ...PAGES].forEach(id => { const el = $(`page-${id}`); if (el) el.classList.toggle('hidden', id !== p); });
+  document.querySelectorAll('#nav-links button').forEach(b => b.classList.toggle('active', b.dataset.page === p));
+  window.scrollTo(0, 0);
+  if (p === 'home') renderHome();
+  if (p === 'learn') renderLesson();
+  if (p === 'news') renderNews();
+  if (p === 'profile') renderProfile();
+  if (p === 'leaderboard') renderLeaderboard();
+  if (p === 'chat') openChatPage();
 }
-
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => showPage(b.dataset.page)));
 
 /* ═══════════════════════════════════════════
-   AUTH
+   AUTH — register / log in against the server
    ═══════════════════════════════════════════ */
-let selectedLevel='beginner';
-document.querySelectorAll('.level-card').forEach(c=>{
-  c.addEventListener('click',()=>{
-    document.querySelectorAll('.level-card').forEach(x=>x.classList.remove('selected'));
-    c.classList.add('selected');
-    selectedLevel=c.dataset.level;
-  });
-});
+let selectedLevel = 'beginner';
+document.querySelectorAll('.level-card').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('.level-card').forEach(x => x.classList.remove('selected'));
+  c.classList.add('selected'); selectedLevel = c.dataset.level;
+}));
 document.querySelector('.level-card[data-level="beginner"]').classList.add('selected');
 
-$('auth-form').addEventListener('submit',e=>{
-  e.preventDefault();
-  const name=$('auth-name').value.trim();
-  const age=parseInt($('auth-age').value);
-  if(!name||name.length<2){toast('Please enter a valid name',true);return}
-  if(!age||age<10||age>99){toast('Please enter a valid age (10-99)',true);return}
-  if(!$('auth-agree').checked){toast('Please agree to the terms',true);return}
+let authMode = 'register';
+function setAuthMode(mode) {
+  authMode = mode;
+  $('mode-register').classList.toggle('active', mode === 'register');
+  $('mode-login').classList.toggle('active', mode === 'login');
+  $('age-group').classList.toggle('hidden', mode !== 'register');
+  $('auth-age').required = mode === 'register';
+  $('auth-password').autocomplete = mode === 'register' ? 'new-password' : 'current-password';
+  document.querySelectorAll('.level-card').forEach(c => c.style.opacity = mode === 'register' ? '' : '.4');
+  const btn = document.querySelector('#auth-form button[type="submit"]');
+  if (btn) btn.innerHTML = mode === 'register' ? '🚀 Create Account — Earn 10 Bonus XP' : '🔓 Log In to the Academy';
+  $('auth-name-hint').textContent = mode === 'register'
+    ? 'Your account is saved in this browser. Duplicate usernames are blocked; use Download Backup to move a copy manually.'
+    : 'Log in to an account created in this browser.';
+  hideAuthMessage();
+}
+function showAuthMessage(msg) {
+  const el = $('auth-server-message');
+  el.textContent = msg; el.classList.remove('hidden');
+}
+function hideAuthMessage() { $('auth-server-message').classList.add('hidden'); $('auth-server-message').textContent = ''; }
+$('mode-register').addEventListener('click', () => setAuthMode('register'));
+$('mode-login').addEventListener('click', () => setAuthMode('login'));
 
-  S=freshState();
-  S.user={name,age,level:selectedLevel,joined:Date.now()};
-  S.xp=10; // Join bonus
-  S.badges=['welcome'];
-  logAction('Joined iHack Academy (+10 bonus XP)');
-  save();
-  enterApp();
-  toast(`Welcome, ${name}! You earned 10 bonus XP for joining! 🎉`);
+$('auth-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  hideAuthMessage();
+  const name = $('auth-name').value.trim();
+  const password = $('auth-password').value;
+  if (!/^[A-Za-z0-9_-]{2,30}$/.test(name)) { showAuthMessage('Username must be 2–30 chars: letters, numbers, _ or -'); return; }
+  if (!password || password.length < 6) { showAuthMessage('Password must be at least 6 characters.'); return; }
+  if (!$('auth-agree').checked) { showAuthMessage('Please agree to the terms.'); return; }
+
+  const btn = document.querySelector('#auth-form button[type="submit"]');
+  btn.disabled = true;
+  try {
+    let me;
+    if (authMode === 'register') {
+      const age = parseInt($('auth-age').value, 10);
+      if (!age || age < 10 || age > 99) { showAuthMessage('Please enter a valid age (10–99).'); btn.disabled = false; return; }
+      me = await api('/api/register', { method: 'POST', body: { name, password, age, level: selectedLevel } });
+      adoptServerState(me);
+      enterApp();
+      if ($('enable-2fa').checked) { enableDeviceLock(true); }
+      toast(`Welcome, ${name}! You earned 10 bonus XP 🎉`);
+    } else {
+      me = await api('/api/login', { method: 'POST', body: { name, password } });
+      adoptServerState(me);
+      enterApp();
+      toast(`Welcome back, ${me.user.name}! 👋`);
+    }
+    connectEvents();
+    if (S.user.twoFA && sessionStorage.getItem(TWO_FA_SESSION_KEY + ':' + normalizeUsername(S.user.name)) !== '1') {
+      lockAcademy('startup');
+    }
+  } catch (err) {
+    showAuthMessage(err.message || 'Could not start a local session.');
+    toast(err.message || 'Server unreachable', true);
+  } finally { btn.disabled = false; }
 });
 
-function enterApp(){
+function enterApp() {
   $('page-auth').classList.add('hidden');
   $('main-header').classList.remove('hidden');
   $('main-footer').classList.remove('hidden');
   $('bot-toggle').classList.remove('hidden');
-  $('nav-user').style.display='flex';
+  $('nav-user').style.display = 'flex';
   updateAllUI();
   showPage('home');
 }
 
-$('btn-logout').addEventListener('click',()=>{
-  if(!confirm('Log out? Your progress is saved locally.'))return;
-  securityLocked=false;
+function showAuthScreen(mode = 'login') {
+  S = null;
+  disconnectEvents();
+  securityLocked = false;
   clearTimeout(securityTimer);
-  sessionStorage.removeItem('ihack-unlocked');
+  $('security-lock').classList.add('hidden');
   $('main-header').classList.add('hidden');
   $('main-footer').classList.add('hidden');
   $('bot-toggle').classList.add('hidden');
   $('bot-panel').classList.add('hidden');
-  $('nav-user').style.display='none';
-  PAGES.forEach(p=>$(`page-${p}`).classList.add('hidden'));
+  $('nav-user').style.display = 'none';
+  PAGES.forEach(p => { const el = $(`page-${p}`); if (el) el.classList.add('hidden'); });
   $('page-auth').classList.remove('hidden');
+  $('auth-password').value = '';
+  setAuthMode(mode);
+}
+
+/* Session ended remotely (new login elsewhere / IP change / expiry) */
+function handleSessionEnded(reason, serverMessage, ip) {
+  if (!S && reason !== 'ip_changed') return;
+  const who = S ? S.user.name : '';
+  let msg;
+  if (reason === 'new_login')
+    msg = serverMessage || `Your account was logged in from another device, so this session ended. If this wasn't you, change your password immediately.`;
+  else if (reason === 'ip_changed')
+    msg = serverMessage || `Security: this session is locked to its original network/IP. A network change ended the session. Log in again to continue.`;
+  else
+    msg = 'Your session has expired. Please log in again.';
+  if (who) toast('⛔ ' + msg, true);
+  showAuthScreen('login');
+  if (who) $('auth-name').value = who;
+  showAuthMessage('⛔ ' + msg);
+}
+
+$('btn-logout').addEventListener('click', async () => {
+  if (!confirm('Log out? Your progress is saved in this browser.')) return;
+  flushBeacon();
+  try { await api('/api/logout', { method: 'POST' }); } catch (e) {}
+  disconnectEvents();
+  showAuthScreen('login');
   $('auth-form').reset();
   document.querySelector('.level-card[data-level="beginner"]').click();
 });
@@ -1610,116 +2058,111 @@ $('btn-logout').addEventListener('click',()=>{
 /* ═══════════════════════════════════════════
    UPDATE ALL UI
    ═══════════════════════════════════════════ */
-function updateAllUI(){
-  if(!S.user)return;
-  const lvl=getLevel();
-  $('nav-username').textContent=S.user.name;
-  $('nav-level').textContent=`Level ${lvl} · ${S.xp} XP`;
-  $('nav-xp-fill').style.width=xpProgress()+'%';
+function updateAllUI() {
+  if (!S || !S.user) return;
+  const lvl = getLevel();
+  $('nav-username').textContent = S.user.name;
+  $('nav-level').textContent = `Level ${lvl} · ${S.xp} XP`;
+  $('nav-xp-fill').style.width = xpProgress() + '%';
 }
 
 /* ═══════════════════════════════════════════
-   HOME PAGE
+   HOME
    ═══════════════════════════════════════════ */
-function renderHome(){
-  if(!S.user)return;
-  const lvl=getLevel();
-  $('home-xp').textContent=S.xp;
-  $('home-level').textContent=lvl;
-  $('home-missions').textContent=completedCount()+'/'+MISSIONS.length;
-  $('home-rank').textContent=getRank();
-  $('level-indicator').textContent=`Your level: ${S.user.level.charAt(0).toUpperCase()+S.user.level.slice(1)} · Showing ${S.user.level==='professional'?'all':S.user.level==='intermediate'?'beginner + intermediate':'beginner'} content`;
+function renderHome() {
+  if (!S.user) return;
+  $('home-xp').textContent = S.xp;
+  $('home-level').textContent = getLevel();
+  $('home-missions').textContent = completedCount() + '/' + MISSIONS.length;
+  $('home-rank').textContent = getRank();
+  $('level-indicator').textContent = `Your level: ${S.user.level.charAt(0).toUpperCase() + S.user.level.slice(1)} · Showing ${S.user.level === 'professional' ? 'all' : S.user.level === 'intermediate' ? 'beginner + intermediate' : 'beginner'} content`;
 
-  // Mission map
-  $('mission-map').innerHTML=MISSIONS.map((m,i)=>{
-    const accessible=isMissionAccessible(i);
-    const done=missionDone(i);
-    const topicsDone=m.topics.reduce((c,t,ti)=>c+t.quiz.filter((q,qi)=>S.solved[`${m.id}-${ti}-${qi}`]).length,0);
-    const totalQ=m.topics.reduce((c,t)=>c+t.quiz.length,0);
-    const diffColor=m.diff==='beginner'?'green':m.diff==='intermediate'?'blue':'purple';
-    return`<div class="card mission-card" data-idx="${i}" style="cursor:${accessible?'pointer':'default'}">
+  $('mission-map').innerHTML = MISSIONS.map((m, i) => {
+    const accessible = isMissionAccessible(i);
+    const done = missionDone(i);
+    const topicsDone = m.topics.reduce((c, t, ti) => c + t.quiz.filter((q, qi) => S.solved[`${m.id}-${ti}-${qi}`] !== undefined).length, 0);
+    const totalQ = m.topics.reduce((c, t) => c + t.quiz.length, 0);
+    const diffColor = m.diff === 'beginner' ? 'green' : m.diff === 'intermediate' ? 'blue' : 'purple';
+    return `<div class="card mission-card" data-idx="${i}" style="cursor:${accessible ? 'pointer' : 'default'}">
       <div class="mc-header">
         <span class="mc-icon">${m.icon}</span>
-        <span class="chip chip-${diffColor}">${done?'✓ DONE':m.diff.toUpperCase()}</span>
+        <span class="chip chip-${diffColor}">${done ? '✓ DONE' : m.diff.toUpperCase()}</span>
       </div>
-      <h3>${m.title}</h3>
-      <p>${m.sub}</p>
+      <h3>${esc(m.title)}</h3>
+      <p>${esc(m.sub)}</p>
       <div class="mc-footer">
         <span class="text-muted" style="font-size:.8rem">${topicsDone}/${totalQ} quizzes · ${m.xp} XP</span>
       </div>
-      <div class="progress-bar"><div class="progress-fill pf-green" style="width:${totalQ?topicsDone/totalQ*100:0}%"></div></div>
-      ${!accessible?`<div class="locked-overlay">🔒 Complete more missions to unlock</div>`:''}
+      <div class="progress-bar"><div class="progress-fill pf-green" style="width:${totalQ ? topicsDone / totalQ * 100 : 0}%"></div></div>
+      ${!accessible ? `<div class="locked-overlay">🔒 Complete more missions to unlock</div>` : ''}
     </div>`;
   }).join('');
 
-  document.querySelectorAll('.mission-card').forEach(c=>c.addEventListener('click',()=>{
-    const i=parseInt(c.dataset.idx);
-    if(isMissionAccessible(i)){S.currentMission=i;S.currentTopic=0;save();showPage('learn')}
+  document.querySelectorAll('.mission-card').forEach(c => c.addEventListener('click', () => {
+    const i = parseInt(c.dataset.idx, 10);
+    if (isMissionAccessible(i)) { S.currentMission = i; S.currentTopic = 0; save(); showPage('learn'); }
   }));
 
-  $('btn-start-learning').onclick=()=>{
-    const next=MISSIONS.findIndex((m,i)=>isMissionAccessible(i)&&!missionDone(i));
-    S.currentMission=next>=0?next:0;S.currentTopic=0;save();showPage('learn');
+  $('btn-start-learning').onclick = () => {
+    const next = MISSIONS.findIndex((m, i) => isMissionAccessible(i) && !missionDone(i));
+    S.currentMission = next >= 0 ? next : 0; S.currentTopic = 0; save(); showPage('learn');
   };
 
-  // Badges
-  $('home-badges').innerHTML=BADGE_DEFS.map(b=>{
-    const earned=S.badges.includes(b.id);
-    return`<div class="badge-item ${earned?'earned':''}">${earned?'✓':'🔒'} ${b.name} <span class="text-muted" style="font-size:.75rem">— ${b.desc}</span></div>`;
+  $('home-badges').innerHTML = BADGE_DEFS.map(b => {
+    const earned = S.badges.includes(b.id);
+    return `<div class="badge-item ${earned ? 'earned' : ''}">${earned ? '✓' : '🔒'} ${b.name} <span class="text-muted" style="font-size:.75rem">— ${b.desc}</span></div>`;
   }).join('');
 }
 
 /* ═══════════════════════════════════════════
-   LEARN PAGE
+   LEARN
    ═══════════════════════════════════════════ */
-function renderLesson(){
-  const m=MISSIONS[S.currentMission];
-  if(!m)return;
-  const ti=S.currentTopic||0;
+function renderLesson() {
+  const m = MISSIONS[S.currentMission];
+  if (!m) return;
+  const ti = S.currentTopic || 0;
 
-  // Sidebar
-  $('lesson-sidebar').innerHTML=`<div class="card">${MISSIONS.map((mi,idx)=>{
-    if(!isMissionAccessible(idx))return`<button class="topic-btn" disabled style="opacity:.4">🔒 ${mi.title}</button>`;
-    const done=missionDone(idx);
-    return`<button class="topic-btn ${idx===S.currentMission?'active':''}" data-midx="${idx}">${done?'<span class="done-check">✓</span>':''}${mi.icon} ${mi.title}</button>`;
+  $('lesson-sidebar').innerHTML = `<div class="card">${MISSIONS.map((mi, idx) => {
+    if (!isMissionAccessible(idx)) return `<button class="topic-btn" disabled style="opacity:.4">🔒 ${esc(mi.title)}</button>`;
+    const done = missionDone(idx);
+    return `<button class="topic-btn ${idx === S.currentMission ? 'active' : ''}" data-midx="${idx}">${done ? '<span class="done-check">✓</span>' : ''}${mi.icon} ${esc(mi.title)}</button>`;
   }).join('')}</div>`;
 
-  document.querySelectorAll('[data-midx]').forEach(b=>b.addEventListener('click',()=>{
-    S.currentMission=parseInt(b.dataset.midx);S.currentTopic=0;save();renderLesson();
+  document.querySelectorAll('[data-midx]').forEach(b => b.addEventListener('click', () => {
+    S.currentMission = parseInt(b.dataset.midx, 10); S.currentTopic = 0; save(); renderLesson();
   }));
 
-  // Topic tabs
-  const topicTabs=m.topics.map((t,i)=>{
-    const tDone=t.quiz.every((q,qi)=>S.solved[`${m.id}-${i}-${qi}`]);
-    return`<button class="btn btn-sm ${i===ti?'btn-primary':'btn-secondary'}" data-tidx="${i}">${tDone?'✓ ':''}${t.title}</button>`;
+  const topicTabs = m.topics.map((t, i) => {
+    const tDone = t.quiz.every((q, qi) => S.solved[`${m.id}-${i}-${qi}`] !== undefined);
+    return `<button class="btn btn-sm ${i === ti ? 'btn-primary' : 'btn-secondary'}" data-tidx="${i}">${tDone ? '✓ ' : ''}${esc(t.title)}</button>`;
   }).join('');
 
-  const topic=m.topics[ti];
-  const quizHTML=topic.quiz.map((q,qi)=>{
-    const key=`${m.id}-${ti}-${qi}`;
-    const solved=S.solved[key];
-    return`<div class="quiz-section" id="quiz-${qi}">
-      <div class="quiz-q">${qi+1}. ${q.q}</div>
-      <div class="quiz-options">${q.opts.map((o,oi)=>
-        `<button class="quiz-opt ${solved!==undefined?(oi===q.a?'correct':(solved===oi?'wrong':'')):''}${oi===q.a&&solved!==undefined?' correct':''}" data-qi="${qi}" data-oi="${oi}" ${solved!==undefined?'disabled':''}>${solved!==undefined&&oi===q.a?'✓ ':''}${o}</button>`
+  const topic = m.topics[ti];
+  const quizHTML = topic.quiz.map((q, qi) => {
+    const key = `${m.id}-${ti}-${qi}`;
+    const solved = S.solved[key];
+    return `<div class="quiz-section" id="quiz-${qi}">
+      <div class="quiz-q">${qi + 1}. ${q.q}</div>
+      <div class="quiz-options">${q.opts.map((o, oi) =>
+        `<button class="quiz-opt ${solved !== undefined ? (oi === q.a ? 'correct' : (solved === oi ? 'wrong' : '')) : ''}" data-qi="${qi}" data-oi="${oi}" ${solved !== undefined ? 'disabled' : ''}>${solved !== undefined && oi === q.a ? '✓ ' : ''}${o}</button>`
       ).join('')}</div>
-      <div id="qfb-${qi}" class="quiz-feedback ${solved!==undefined?(solved===q.a?'good':'bad'):'hidden'}" ${solved!==undefined?'':'hidden'}>
-        ${solved!==undefined?(solved===q.a?'✓ Correct!':'✗ Incorrect.'):''}
+      <div id="qfb-${qi}" class="quiz-feedback ${solved !== undefined ? (solved === q.a ? 'good' : 'bad') : 'hidden'}" ${solved === undefined ? 'hidden' : ''}>
+        ${solved !== undefined ? (solved === q.a ? '✓ Correct!' : '✗ Incorrect.') : ''}
       </div>
     </div>`;
   }).join('');
 
-  const diffLabel=m.diff.charAt(0).toUpperCase()+m.diff.slice(1);
-  const diffColor=m.diff==='beginner'?'green':m.diff==='intermediate'?'blue':'purple';
+  const diffLabel = m.diff.charAt(0).toUpperCase() + m.diff.slice(1);
+  const diffColor = m.diff === 'beginner' ? 'green' : m.diff === 'intermediate' ? 'blue' : 'purple';
 
-  $('lesson-content').innerHTML=`
+  $('lesson-content').innerHTML = `
     <div class="flex gap-sm mb-lg" style="flex-wrap:wrap">${topicTabs}</div>
     <div class="card mb-lg">
       <div class="flex justify-between items-center mb-md" style="flex-wrap:wrap;gap:10px">
-        <span class="chip chip-${diffColor}">${diffLabel} · Mission ${S.currentMission+1}/${MISSIONS.length}</span>
+        <span class="chip chip-${diffColor}">${diffLabel} · Mission ${S.currentMission + 1}/${MISSIONS.length}</span>
         <span class="text-muted" style="font-size:.8rem">${m.xp} XP total</span>
       </div>
-      <h2>${m.icon} ${topic.title}</h2>
+      <h2>${m.icon} ${esc(topic.title)}</h2>
       ${topic.content}
     </div>
     <div class="card">
@@ -1727,66 +2170,65 @@ function renderLesson(){
       <p class="text-muted mb-md">Answer the quiz to earn XP. The bot will give you hints — not direct answers!</p>
       ${quizHTML}
       <div class="flex gap-sm mt-lg" style="flex-wrap:wrap">
-        ${S.currentMission>0?`<button class="btn btn-secondary" id="btn-prev-mission">← Previous Mission</button>`:''}
-        ${ti>0?`<button class="btn btn-secondary" id="btn-prev-topic">← Previous Topic</button>`:''}
-        ${ti<m.topics.length-1?`<button class="btn btn-primary" id="btn-next-topic">Next Topic →</button>`:''}
-        ${ti===m.topics.length-1&&S.currentMission<MISSIONS.length-1?`<button class="btn btn-primary" id="btn-next-mission">Next Mission →</button>`:''}
+        ${S.currentMission > 0 ? `<button class="btn btn-secondary" id="btn-prev-mission">← Previous Mission</button>` : ''}
+        ${ti > 0 ? `<button class="btn btn-secondary" id="btn-prev-topic">← Previous Topic</button>` : ''}
+        ${ti < m.topics.length - 1 ? `<button class="btn btn-primary" id="btn-next-topic">Next Topic →</button>` : ''}
+        ${ti === m.topics.length - 1 && S.currentMission < MISSIONS.length - 1 ? `<button class="btn btn-primary" id="btn-next-mission">Next Mission →</button>` : ''}
       </div>
     </div>`;
 
-  // Topic tab clicks
-  document.querySelectorAll('[data-tidx]').forEach(b=>b.addEventListener('click',()=>{
-    S.currentTopic=parseInt(b.dataset.tidx);save();renderLesson();
+  document.querySelectorAll('[data-tidx]').forEach(b => b.addEventListener('click', () => {
+    S.currentTopic = parseInt(b.dataset.tidx, 10); save(); renderLesson();
   }));
 
-  // Quiz clicks
-  document.querySelectorAll('.quiz-opt:not(:disabled)').forEach(b=>b.addEventListener('click',()=>{
-    const qi=parseInt(b.dataset.qi);
-    const oi=parseInt(b.dataset.oi);
-    const q=topic.quiz[qi];
-    const key=`${m.id}-${ti}-${qi}`;
-    if(S.solved[key]!==undefined)return;
-
-    if(oi===q.a){
-      S.solved[key]=oi;save();
-      addXP(25,'Correct quiz answer');
+  document.querySelectorAll('.quiz-opt:not(:disabled)').forEach(b => b.addEventListener('click', () => {
+    const qi = parseInt(b.dataset.qi, 10);
+    const oi = parseInt(b.dataset.oi, 10);
+    const q = topic.quiz[qi];
+    const key = `${m.id}-${ti}-${qi}`;
+    if (S.solved[key] !== undefined) return;
+    if (oi === q.a) {
+      S.solved[key] = oi; save();
+      addXP(25, 'Correct quiz answer');
       renderLesson();
     } else {
-      b.classList.add('wrong');b.disabled=true;
-      const fb=$(`qfb-${qi}`);
-      fb.className='quiz-feedback bad';
-      fb.hidden=false;
-      fb.innerHTML=`✗ Not quite. <strong>Hint:</strong> ${q.hint}`;
+      b.classList.add('wrong'); b.disabled = true;
+      const fb = $(`qfb-${qi}`);
+      fb.className = 'quiz-feedback bad';
+      fb.hidden = false;
+      fb.innerHTML = `✗ Not quite. <strong>Hint:</strong> ${q.hint}`;
     }
   }));
 
-  // Navigation buttons
-  const np=$('btn-next-topic');if(np)np.onclick=()=>{S.currentTopic=ti+1;save();renderLesson();window.scrollTo(0,0)};
-  const pp=$('btn-prev-topic');if(pp)pp.onclick=()=>{S.currentTopic=ti-1;save();renderLesson();window.scrollTo(0,0)};
-  const nm=$('btn-next-mission');if(nm)nm.onclick=()=>{
-    if(S.currentMission<MISSIONS.length-1){S.currentMission++;S.currentTopic=0;save();renderLesson();window.scrollTo(0,0)}
-  };
-  const pm=$('btn-prev-mission');if(pm)pm.onclick=()=>{
-    if(S.currentMission>0){S.currentMission--;S.currentTopic=0;save();renderLesson();window.scrollTo(0,0)}
-  };
+  const np = $('btn-next-topic'); if (np) np.onclick = () => { S.currentTopic = ti + 1; save(); renderLesson(); window.scrollTo(0, 0); };
+  const pp = $('btn-prev-topic'); if (pp) pp.onclick = () => { S.currentTopic = ti - 1; save(); renderLesson(); window.scrollTo(0, 0); };
+  const nm = $('btn-next-mission'); if (nm) nm.onclick = () => { if (S.currentMission < MISSIONS.length - 1) { S.currentMission++; S.currentTopic = 0; save(); renderLesson(); window.scrollTo(0, 0); } };
+  const pm = $('btn-prev-mission'); if (pm) pm.onclick = () => { if (S.currentMission > 0) { S.currentMission--; S.currentTopic = 0; save(); renderLesson(); window.scrollTo(0, 0); } };
 }
 
-// Refresh task & improve difficulty
-$('btn-refresh-task').addEventListener('click',()=>{renderLesson();toast('Task refreshed!')});
-$('btn-improve-diff').addEventListener('click',()=>{
-  S.diffBoost=Math.min((S.diffBoost||0)+1,3);save();
+$('btn-refresh-task').addEventListener('click', () => { renderLesson(); toast('Task refreshed!'); });
+$('btn-improve-diff').addEventListener('click', () => {
+  S.diffBoost = Math.min((S.diffBoost || 0) + 1, 3); save();
   toast(`Difficulty increased! Boost level: ${S.diffBoost}/3`);
 });
 
 /* ═══════════════════════════════════════════
    TERMINAL
    ═══════════════════════════════════════════ */
-let termHistory=[],termHI=0;
-function termWrite(t){const o=$('term-output');o.textContent+=t+'\n';if(o.textContent.length>20000)o.textContent=o.textContent.slice(-15000);o.scrollTop=o.scrollHeight}
-function termInit(){$('term-output').textContent='';termWrite('═══════════════════════════════════════\n  iHack Sandbox Terminal v2.0\n  All hosts and results are FICTIONAL.\n  Type "help" to see commands.\n═══════════════════════════════════════\n')}
+let termHistory = [], termHI = 0;
+function termWrite(t) {
+  const o = $('term-output');
+  o.textContent += t + '\n';
+  if (o.textContent.length > 20000) o.textContent = o.textContent.slice(-15000);
+  o.scrollTop = o.scrollHeight;
+}
+function termInit() {
+  $('term-output').textContent = '';
+  termWrite('═══════════════════════════════════════\n  iHack Sandbox Terminal v2.0\n  All hosts and results are FICTIONAL.\n  Type "help" to see commands.\n═══════════════════════════════════════\n');
+}
 
-const TERM_CMDS={
-help:`AVAILABLE COMMANDS:
+const TERM_CMDS = {
+  help: `AVAILABLE COMMANDS:
   help            Show this help
   whoami          Show your role
   scope           Show authorized test scope
@@ -1803,8 +2245,8 @@ help:`AVAILABLE COMMANDS:
   firewall        Show firewall rules
   report          Sample vulnerability report
   clear           Clear terminal`,
-whoami:'Role: Ethical Hacker Trainee\nOrganization: iHack Academy\nPermission: Simulated lab.local ONLY\nClearance: Training Level',
-scope:`AUTHORIZED SCOPE DOCUMENT
+  whoami: 'Role: Ethical Hacker Trainee\nOrganization: iHack Academy\nPermission: Simulated lab.local ONLY\nClearance: Training Level',
+  scope: `AUTHORIZED SCOPE DOCUMENT
 ════════════════════════════
 Target:     lab.local (FICTIONAL - not a real host)
 Allowed:    Teaching commands only
@@ -1812,23 +2254,25 @@ Forbidden:  Real hosts, data collection, disruption
 Duration:   This training session only
 Contact:    training@ihack.local (fictional)
 ════════════════════════════`,
-ls:'scope.txt    notes.txt    config.txt    passwords.txt (encrypted)',
-'cat scope.txt':'See "scope" command for full authorization document.',
-'cat notes.txt':'DEFENDER NOTES:\n• Always verify authorization before testing\n• Document everything you find\n• Minimize access to sensitive data\n• Report findings responsibly\n• Keep your tools updated',
-'cat config.txt':'SERVER CONFIG (fictional):\nOS: Ubuntu 22.04 LTS\nWeb: Apache 2.4.52\nDB: MySQL 8.0\nFirewall: UFW (active)\nSSH: Port 22 (key-only)',
-'cat passwords.txt':'ACCESS DENIED - File is encrypted.\nNote: In real scenarios, finding a passwords file is a critical finding to report.',
-ifconfig:`eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
+  ls: 'scope.txt    notes.txt    config.txt    passwords.txt (encrypted)',
+  'cat scope.txt': 'See "scope" command for full authorization document.',
+  'cat notes.txt': 'DEFENDER NOTES:\n• Always verify authorization before testing\n• Document everything you find\n• Minimize access to sensitive data\n• Report findings responsibly\n• Keep your tools updated',
+  'cat config.txt': 'SERVER CONFIG (fictional):\nOS: Ubuntu 22.04 LTS\nWeb: Apache 2.4.52\nDB: MySQL 8.0\nFirewall: UFW (active)\nSSH: Port 22 (key-only)',
+  'cat passwords.txt': 'ACCESS DENIED - File is encrypted.\nNote: In real scenarios, finding a passwords file is a critical finding to report.',
+  ifconfig: `eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
     inet 10.0.2.15  netmask 255.255.255.0
     inet6 fe80::a00:27ff:fe4e:66a1/64
     ether 08:00:27:4e:66:a1
     RX packets 1247  TX packets 893`,
-firewall:`FIREWALL RULES (fictional):
+  firewall: `FIREWALL RULES (fictional):
 Chain INPUT (policy DROP)
 ALLOW    22/tcp   from 10.0.0.0/8    # SSH admin only
 ALLOW    80/tcp   from anywhere       # HTTP
 ALLOW    443/tcp  from anywhere       # HTTPS
 DROP     all      from anywhere       # Default deny`,
-report:`SAMPLE VULNERABILITY REPORT
+};
+function reportText() {
+  return `SAMPLE VULNERABILITY REPORT
 ═══════════════════════════
 Title:      Open HTTP service on lab.local
 Severity:   Informational
@@ -1837,255 +2281,587 @@ Finding:    HTTP service running without redirect to HTTPS
 Impact:     Data transmitted in cleartext could be intercepted
 Evidence:   Port scan showing 80/tcp open (simulated)
 Fix:        Implement HTTP→HTTPS redirect, enable HSTS
-Tested by:  ${S.user?S.user.name:'Trainee'} (authorized)
-Date:       ${new Date().toLocaleDateString()}`
-};
+Tested by:  ${S.user ? S.user.name : 'Trainee'} (authorized)
+Date:       ${new Date().toLocaleDateString()}`;
+}
 
-function runTermCmd(raw){
-  const cmd=raw.trim().toLowerCase().replace(/\s+/g,' ');
-  if(!cmd)return;
-  termWrite('$ '+raw);
-  if(!S.termUsed){S.termUsed=true;save();checkBadges();addXP(20,'First terminal command')}
+function runTermCmd(raw) {
+  const cmd = raw.trim().toLowerCase().replace(/\s+/g, ' ');
+  if (!cmd) return;
+  termWrite('$ ' + raw);
+  if (!S.termUsed) { S.termUsed = true; save(); checkBadges(); addXP(20, 'First terminal command'); }
 
-  if(cmd==='clear'){$('term-output').textContent='';return}
-  if(TERM_CMDS[cmd]){termWrite(TERM_CMDS[cmd]);return}
+  if (cmd === 'clear') { $('term-output').textContent = ''; return; }
+  if (cmd === 'report') { termWrite(reportText()); return; }
+  if (TERM_CMDS[cmd]) { termWrite(TERM_CMDS[cmd]); return; }
 
-  if(cmd.startsWith('scan ')||cmd.startsWith('nmap ')){
-    const target=cmd.split(' ')[1];
-    if(target==='target'||target==='lab.local'){
-      termWrite(`Scanning ${target} (SIMULATED)...\n\nPORT     STATE  SERVICE     VERSION\n22/tcp   open   ssh         OpenSSH 8.9\n80/tcp   open   http        Apache 2.4.52\n443/tcp  open   https       Apache 2.4.52\n3306/tcp closed mysql       (filtered)\n\n4 ports scanned. No real network traffic generated.`);
-    } else {
-      termWrite(`ERROR: "${target}" is not in authorized scope.\nOnly "lab.local" or "target" is allowed in this simulation.`);
-    }
+  if (cmd.startsWith('scan ') || cmd.startsWith('nmap ')) {
+    const target = cmd.split(' ')[1];
+    if (target === 'target' || target === 'lab.local') {
+      termWrite(`Scanning ${target} (SIMULATED)...\n\nPORT     STATE  SERVICE     VERSION
+22/tcp   open   ssh         OpenSSH 8.9
+80/tcp   open   http        Apache 2.4.52
+443/tcp  open   https       Apache 2.4.52
+3306/tcp closed mysql       (filtered)
+
+4 ports scanned. No real network traffic generated.`);
+    } else termWrite(`ERROR: "${target}" is not in authorized scope.\nOnly "lab.local" or "target" is allowed in this simulation.`);
     return;
   }
-
-  if(cmd.startsWith('ping ')){
-    const target=cmd.split(' ')[1];
-    if(target==='target'||target==='lab.local'){
-      termWrite(`PING lab.local (10.0.2.100): 56 data bytes\n64 bytes: icmp_seq=0 ttl=64 time=0.5ms\n64 bytes: icmp_seq=1 ttl=64 time=0.3ms\n64 bytes: icmp_seq=2 ttl=64 time=0.4ms\n--- SIMULATED (no real packets sent) ---`);
-    } else {termWrite('Not in scope. Only lab.local/target allowed.')}
+  if (cmd.startsWith('ping ')) {
+    const target = cmd.split(' ')[1];
+    if (target === 'target' || target === 'lab.local') {
+      termWrite(`PING lab.local (10.0.2.100): 56 data bytes
+64 bytes: icmp_seq=0 ttl=64 time=0.5ms
+64 bytes: icmp_seq=1 ttl=64 time=0.3ms
+64 bytes: icmp_seq=2 ttl=64 time=0.4ms
+--- SIMULATED (no real packets sent) ---`);
+    } else termWrite('Not in scope. Only lab.local/target allowed.');
     return;
   }
-
-  if(cmd.startsWith('whois ')){
+  if (cmd.startsWith('whois ')) {
     termWrite(`Domain: lab.local (FICTIONAL)\nRegistrant: iHack Academy Training\nCreated: 2024-01-01\nExpires: 2025-01-01\nNameservers: ns1.ihack.local, ns2.ihack.local\n(Simulated data)`);
     return;
   }
-
-  if(cmd.startsWith('dig ')){
+  if (cmd.startsWith('dig ')) {
     termWrite(`;; SIMULATED DNS RESPONSE\nlab.local.    300  IN  A  10.0.2.100\nlab.local.    300  IN  MX 10 mail.lab.local.\n(No real DNS query performed)`);
     return;
   }
-
-  if(cmd==='crack demo'){
+  if (cmd === 'crack demo') {
     termWrite(`PASSWORD CRACKING CONCEPTS (educational):\n\n1. Brute Force: Try every combination (slow but thorough)\n   Time for 8-char lowercase: ~208 billion combinations\n\n2. Dictionary: Try common words and passwords\n   "password123" would be cracked instantly\n\n3. Rainbow Tables: Precomputed hash lookups\n   Defeated by salted hashing (bcrypt, argon2)\n\n4. Credential Stuffing: Try leaked password pairs\n   Defeated by unique passwords per site\n\nDEFENSE: Use password managers, long random passwords, and MFA.`);
     return;
   }
-
-  if(cmd==='exploit demo'){
+  if (cmd === 'exploit demo') {
     termWrite(`EXPLOITATION CONCEPTS (educational):\n\nExploitation is using a vulnerability to demonstrate impact.\nIn authorized testing:\n\n1. Confirm the vulnerability exists\n2. Use minimum privilege needed\n3. Document everything\n4. Don't access unnecessary data\n5. Report findings immediately\n\nExample (conceptual):\nVuln: SQL injection in login form\nProof: ' OR 1=1-- bypasses authentication\nImpact: Unauthorized database access\nFix: Use parameterized queries\n\n⚠️ Only exploit systems with explicit authorization.`);
     return;
   }
-
-  if(cmd.startsWith('cat ')){termWrite(`File not found: ${cmd.split(' ').slice(1).join(' ')}\nAvailable: scope.txt, notes.txt, config.txt, passwords.txt`);return}
-
+  if (cmd.startsWith('cat ')) { termWrite(`File not found: ${cmd.split(' ').slice(1).join(' ')}\nAvailable: scope.txt, notes.txt, config.txt, passwords.txt`); return; }
   termWrite(`Command not found: ${cmd}\nType "help" for available commands.\n(This is a teaching simulation, not a real shell)`);
 }
-
-$('term-form').addEventListener('submit',e=>{
+$('term-form').addEventListener('submit', e => {
   e.preventDefault();
-  const input=$('term-input');
-  const v=input.value.trim();
-  if(v){termHistory.push(v);termHI=termHistory.length;runTermCmd(v)}
-  input.value='';
+  const input = $('term-input');
+  const v = input.value.trim();
+  if (v) { termHistory.push(v); termHI = termHistory.length; runTermCmd(v); }
+  input.value = '';
 });
-$('term-input').addEventListener('keydown',e=>{
-  if(e.key==='ArrowUp'){e.preventDefault();termHI=Math.max(0,termHI-1);$('term-input').value=termHistory[termHI]||''}
-  if(e.key==='ArrowDown'){e.preventDefault();termHI=Math.min(termHistory.length,termHI+1);$('term-input').value=termHistory[termHI]||''}
+$('term-input').addEventListener('keydown', e => {
+  if (e.key === 'ArrowUp') { e.preventDefault(); termHI = Math.max(0, termHI - 1); $('term-input').value = termHistory[termHI] || ''; }
+  if (e.key === 'ArrowDown') { e.preventDefault(); termHI = Math.min(termHistory.length, termHI + 1); $('term-input').value = termHistory[termHI] || ''; }
 });
 
 /* ─── PASSWORD LAB ─── */
-$('pw-input').addEventListener('input',()=>{
-  const v=$('pw-input').value;
-  if(!v){$('pw-result').textContent='Waiting for input…';$('pw-result').className='text-muted';$('pw-bar').style.width='0%';$('pw-checks').innerHTML='';return}
-  const len=v.length;
-  const common=/password|qwerty|12345|letmein|admin|welcome|iloveyou|abc123/i.test(v);
-  const repeat=/(.)\1{3,}/.test(v);
-  const checks=[
-    [len>=8,'At least 8 characters'],
-    [len>=12,'At least 12 characters'],
-    [len>=16,'At least 16 characters'],
-    [/[a-z]/.test(v)&&/[A-Z]/.test(v),'Mix of upper and lowercase'],
-    [/\d/.test(v),'Contains numbers'],
-    [/[^a-zA-Z0-9]/.test(v),'Contains special characters'],
-    [!common,'No common password patterns'],
-    [!repeat,'No excessive character repetition']
+$('pw-input').addEventListener('input', () => {
+  const v = $('pw-input').value;
+  if (!v) { $('pw-result').textContent = 'Waiting for input…'; $('pw-result').className = 'text-muted'; $('pw-bar').style.width = '0%'; $('pw-checks').innerHTML = ''; return; }
+  const len = v.length;
+  const common = /password|qwerty|12345|letmein|admin|welcome|iloveyou|abc123/i.test(v);
+  const repeat = /(.)\1{3,}/.test(v);
+  const checks = [
+    [len >= 8, 'At least 8 characters'],
+    [len >= 12, 'At least 12 characters'],
+    [len >= 16, 'At least 16 characters'],
+    [/[a-z]/.test(v) && /[A-Z]/.test(v), 'Mix of upper and lowercase'],
+    [/\d/.test(v), 'Contains numbers'],
+    [/[^a-zA-Z0-9]/.test(v), 'Contains special characters'],
+    [!common, 'No common password patterns'],
+    [!repeat, 'No excessive character repetition']
   ];
-  let score=checks.filter(([p])=>p).length;
-  if(len<8||common)score=Math.min(score,2);
-  const pct=Math.round(score/8*100);
-  const labels=['Very Weak','Weak','Fair','Good','Strong','Very Strong'];
-  const colors=['var(--red)','var(--red)','var(--orange)','var(--yellow)','var(--green)','var(--green)'];
-  const li=Math.min(Math.floor(score/1.5),5);
-  $('pw-bar').style.width=pct+'%';
-  $('pw-bar').style.background=colors[li];
-  $('pw-result').textContent=labels[li];
-  $('pw-result').style.color=colors[li];
-  $('pw-checks').innerHTML=checks.map(([p,t])=>`<li style="color:${p?'var(--green)':'var(--muted)'};margin:4px 0">${p?'✓':'○'} ${t}</li>`).join('');
+  let score = checks.filter(([p]) => p).length;
+  if (len < 8 || common) score = Math.min(score, 2);
+  const pct = Math.round(score / 8 * 100);
+  const labels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
+  const colors = ['var(--red)', 'var(--red)', 'var(--orange)', 'var(--yellow)', 'var(--green)', 'var(--green)'];
+  const li = Math.min(Math.floor(score / 1.5), 5);
+  $('pw-bar').style.width = pct + '%';
+  $('pw-bar').style.background = colors[li];
+  $('pw-result').textContent = labels[li];
+  $('pw-result').style.color = colors[li];
+  $('pw-checks').innerHTML = checks.map(([p, t]) => `<li style="color:${p ? 'var(--green)' : 'var(--muted)'};margin:4px 0">${p ? '✓' : '○'} ${t}</li>`).join('');
 });
 
 /* ─── BINARY IP LAB ─── */
-$('btn-ip-to-bin').addEventListener('click',()=>{
-  const v=$('ip-decimal').value.trim();
-  const parts=v.split('.').map(Number);
-  if(parts.length!==4||parts.some(p=>isNaN(p)||p<0||p>255)){toast('Invalid IP address',true);return}
-  const bin=parts.map(p=>p.toString(2).padStart(8,'0')).join('.');
+$('btn-ip-to-bin').addEventListener('click', () => {
+  const v = $('ip-decimal').value.trim();
+  const parts = v.split('.').map(Number);
+  if (parts.length !== 4 || parts.some(p => isNaN(p) || p < 0 || p > 255)) { toast('Invalid IP address', true); return; }
+  const bin = parts.map(p => p.toString(2).padStart(8, '0')).join('.');
   $('ip-bin-result').classList.remove('hidden');
-  $('ip-bin-result').innerHTML=`<strong>Decimal:</strong> <code>${esc(v)}</code><br><strong>Binary:</strong> <code>${bin}</code><br><br><strong>Breakdown:</strong><br>${parts.map((p,i)=>`${p} = ${p.toString(2).padStart(8,'0')} (${[128,64,32,16,8,4,2,1].filter((_,bi)=>(p>>>(7-bi))&1).join('+')||'0'})`).join('<br>')}`;
-  if(!S.binaryUsed){S.binaryUsed=true;save();checkBadges();addXP(15,'First binary conversion')}
+  $('ip-bin-result').innerHTML = `<strong>Decimal:</strong> <code>${esc(v)}</code><br><strong>Binary:</strong> <code>${bin}</code><br><br><strong>Breakdown:</strong><br>${parts.map((p) => `${p} = ${p.toString(2).padStart(8, '0')} (${[128, 64, 32, 16, 8, 4, 2, 1].filter((_, bi) => (p >>> (7 - bi)) & 1).join('+') || '0'})`).join('<br>')}`;
+  if (!S.binaryUsed) { S.binaryUsed = true; save(); checkBadges(); addXP(15, 'First binary conversion'); }
 });
-$('btn-bin-to-ip').addEventListener('click',()=>{
-  const v=$('ip-binary').value.trim();
-  const parts=v.split('.');
-  if(parts.length!==4||parts.some(p=>!/^[01]{1,8}$/.test(p))){toast('Invalid binary IP',true);return}
-  const dec=parts.map(p=>parseInt(p,2)).join('.');
+$('btn-bin-to-ip').addEventListener('click', () => {
+  const v = $('ip-binary').value.trim();
+  const parts = v.split('.');
+  if (parts.length !== 4 || parts.some(p => !/^[01]{1,8}$/.test(p))) { toast('Invalid binary IP', true); return; }
+  const dec = parts.map(p => parseInt(p, 2)).join('.');
   $('bin-ip-result').classList.remove('hidden');
-  $('bin-ip-result').innerHTML=`<strong>Binary:</strong> <code>${esc(v)}</code><br><strong>Decimal:</strong> <code>${dec}</code>`;
+  $('bin-ip-result').innerHTML = `<strong>Binary:</strong> <code>${esc(v)}</code><br><strong>Decimal:</strong> <code>${dec}</code>`;
 });
 
 /* ═══════════════════════════════════════════
-   NEWS PAGE
+   NEWS
    ═══════════════════════════════════════════ */
-function renderNews(){
-  const today=new Date();
-  const dayOfYear=Math.floor((today-new Date(today.getFullYear(),0,0))/(1000*60*60*24));
-  $('news-date').textContent=today.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-
-  // Rotate news based on day
-  const shuffled=[...NEWS_POOL];
-  for(let i=shuffled.length-1;i>0;i--){const j=(dayOfYear*7+i)%shuffled.length;[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]]}
-  const todayNews=shuffled.slice(0,6);
-
-  $('news-grid').innerHTML=todayNews.map((n,i)=>{
-    const sevColor=n.severity==='critical'?'red':n.severity==='high'?'orange':'yellow';
-    const fakeHoursAgo=Math.floor(Math.random()*23)+1;
-    return`<div class="card news-card">
+function renderNews() {
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  $('news-date').textContent = today.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  const shuffled = [...NEWS_POOL];
+  for (let i = shuffled.length - 1; i > 0; i--) { const j = (dayOfYear * 7 + i) % shuffled.length; [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+  const todayNews = shuffled.slice(0, 6);
+  $('news-grid').innerHTML = todayNews.map(n => {
+    const sevColor = n.severity === 'critical' ? 'red' : n.severity === 'high' ? 'orange' : 'yellow';
+    const fakeHoursAgo = Math.floor(Math.random() * 23) + 1;
+    return `<div class="card news-card">
       <div class="nc-date">📅 ${fakeHoursAgo}h ago · <span class="chip chip-${sevColor}">${n.severity.toUpperCase()}</span></div>
-      <h3>${n.title}</h3>
-      <p>${n.body}</p>
-      <div class="nc-tags">${n.tags.map(t=>`<span class="chip chip-blue">${t}</span>`).join('')}</div>
+      <h3>${esc(n.title)}</h3>
+      <p>${esc(n.body)}</p>
+      <div class="nc-tags">${n.tags.map(t => `<span class="chip chip-blue">${esc(t)}</span>`).join('')}</div>
     </div>`;
   }).join('');
 }
 
 /* ═══════════════════════════════════════════
-   PROFILE PAGE
+   LEADERBOARD (centralized, live)
    ═══════════════════════════════════════════ */
-function renderProfile(){
-  if(!S.user)return;
-  $('profile-avatar').textContent=S.user.name.charAt(0).toUpperCase();
-  $('profile-name').textContent=S.user.name;
-  $('profile-meta').textContent=`${S.user.level.charAt(0).toUpperCase()+S.user.level.slice(1)} · Age: ${S.user.age} · Joined: ${new Date(S.user.joined).toLocaleDateString()}`;
-  $('profile-rank').textContent=getRank();
-  $('profile-rank').className=`chip chip-${getRank()==='Cyber Guardian'?'yellow':getRank()==='Sentinel'?'purple':getRank()==='Defender'?'blue':'green'}`;
-
-  $('profile-stats').innerHTML=[
-    ['Total XP',S.xp,'green'],
-    ['Level',getLevel(),'cyan'],
-    ['Missions Done',completedCount()+'/'+MISSIONS.length,'blue'],
-    ['Quizzes Solved',Object.keys(S.solved).length,'purple'],
-    ['Badges',S.badges.length+'/'+BADGE_DEFS.length,'yellow'],
-    ['Rank',getRank(),'green']
-  ].map(([l,v,c])=>`<div class="stat-card"><div class="stat-value" style="background:linear-gradient(135deg,var(--${c}),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${v}</div><div class="stat-label">${l}</div></div>`).join('');
-
-  $('profile-badges').innerHTML=BADGE_DEFS.map(b=>{
-    const earned=S.badges.includes(b.id);
-    return`<div class="badge-item ${earned?'earned':''}">${earned?'✓':'🔒'} ${b.name} — ${b.desc}</div>`;
-  }).join('');
-
-  $('activity-log').innerHTML=S.actions.length
-    ?`<div style="max-height:300px;overflow-y:auto">${S.actions.slice(0,20).map(a=>`<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem"><span class="text-muted">${new Date(a.t).toLocaleString()}</span> — ${esc(a.msg)}</div>`).join('')}</div>`
-    :'<p class="text-muted">No activities yet.</p>';
+async function renderLeaderboard() {
+  if (!S) return;
+  let rows = [];
+  try {
+    const data = await api('/api/leaderboard');
+    rows = data.rows || [];
+    $('leaderboard-subtitle').textContent = `Local · ${rows.length} cadet${rows.length === 1 ? '' : 's'} · updated ${new Date(data.serverTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+  } catch (e) {
+    $('leaderboard-subtitle').textContent = 'Could not reach server';
+    return;
+  }
+  const avatarHTML = u => u.avatar && u.avatar.startsWith && u.avatar.startsWith('data:image/')
+    ? `<span style="display:block;width:100%;height:100%;background:url('${u.avatar}') center/cover"></span>`
+    : (u.avatar || u.name.charAt(0).toUpperCase());
+  $('leaderboard-podium').innerHTML = rows.slice(0, 3).map((u, i) => `<div class="podium-card ${i === 0 ? 'top' : ''}">
+    <div class="podium-avatar">${avatarHTML(u)}</div>
+    <strong>${i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉'} @${esc(u.name)}</strong>
+    <div class="text-muted">${u.xp} XP · Level ${u.level}</div>
+    <div class="chip chip-green mt-sm">${u.rank}</div>
+  </div>`).join('') || '<p class="text-muted">No cadets yet.</p>';
+  $('leaderboard-body').innerHTML = rows.map((u, i) => `<tr class="${normalizeUsername(S.user.name) === normalizeUsername(u.name) ? 'rank-you' : ''}">
+    <td>${i + 1}</td><td>${u.avatar && u.avatar.startsWith && u.avatar.startsWith('data:image') ? '🖼️' : (u.avatar || u.name.charAt(0).toUpperCase())}</td>
+    <td><strong>@${esc(u.name)}</strong></td><td>${u.level}</td><td>${u.rank}</td><td>${u.xp}</td><td>${u.missions}/${MISSIONS.length}</td>
+  </tr>`).join('') || '<tr><td colspan="7">No users yet.</td></tr>';
 }
 
-$('btn-reset').addEventListener('click',()=>{
-  if(!confirm('Reset ALL progress? This cannot be undone.'))return;
-  localStorage.removeItem(STORAGE_KEY);
-  S=freshState();
-  toast('Progress reset. Returning to login…');
-  setTimeout(()=>location.reload(),1000);
+/* ═══════════════════════════════════════════
+   LIVE CHAT (cross-device via server)
+   ═══════════════════════════════════════════ */
+function channelKey(to) { return to ? 'dm:' + dmPair(to) : 'lounge'; }
+function dmPair(other) { return [normalizeUsername(S.user.name), normalizeUsername(other)].sort().join('--'); }
+
+async function openChatPage() {
+  renderChatUsers();
+  await loadChatChannel(chatTarget);
+  refreshChatUsers();
+}
+async function refreshChatUsers() {
+  try { const d = await api('/api/users'); allUsers = d.users || []; renderChatUsers(); } catch (e) {}
+}
+function renderChatUsers() {
+  const el = $('chat-user-list');
+  if (!el || !S) return;
+  const others = allUsers.filter(u => normalizeUsername(u.name) !== normalizeUsername(S.user.name));
+  el.innerHTML = `<div class="chat-user ${chatTarget === 'lounge' ? 'active' : ''}" data-target="lounge">
+      <div class="chat-user-avatar">💬</div>
+      <div><strong>Academy Lounge</strong><div class="text-muted" style="font-size:.7rem">Everyone · cross-device</div></div>
+    </div>` + others.map(u => `<div class="chat-user ${chatTarget === u.name ? 'active' : ''}" data-target="${esc(u.name)}">
+      <div class="chat-user-avatar">${u.avatar && u.avatar.startsWith && u.avatar.startsWith('data:image/')
+        ? `<span style="display:block;width:100%;height:100%;background:url('${u.avatar}') center/cover"></span>`
+        : (u.avatar || u.name.charAt(0).toUpperCase())}</div>
+      <div><strong>@${esc(u.name)}</strong><div class="text-muted" style="font-size:.7rem">${u.online ? '🟢 online' : '⚪ offline'}</div></div>
+    </div>`).join('');
+  el.querySelectorAll('.chat-user').forEach(node => node.onclick = async () => {
+    chatTarget = node.dataset.target;
+    document.querySelectorAll('.chat-user').forEach(x => x.classList.remove('active'));
+    node.classList.add('active');
+    $('chat-room-name').textContent = chatTarget === 'lounge' ? 'Academy Lounge' : '@' + chatTarget;
+    await loadChatChannel(chatTarget);
+  });
+}
+async function loadChatChannel(target) {
+  $('chat-room-name').textContent = target === 'lounge' ? 'Academy Lounge' : '@' + target;
+  const key = channelKey(target === 'lounge' ? null : target);
+  $('live-chat-messages').innerHTML = '<div class="text-muted text-center" style="margin:auto">Loading messages…</div>';
+  try {
+    const qs = target === 'lounge' ? '' : '?to=' + encodeURIComponent(target);
+    const d = await api('/api/chat/history' + qs);
+    chatCache[key] = d.messages || [];
+    renderChatMessages(key);
+  } catch (e) {
+    $('live-chat-messages').innerHTML = '<div class="text-muted text-center" style="margin:auto">Could not load messages.</div>';
+  }
+}
+function renderChatMessages(key) {
+  const list = chatCache[key] || [];
+  $('live-chat-messages').innerHTML = list.map(m => `<div class="live-msg ${normalizeUsername(m.from) === normalizeUsername(S.user.name) ? 'me' : ''}">
+    <div class="meta">@${esc(m.from)} · ${new Date(m.t).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+    <div>${esc(m.text)}</div>
+  </div>`).join('') || '<div class="text-muted text-center" style="margin:auto">No messages yet. Start the conversation 👋</div>';
+  $('live-chat-messages').scrollTop = $('live-chat-messages').scrollHeight;
+}
+function incomingChat(m) {
+  if (!m || !S) return;
+  const key = m.to ? (normalizeUsername(m.to) === normalizeUsername(S.user.name) || normalizeUsername(m.from) === normalizeUsername(S.user.name)
+    ? 'dm:' + dmPair(m.from) : null) : 'lounge';
+  if (!key) return;
+  if (!chatCache[key]) chatCache[key] = [];
+  if (chatCache[key].some(x => x.id === m.id || (m.cid && x.cid === m.cid))) {
+    if (!$('page-chat').classList.contains('hidden') && channelKey(chatTarget === 'lounge' ? null : chatTarget) === key) renderChatMessages(key);
+    return;
+  }
+  chatCache[key].push(m);
+  const viewingKey = channelKey(chatTarget === 'lounge' ? null : chatTarget);
+  if (!$('page-chat').classList.contains('hidden') && viewingKey === key) renderChatMessages(key);
+  if (m.to && normalizeUsername(m.to) === normalizeUsername(S.user.name) && viewingKey !== key) {
+    toast(`💬 New message from @${m.from}`);
+  }
+}
+$('live-chat-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const input = $('live-chat-input');
+  const text = input.value.trim();
+  if (!text || !S) return;
+  const to = chatTarget === 'lounge' ? null : chatTarget;
+  const cid = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()));
+  const optimistic = { id: 'local-' + cid, cid, from: S.user.name, to, text, t: Date.now(), pending: true };
+  const key = channelKey(to);
+  if (!chatCache[key]) chatCache[key] = [];
+  chatCache[key].push(optimistic);
+  renderChatMessages(key);
+  input.value = '';
+  try {
+    const r = await api('/api/chat', { method: 'POST', body: { to, text, cid } });
+    const idx = chatCache[key].findIndex(x => x.cid === cid);
+    if (idx > -1 && r.message) chatCache[key][idx] = r.message;
+  } catch (err) {
+    toast('Message not delivered — will keep working locally until the connection returns', true);
+  }
+});
+document.querySelectorAll('.emoji-btn').forEach(b => b.onclick = () => { $('live-chat-input').value += b.dataset.emoji; $('live-chat-input').focus(); });
+$('chat-voice').onclick = () => toast('🎙️ Voice calls need a WebRTC signaling service — a future server upgrade.');
+$('chat-attach').onclick = () => toast('📎 File sharing is planned for a future version. Text & emoji work live now.');
+
+/* ═══════════════════════════════════════════
+   PROFILE
+   ═══════════════════════════════════════════ */
+function renderProfile() {
+  if (!S || !S.user) return;
+  applyAvatarToElement($('profile-avatar'), S.user);
+  $('profile-name').textContent = S.user.name;
+  $('profile-meta').textContent = `${S.user.level.charAt(0).toUpperCase() + S.user.level.slice(1)} · Age: ${S.user.age} · ${S.user.twoFA ? 'App lock ON' : 'App lock OFF'} · Joined: ${new Date(S.user.joined).toLocaleDateString()}`;
+  $('profile-rank').textContent = getRank();
+  $('profile-rank').className = `chip chip-${getRank() === 'Cyber Guardian' ? 'yellow' : getRank() === 'Sentinel' ? 'purple' : getRank() === 'Defender' ? 'blue' : 'green'}`;
+
+  $('profile-stats').innerHTML = [
+    ['Total XP', S.xp, 'green'], ['Level', getLevel(), 'cyan'],
+    ['Missions Done', completedCount() + '/' + MISSIONS.length, 'blue'],
+    ['Quizzes Solved', Object.keys(S.solved).length, 'purple'],
+    ['Badges', S.badges.length + '/' + BADGE_DEFS.length, 'yellow'],
+    ['Rank', getRank(), 'green']
+  ].map(([l, v, c]) => `<div class="stat-card"><div class="stat-value" style="background:linear-gradient(135deg,var(--${c}),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+
+  $('profile-badges').innerHTML = BADGE_DEFS.map(b => {
+    const earned = S.badges.includes(b.id);
+    return `<div class="badge-item ${earned ? 'earned' : ''}">${earned ? '✓' : '🔒'} ${b.name} — ${b.desc}</div>`;
+  }).join('');
+
+  $('activity-log').innerHTML = S.actions.length
+    ? `<div style="max-height:300px;overflow-y:auto">${S.actions.slice(0, 20).map(a => `<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem"><span class="text-muted">${new Date(a.t).toLocaleString()}</span> — ${esc(a.msg)}</div>`).join('')}</div>`
+    : '<p class="text-muted">No activities yet.</p>';
+
+  $('btn-2fa-settings').textContent = S.user.twoFA ? '🔐 App Lock: ON (tap to disable)' : '🔐 App Lock (This Device)';
+}
+
+/* ── Sessions & security panel ── */
+$('btn-sessions').addEventListener('click', async () => {
+  const panel = $('sessions-panel');
+  panel.classList.toggle('hidden');
+  if (panel.classList.contains('hidden')) return;
+  panel.innerHTML = '<p class="text-muted">Loading session data…</p>';
+  try {
+    const d = await api('/api/me/sessions');
+    const c = d.current;
+    panel.innerHTML = `
+      <h3 class="mb-md">🖥️ Active Session &amp; IP Enforcement</h3>
+      <div class="info-box" style="margin-top:0">${esc(d.rule)}</div>
+      <div class="profile-stats" style="margin-top:14px">
+        <div class="stat-card"><div class="stat-value" style="font-size:1rem">${c ? esc(c.ip) : '—'}</div><div class="stat-label">Location</div></div>
+        <div class="stat-card"><div class="stat-value" style="font-size:1rem">${c ? new Date(c.started).toLocaleDateString() : '—'}</div><div class="stat-label">Started</div></div>
+      </div>
+      <p class="text-muted mt-md" style="font-size:.8rem;word-break:break-all"><strong>Device:</strong> ${c ? esc(c.ua) : '—'}</p>
+      <label class="checkbox-row mt-md">
+        <input type="checkbox" id="ip-bound-toggle" ${d.settings.ipBound ? 'checked' : ''}>
+        <span><strong>Single-login protection for this browser</strong><br>
+        <span class="text-muted" style="font-size:.78rem">When on, logging into this account in another tab or window instantly signs the older one out. Turn off to allow several tabs at once.</span></span>
+      </label>
+      <h4 class="mt-lg mb-md">Recent logins</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>When</th><th>Type</th><th>IP</th></tr></thead>
+        <tbody>${(d.loginHistory || []).map(l => `<tr><td>${new Date(l.t).toLocaleString()}</td><td>${l.kind === 'failed' ? '<span class="text-red">failed</span>' : esc(l.kind)}</td><td><code>${esc(l.ip)}</code></td></tr>`).join('') || '<tr><td colspan="3">No history.</td></tr>'}</tbody>
+      </table></div>
+      <button class="btn btn-danger btn-sm mt-md" id="btn-end-session">Log out this device now</button>`;
+    $('ip-bound-toggle').addEventListener('change', async e => {
+      try {
+        await api('/api/me/settings', { method: 'POST', body: { ipBound: e.target.checked } });
+        serverSettings.ipBound = e.target.checked;
+        toast(e.target.checked ? '🔒 IP enforcement enabled.' : 'IP enforcement disabled.');
+      } catch (err) { toast(err.message, true); }
+    });
+    $('btn-end-session').onclick = () => $('btn-logout').click();
+  } catch (e) {
+    panel.innerHTML = '<p class="text-muted">Could not load session data.</p>';
+  }
+});
+
+/* ── Avatars ── */
+function renderAvatarPicker() {
+  $('avatar-icon-grid').innerHTML = AVATARS.map(a => `<button type="button" class="avatar-option" data-avatar="${a}">${a}</button>`).join('') +
+    `<button type="button" class="avatar-option" id="gallery-avatar-btn">🖼️</button>`;
+  $('avatar-icon-grid').querySelectorAll('[data-avatar]').forEach(b => b.addEventListener('click', async () => {
+    S.user.avatar = b.dataset.avatar;
+    savePrefs();
+    try { await api('/api/me', { method: 'PATCH', body: { avatar: b.dataset.avatar } }); } catch (e) {}
+    renderProfile(); renderChatUsers(); updateAllUI(); toast('Avatar updated.');
+  }));
+  $('gallery-avatar-btn').onclick = () => $('avatar-file').click();
+}
+$('btn-avatar').addEventListener('click', () => {
+  $('avatar-picker').classList.toggle('hidden');
+  if (!$('avatar-picker').classList.contains('hidden')) renderAvatarPicker();
+});
+function resizeImage(file, max = 128) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const scale = Math.min(1, max / Math.max(img.width, img.height));
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/png'));
+      };
+      img.onerror = reject;
+      img.src = r.result;
+    };
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+$('avatar-file').addEventListener('change', async e => {
+  const f = e.target.files && e.target.files[0];
+  if (!f) return;
+  try {
+    const dataUrl = await resizeImage(f);
+    S.user.avatar = dataUrl; savePrefs();
+    await api('/api/me', { method: 'PATCH', body: { avatar: dataUrl } });
+    renderProfile(); renderChatUsers();
+    toast('🖼️ Profile picture updated and synced.');
+  } catch (err) { toast('Could not upload image (too large?)', true); }
+});
+
+/* ── Backup / reset ── */
+$('btn-export-account').addEventListener('click', async () => {
+  try {
+    const blob = new Blob([JSON.stringify(window.LocalBackend.backup(), null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `ihack-${normalizeUsername(S.user.name)}-backup.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast('💾 Backup downloaded.');
+  } catch (e) { toast('Could not download backup.', true); }
+});
+$('btn-reset').addEventListener('click', async () => {
+  if (!confirm('Reset ALL progress for this account in this browser? This cannot be undone.')) return;
+  try {
+    const r = await api('/api/me/progress/reset', { method: 'POST' });
+    S.xp = 0; S.solved = {}; S.badges = []; S.termUsed = false; S.binaryUsed = false;
+    S.diffBoost = 0; S.currentMission = 0; S.currentTopic = 0; S.actions = [];
+    savePrefs(); scheduleSync();
+    renderProfile(); renderHome(); updateAllUI();
+    toast('Progress reset.');
+  } catch (e) { toast(e.message, true); }
+});
+
+/* ═══════════════════════════════════════════
+   DEVICE APP-LOCK (optional local PIN — the
+   password + sessions are the real auth)
+   ═══════════════════════════════════════════ */
+const SECURITY_AUTO_LOCK_MS = 10 * 60 * 1000;
+let securityLocked = false, securityAttempts = 0, securityTimer = null, securityUnlocking = false;
+function getLockCode() {
+  try { return localStorage.getItem(lockCodeKey(S.user.name)); } catch (e) { return null; }
+}
+function lockAcademy(reason = 'manual') {
+  if (!S.user) return;
+  securityLocked = true; securityUnlocking = false;
+  clearTimeout(securityTimer);
+  $('security-code').value = '';
+  $('security-lock-title').textContent = S.user.twoFA ? '🔐 App Locked' : 'Academy Locked';
+  $('security-lock-description').textContent = reason === 'startup'
+    ? 'Enter your device app-lock code once for this browser session.'
+    : reason === 'timeout'
+      ? 'Locked after inactivity. Enter your code to continue.'
+      : 'Enter your app-lock code to continue.';
+  $('security-status').textContent = 'Optional device protection';
+  $('security-status').className = 'security-status';
+  $('security-lock').classList.remove('hidden');
+  setTimeout(() => $('security-code').focus(), 50);
+}
+function unlockAcademy() {
+  securityLocked = false;
+  $('security-lock').classList.add('hidden');
+  $('security-code').value = '';
+  $('security-status').textContent = 'Unlocked';
+  $('security-status').className = 'security-status good';
+  sessionStorage.setItem(TWO_FA_SESSION_KEY + ':' + normalizeUsername(S.user.name), '1');
+  resetSecurityTimer();
+}
+function resetSecurityTimer() {
+  clearTimeout(securityTimer);
+  if (!S.user || securityLocked || !S.user.twoFA) return;
+  securityTimer = setTimeout(() => lockAcademy('timeout'), SECURITY_AUTO_LOCK_MS);
+}
+function enableDeviceLock(silentWelcome) {
+  const code = prompt('🔐 Create a device app-lock code (minimum 4 characters).\nThis lock only protects this browser/device — your account login is secured by the server password.');
+  if (code === null || code.trim().length < 4) {
+    S.user.twoFA = false; savePrefs(); $('enable-2fa').checked = false;
+    toast('App lock stays off.');
+    return;
+  }
+  localStorage.setItem(lockCodeKey(S.user.name), code.trim());
+  S.user.twoFA = true; savePrefs();
+  if (!silentWelcome) renderProfile();
+  toast('🔐 Device app-lock enabled.');
+}
+function setupSecurityLock() {
+  $('security-lock-form').addEventListener('submit', e => {
+    e.preventDefault();
+    if (!S) return;
+    if (!S.user.twoFA) { unlockAcademy(); return; }
+    if (securityUnlocking) return;
+    securityUnlocking = true;
+    const entered = $('security-code').value.trim();
+    const status = $('security-status');
+    if (entered && entered === getLockCode()) {
+      securityAttempts = 0; unlockAcademy();
+      toast('🔓 Academy unlocked.');
+      securityUnlocking = false;
+      return;
+    }
+    securityAttempts++;
+    $('security-code').value = '';
+    const delay = Math.min(8000, 500 * Math.pow(2, Math.min(securityAttempts - 1, 4)));
+    status.textContent = `Incorrect code. Try again in ${Math.ceil(delay / 1000)}s.`;
+    status.className = 'security-status bad';
+    const input = $('security-code');
+    input.disabled = true;
+    setTimeout(() => { input.disabled = false; input.focus(); securityUnlocking = false; }, delay);
+  });
+  $('btn-lock').addEventListener('click', () => {
+    if (S.user && S.user.twoFA) lockAcademy('manual');
+    else toast('App lock is off. Enable it from Profile → App Lock.');
+  });
+  ['click', 'keydown', 'pointermove', 'touchstart'].forEach(evt => {
+    document.addEventListener(evt, () => { if (S && !securityLocked) resetSecurityTimer(); }, { passive: true });
+  });
+}
+$('btn-2fa-settings').addEventListener('click', () => {
+  if (S.user.twoFA) {
+    if (confirm('Disable the device app-lock code?')) {
+      S.user.twoFA = false;
+      localStorage.removeItem(lockCodeKey(S.user.name));
+      sessionStorage.removeItem(TWO_FA_SESSION_KEY + ':' + normalizeUsername(S.user.name));
+      savePrefs(); renderProfile();
+      toast('App lock disabled.');
+    }
+  } else enableDeviceLock(false);
 });
 
 /* ═══════════════════════════════════════════
    AI BOT
    ═══════════════════════════════════════════ */
-let botOpen=false;
-$('bot-toggle').addEventListener('click',()=>{botOpen=!botOpen;$('bot-panel').classList.toggle('hidden',!botOpen);if(botOpen&&$('bot-messages').children.length===0)botMsg('bot',"Hi! I'm CyberBot 🤖\n\nI help you learn — I won't give direct answers, but I'll guide you with hints and explanations.\n\nTry asking:\n• What is phishing?\n• How does encryption work?\n• Help me with the quiz\n• What is SQL injection?\n• Explain IP classes")});
-$('bot-close').addEventListener('click',()=>{botOpen=false;$('bot-panel').classList.add('hidden')});
-
-function botMsg(type,text){
-  const d=document.createElement('div');
-  d.className=`bot-msg ${type}`;
-  d.textContent=text;
+let botOpen = false;
+$('bot-toggle').addEventListener('click', () => {
+  botOpen = !botOpen;
+  $('bot-panel').classList.toggle('hidden', !botOpen);
+  if (botOpen && $('bot-messages').children.length === 0)
+    botMsg('bot', "Hi! I'm CyberBot 🤖\n\nI help you learn — I won't give direct answers, but I'll guide you with hints and explanations.\n\nTry asking:\n• What is phishing?\n• How does encryption work?\n• Help me with the quiz\n• What is SQL injection?\n• Explain IP classes");
+});
+$('bot-close').addEventListener('click', () => { botOpen = false; $('bot-panel').classList.add('hidden'); });
+function botMsg(type, text) {
+  const d = document.createElement('div');
+  d.className = `bot-msg ${type}`; d.textContent = text;
   $('bot-messages').appendChild(d);
-  $('bot-messages').scrollTop=$('bot-messages').scrollHeight;
+  $('bot-messages').scrollTop = $('bot-messages').scrollHeight;
 }
-
-const BOT_KB=[
-  {k:['hello','hi','hey','sup'],r:"Hello, defender! 👋 Ask me anything about cybersecurity. I'll give hints, not direct answers — that way you learn better!"},
-  {k:['phishing','phish'],r:"🎣 Phishing is when attackers send deceptive messages to trick you into revealing information or clicking malicious links.\n\nHint: Look for urgency, suspicious sender addresses, and requests for credentials. Always verify through a trusted channel!"},
-  {k:['sql injection','sqli','sql'],r:"🧩 SQL Injection happens when untrusted input changes a database query's meaning.\n\nHint: The fix involves keeping data separate from code structure. Think about 'parameterized' approaches!"},
-  {k:['xss','cross-site scripting','cross site'],r:"🧩 XSS allows attacker-controlled content to run as code in someone's browser.\n\nHint: The defense involves properly encoding output based on context. Never trust user input!"},
-  {k:['password','passwords'],r:"🔑 Strong passwords are long, unique, and random.\n\nHint: Think about what tool can generate and remember unique passwords for every account. And what adds a second layer beyond passwords?"},
-  {k:['encryption','encrypt','decrypt'],r:"🔐 Encryption uses keys to protect data confidentiality.\n\nHint: There are two main types — one uses the same key for both operations, the other uses a pair of keys. Can you name them?"},
-  {k:['hash','hashing'],r:"🔐 Hashing creates a fixed-size fingerprint of data. It's one-way — you can't reverse it.\n\nHint: For passwords, you need a SLOW hashing function with a unique addition to each password. What are these called?"},
-  {k:['network','networking','ip','address'],r:"🌐 Networks connect devices to share resources. IP addresses identify devices on a network.\n\nHint: IPv4 uses 32 bits divided into 4 octets. Can you figure out which class 172.16.0.1 belongs to?"},
-  {k:['topology','topologies'],r:"🌐 Network topology is how devices are arranged and connected.\n\nHint: Think about shapes — star, ring, bus, mesh. Which one has a central point everything connects to?"},
-  {k:['kali','linux','command'],r:"🐉 Kali Linux is a security-focused OS with pre-installed tools.\n\nHint: Start with basic commands — how do you list files? Show your current directory? Remember: tools must only be used on authorized targets!"},
-  {k:['cisco','packet tracer'],r:"📡 Cisco Packet Tracer lets you simulate networks safely.\n\nHint: You can drag devices, connect them with cables, and configure them using CLI commands. Start by setting IP addresses on PCs!"},
-  {k:['quiz','help','answer','hint','stuck'],r:"🧠 I won't give you the direct answer — that's how you learn!\n\nHere's my approach:\n1. Re-read the lesson material above\n2. Think about the key concept being tested\n3. Eliminate obviously wrong answers\n4. Look for the hint I provide when you get one wrong\n\nYou've got this! 💪"},
-  {k:['cia','triad','confidentiality','integrity','availability'],r:"🛡️ The CIA Triad is fundamental!\n\nHint: Think about three questions:\n• Who can see this data? (C____)\n• Has this data been tampered with? (I____)\n• Can authorized users access it when needed? (A____)\n\nCan you fill in the blanks?"},
-  {k:['malware','virus','trojan','ransomware','worm'],r:"🦠 Malware is malicious software with many forms.\n\nHint: Each type has a unique behavior — one encrypts files for ransom, one disguises as legitimate software, one spreads by itself without user action. Which is which?"},
-  {k:['firewall','firewalls'],r:"🧱 Firewalls control what traffic is allowed in and out.\n\nHint: They work on rules — like a bouncer at a club. Some check only addresses (packet-filtering), others track conversations (stateful), and advanced ones inspect content (application-layer)."},
-  {k:['mfa','two factor','2fa','authentication'],r:"🔑 MFA adds layers beyond just a password.\n\nHint: The three factor types are something you KNOW, something you HAVE, and something you ARE. Two passwords are NOT two factors — why not?"},
-  {k:['binary','convert','decimal'],r:"🔢 Binary conversion is key for understanding IP addresses!\n\nHint: Each position doubles — from right: 1, 2, 4, 8, 16, 32, 64, 128. Add the positions where there's a '1'. Try it with 11000000!"},
-  {k:['incident','response','breach'],r:"🚨 Incident response follows a structured process.\n\nHint: Think Prepare → Detect → Contain → Eradicate → Recover → Learn. What's the FIRST thing you should do when you suspect a breach? (Hint: it's NOT deleting files!)"},
-  {k:['pentest','penetration','testing'],r:"⚔️ Penetration testing follows 5 phases.\n\nHint: Before you can exploit anything, you need to gather information first. What's that phase called? And what MUST you have before starting ANY phase?"},
-  {k:['osint','reconnaissance','recon'],r:"🔍 Reconnaissance is the information-gathering phase.\n\nHint: There are two types — one where you don't interact with the target directly (passive), and one where you do (active). Even passive recon should be within your authorized scope!"},
-  {k:['ethics','ethical','legal','permission'],r:"⚖️ Ethics is the foundation of everything we do!\n\nHint: The #1 rule is simple: GET PERMISSION. Without authorization, even well-intentioned testing is potentially illegal. Always define scope before testing."},
+const BOT_KB = [
+  { k: ['hello', 'hi', 'hey', 'sup'], r: "Hello, defender! 👋 Ask me anything about cybersecurity. I'll give hints, not direct answers — that way you learn better!" },
+  { k: ['phishing', 'phish'], r: "🎣 Phishing is when attackers send deceptive messages to trick you into revealing information or clicking malicious links.\n\nHint: Look for urgency, suspicious sender addresses, and requests for credentials. Always verify through a trusted channel!" },
+  { k: ['sql injection', 'sqli', 'sql'], r: "🧩 SQL Injection happens when untrusted input changes a database query's meaning.\n\nHint: The fix involves keeping data separate from code structure. Think about 'parameterized' approaches!" },
+  { k: ['xss', 'cross-site scripting', 'cross site'], r: "🧩 XSS allows attacker-controlled content to run as code in someone's browser.\n\nHint: The defense involves properly encoding output based on context. Never trust user input!" },
+  { k: ['password', 'passwords'], r: "🔑 Strong passwords are long, unique, and random.\n\nHint: Think about what tool can generate and remember unique passwords for every account. And what adds a second layer beyond passwords?" },
+  { k: ['encryption', 'encrypt', 'decrypt'], r: "🔐 Encryption uses keys to protect data confidentiality.\n\nHint: There are two main types — one uses the same key for both operations, the other uses a pair of keys. Can you name them?" },
+  { k: ['hash', 'hashing'], r: "🔐 Hashing creates a fixed-size fingerprint of data. It's one-way — you can't reverse it.\n\nHint: For passwords, you need a SLOW hashing function with a unique addition to each password. What are these called?" },
+  { k: ['network', 'networking', 'ip', 'address'], r: "🌐 Networks connect devices to share resources. IP addresses identify devices on a network.\n\nHint: IPv4 uses 32 bits divided into 4 octets. Can you figure out which class 172.16.0.1 belongs to?" },
+  { k: ['topology', 'topologies'], r: "🌐 Network topology is how devices are arranged and connected.\n\nHint: Think about shapes — star, ring, bus, mesh. Which one has a central point everything connects to?" },
+  { k: ['kali', 'linux', 'command'], r: "🐉 Kali Linux is a security-focused OS with pre-installed tools.\n\nHint: Start with basic commands — how do you list files? Show your current directory? Remember: tools must only be used on authorized targets!" },
+  { k: ['cisco', 'packet tracer'], r: "📡 Cisco Packet Tracer lets you simulate networks safely.\n\nHint: You can drag devices, connect them with cables, and configure them using CLI commands. Start by setting IP addresses on PCs!" },
+  { k: ['quiz', 'help', 'answer', 'hint', 'stuck'], r: "🧠 I won't give you the direct answer — that's how you learn!\n\nHere's my approach:\n1. Re-read the lesson material above\n2. Think about the key concept being tested\n3. Eliminate obviously wrong answers\n4. Look for the hint I provide when you get one wrong\n\nYou've got this! 💪" },
+  { k: ['cia', 'triad', 'confidentiality', 'integrity', 'availability'], r: "🛡️ The CIA Triad is fundamental!\n\nHint: Think about three questions:\n• Who can see this data? (C____)\n• Has this data been tampered with? (I____)\n• Can authorized users access it when needed? (A____)\n\nCan you fill in the blanks?" },
+  { k: ['malware', 'virus', 'trojan', 'ransomware', 'worm'], r: "🦠 Malware is malicious software with many forms.\n\nHint: Each type has a unique behavior — one encrypts files for ransom, one disguises as legitimate software, one spreads by itself without user action. Which is which?" },
+  { k: ['firewall', 'firewalls'], r: "🧱 Firewalls control what traffic is allowed in and out.\n\nHint: They work on rules — like a bouncer at a club. Some check only addresses (packet-filtering), others track conversations (stateful), and advanced ones inspect content (application-layer)." },
+  { k: ['mfa', 'two factor', '2fa', 'authentication'], r: "🔑 MFA adds layers beyond just a password.\n\nHint: The three factor types are something you KNOW, something you HAVE, and something you ARE. Two passwords are NOT two factors — why not?" },
+  { k: ['binary', 'convert', 'decimal'], r: "🔢 Binary conversion is key for understanding IP addresses!\n\nHint: Each position doubles — from right: 1, 2, 4, 8, 16, 32, 64, 128. Add the positions where there's a '1'. Try it with 11000000!" },
+  { k: ['incident', 'response', 'breach'], r: "🚨 Incident response follows a structured process.\n\nHint: Think Prepare → Detect → Contain → Eradicate → Recover → Learn. What's the FIRST thing you should do when you suspect a breach? (Hint: it's NOT deleting files!)" },
+  { k: ['pentest', 'penetration', 'testing'], r: "⚔️ Penetration testing follows 5 phases.\n\nHint: Before you can exploit anything, you need to gather information first. What's that phase called? And what MUST you have before starting ANY phase?" },
+  { k: ['osint', 'reconnaissance', 'recon'], r: "🔍 Reconnaissance is the information-gathering phase.\n\nHint: There are two types — one where you don't interact with the target directly (passive), and one where you do (active). Even passive recon should be within your authorized scope!" },
+  { k: ['ethics', 'ethical', 'legal', 'permission'], r: "⚖️ Ethics is the foundation of everything we do!\n\nHint: The #1 rule is simple: GET PERMISSION. Without authorization, even well-intentioned testing is potentially illegal. Always define scope before testing." },
+  { k: ['session', 'ip enforcement', 'login', 'account'], r: "🔐 Your iHack account is protected server-side:\n• Passwords are salted & hashed with scrypt\n• Only ONE session stays active — a login elsewhere ends the old one instantly\n• Optional IP binding ends sessions that switch networks\n\nCheck Profile → Sessions & Security to see your active IP!" }
 ];
-
-function botRespond(input){
-  const lower=input.toLowerCase();
-  for(const entry of BOT_KB){
-    if(entry.k.some(k=>lower.includes(k)))return entry.r;
-  }
-  return"🤔 I'm not sure about that specific topic yet, but here's what I can help with:\n\n• Cybersecurity concepts (CIA triad, threats, etc.)\n• Network basics (IP, DNS, topologies)\n• Web security (SQL injection, XSS)\n• Tools (Kali Linux, Cisco Packet Tracer)\n• Encryption & hashing\n• Quiz hints (I guide, not give answers!)\n\nTry asking about one of these topics!";
+function botRespond(input) {
+  const lower = input.toLowerCase();
+  for (const entry of BOT_KB) if (entry.k.some(k => lower.includes(k))) return entry.r;
+  return "🤔 I'm not sure about that specific topic yet, but here's what I can help with:\n\n• Cybersecurity concepts (CIA triad, threats, etc.)\n• Network basics (IP, DNS, topologies)\n• Web security (SQL injection, XSS)\n• Tools (Kali Linux, Cisco Packet Tracer)\n• Encryption & hashing\n• Quiz hints (I guide, not give answers!)\n\nTry asking about one of these topics!";
 }
-
-function sendBotMessage(){
-  const input=$('bot-input').value.trim();
-  if(!input)return;
-  botMsg('user',input);
-  $('bot-input').value='';
-  setTimeout(()=>botMsg('bot',botRespond(input)),400+Math.random()*600);
+function sendBotMessage() {
+  const input = $('bot-input');
+  const v = input.value.trim();
+  if (!v) return;
+  botMsg('user', v); input.value = '';
+  setTimeout(() => botMsg('bot', botRespond(v)), 400 + Math.random() * 600);
 }
-
-$('bot-send').addEventListener('click',sendBotMessage);
-$('bot-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendBotMessage()});
+$('bot-send').addEventListener('click', sendBotMessage);
+$('bot-input').addEventListener('keydown', e => { if (e.key === 'Enter') sendBotMessage(); });
 
 /* ═══════════════════════════════════════════
-   INIT
+   BOOT — resume server session or show login
    ═══════════════════════════════════════════ */
 setupSecurityLock();
 termInit();
-if(load()&&S.user){
-  enterApp();
-  lockAcademy('startup');
-} else {
-  $('page-auth').classList.remove('hidden');
-}
+setAuthMode('register');
+(async function boot() {
+  try {
+    const me = await api('/api/me');
+    adoptServerState(me);
+    enterApp();
+    connectEvents();
+    if (S.user.twoFA && sessionStorage.getItem(TWO_FA_SESSION_KEY + ':' + normalizeUsername(S.user.name)) !== '1') {
+      lockAcademy('startup');
+    }
+  } catch (e) {
+    $('page-auth').classList.remove('hidden');
+  }
+})();
 
 </script>
 </body>
